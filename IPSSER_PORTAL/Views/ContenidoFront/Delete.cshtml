@@ -1,0 +1,79 @@
+﻿@model IPSSER.DATOS.TBL_PORTAL_CONTENIDOFRONT
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>TBL_PORTAL_CONTENIDOFRONT</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Titulo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Titulo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Contenido_Uno)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Contenido_Uno)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Contenido_Dos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Contenido_Dos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Contenido_Tres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Contenido_Tres)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TBL_PORTAL_FRONT.Titulo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TBL_PORTAL_FRONT.Titulo)
+        </dd>
+
+        <dd>
+            @Html.DisplayFor(model => model.TBL_PORTAL_BIBLIOTECA_IMAGENES.Titulo)
+        </dd>
+
+        <dd>
+            @Html.DisplayFor(model => model.Link)
+        </dd>
+</dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

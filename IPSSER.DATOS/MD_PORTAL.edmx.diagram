@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3f5f4df5b18440b6949609d13a8b6e44" Name="Diagram1">
+        <EntityTypeShape EntityType="IPSSER_PORTALModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="IPSSER_PORTALModel.TBL_PORTAL_BIBLIOTECA_IMAGENES" Width="2.75" PointX="8.25" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="IPSSER_PORTALModel.TBL_PORTAL_CONTENIDO_IMAGENES" Width="2.75" PointX="3.5" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="IPSSER_PORTALModel.TBL_PORTAL_CONTENIDOFRONT" Width="2.5" PointX="3.625" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="IPSSER_PORTALModel.TBL_PORTAL_CONTENIDOSLIDE" Width="2.5" PointX="10.5" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="IPSSER_PORTALModel.TBL_PORTAL_FRONT" Width="1.75" PointX="1.125" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="IPSSER_PORTALModel.TBL_PORTAL_MODULO" Width="2" PointX="0.5" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="IPSSER_PORTALModel.TBL_PORTAL_SLIDE" Width="2" PointX="7.125" PointY="7.5" IsExpanded="true" />
+        <AssociationConnector Association="IPSSER_PORTALModel.FK_TBL_PORTAL_CONTENIDO_IMAGENES_TBL_PORTAL_BIBLIOTECA_IMAGENES" ManuallyRouted="false" />
+        <AssociationConnector Association="IPSSER_PORTALModel.FK_TBL_PORTAL_SLIDE_TBL_PORTAL_BIBLIOTECA_IMAGENES" ManuallyRouted="false" />
+        <AssociationConnector Association="IPSSER_PORTALModel.FK_TBL_PORTAL_CONTENIDO_IMAGENES_TBL_PORTAL_CONTENIDOFRONT" ManuallyRouted="false" />
+        <AssociationConnector Association="IPSSER_PORTALModel.FK_TBL_PORTAL_CONTENIDOFRONT_TBL_PORTAL_FRONT" ManuallyRouted="false" />
+        <AssociationConnector Association="IPSSER_PORTALModel.FK_TBL_PORTAL_CONTENIDOSLIDE_TBL_PORTAL_SLIDE" ManuallyRouted="false" />
+        <AssociationConnector Association="IPSSER_PORTALModel.FK_TBL_PORTAL_FRONT_TBL_PORTAL_MODULO" ManuallyRouted="false" />
+        <AssociationConnector Association="IPSSER_PORTALModel.FK_TBL_PORTAL_SLIDE_TBL_PORTAL_FRONT" ManuallyRouted="false" />
+        <AssociationConnector Association="IPSSER_PORTALModel.FK_TBL_PORTAL_CONTENIDOFRONT_TBL_PORTAL_BIBLIOTECA_IMAGENES" />
+        <AssociationConnector Association="IPSSER_PORTALModel.FK_TBL_PORTAL_CONTENIDOSLIDE_TBL_PORTAL_BIBLIOTECA_IMAGENES" />
+        <AssociationConnector Association="IPSSER_PORTALModel.FK_TBL_PORTAL_FRONT_TBL_PORTAL_BIBLIOTECA_IMAGENES" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

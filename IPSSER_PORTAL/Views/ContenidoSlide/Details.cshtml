@@ -1,0 +1,66 @@
+﻿@model IPSSER.DATOS.TBL_PORTAL_CONTENIDOSLIDE
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TBL_PORTAL_CONTENIDOSLIDE</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Titulo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Titulo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Contenido_Uno)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Contenido_Uno)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Contenido_Dos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Contenido_Dos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Contenido_Tres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Contenido_Tres)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TBL_PORTAL_SLIDE.Titulo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TBL_PORTAL_SLIDE.Titulo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdContenidoSlide }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

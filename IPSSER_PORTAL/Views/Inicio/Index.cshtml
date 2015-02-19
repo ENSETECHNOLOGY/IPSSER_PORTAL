@@ -1,0 +1,1299 @@
+﻿@{
+    Layout = null;
+    ViewBag.Title = "Sitio IPS SER -- Inicio";
+}
+
+<!DOCTYPE html>
+
+<html lang="en-gb">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Sitio IPS SER -- Inicio</title>
+
+    <meta charset="utf-8">
+    <!-- Meta -->
+    <meta name="keywords" content="" />
+    <meta name="author" content="">
+    <meta name="robots" content="" />
+    <meta name="description" content="" />
+
+    <!-- this styles only adds some repairs on idevices  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="~/images/favicon.ico">
+
+    <!-- Google fonts - witch you want to use - (rest you can just remove) -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    <!-- ######### CSS STYLES ######### -->
+
+    <link rel="stylesheet" href="~/Css/reset.css" type="text/css" />
+    <link rel="stylesheet" href="~/Css/style.css" type="text/css" />
+    <link rel="stylesheet" href="~/Css/font-awesome/css/font-awesome.min.css">
+
+    <!-- responsive devices styles -->
+    <link rel="stylesheet" media="screen" href="~/Css/responsive-leyouts.css" type="text/css" />
+
+    <!-- mega menu -->
+    <link href="~/js/mainmenu/sticky.css" rel="stylesheet">
+    <link href="~/js/mainmenu/bootstrap.min.css" rel="stylesheet">
+    <link href="~/js/mainmenu/demo.css" rel="stylesheet">
+    <link href="~/js/mainmenu/menu.css" rel="stylesheet">
+
+    <!-- revolution slider -->
+    <!-- CSS STYLE-->
+    <link rel="stylesheet" type="text/css" href="~/js/revolutionslider/css/style.css" media="screen" />
+
+
+
+    <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+    <link rel="stylesheet" type="text/css" href="~/js/revolutionslider/rs-plugin/css/settings.css" media="screen" />
+
+    <!-- simple line icons -->
+    <link rel="stylesheet" type="text/css" href="~/css/Simple-Line-Icons-Webfont/simple-line-icons.css" media="screen" />
+
+    <!-- flexslider -->
+    <link rel="stylesheet" href="~/js/flexslider/flexslider.css" type="text/css" media="screen" />
+
+    <!-- Accordions -->
+    <link rel="stylesheet" href="~/js/accordion/accordion.css" type="text/css" media="all">
+
+    <!-- tabs -->
+    <link rel="stylesheet" type="text/css" href="~/js/tabs/assets/css/responsive-tabs.css">
+    <link rel="stylesheet" type="text/css" href="~/js/tabs/assets/css/responsive-tabs2.css">
+    <link rel="stylesheet" type="text/css" href="~/js/tabs/assets/css/responsive-tabs11.css">
+    <link rel="stylesheet" type="text/css" href="~/js/tabs/assets/css/responsive-tabs12.css">
+
+    <!-- toogle menu -->
+    <link rel="stylesheet" href="~/js/Toggle-Menu/menu.css" type="text/css" />
+
+    <!-- forms -->
+    <link rel="stylesheet" href="~/js/form/sky-forms.css" type="text/css" media="all">
+
+
+
+</head>
+<body>
+    <div class="site_wrapper">
+        <header id="header">
+
+            <div id="trueHeader">
+                <div class="wrapper">
+                    <div class="container">
+
+                        <!-- Logo -->
+                        <!-- Menu -->
+                        <div class="mainMenu">
+                            <label for="toggleMenu" class="menuTitle">MENU</label>
+                            <input type="checkbox" id="toggleMenu" />
+                            <ul class="menu">
+
+                                @foreach (var modulo in ViewBag.ListaModulos )
+                                {
+                                    if (modulo.IdModulo == 1)
+                                    {
+                                        <li><a href="#" class="current" onclick="$('#modulo-@modulo.IdModulo').animatescroll();">@modulo.NombreModulo</a></li>
+                                    }
+                                    else
+                                    {
+                                        <li><a href="#" onclick="$('#modulo-@modulo.IdModulo').animatescroll();">@modulo.NombreModulo</a></li>
+                                    }
+
+
+
+                                }
+                                @*<li><a href="#" class="current" onclick="$('#section-1').animatescroll();">Inicio</a></li>
+                                    <li><a href="#" onclick="$('#section-2').animatescroll();">Servicios 1</a></li>
+                                    <li><a href="#" onclick="$('#section-3').animatescroll();">Servicios 2</a></li>
+                                    <li><a href="#" onclick="$('#section-4').animatescroll();">Nosotros 1</a></li>
+                                    <li><a href="#" onclick="$('#section-5').animatescroll();">Nosotros 2</a></li>
+                                    <li><a href="#" onclick="$('#section-7').animatescroll();">Contacto</a></li>*@
+                            </ul>
+                        </div>
+                        <!-- end menu -->
+
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="clearfix"></div>
+
+        @foreach (var M in ViewBag.ListaModulos)
+        {
+            <div id="modulo-@M.IdModulo">
+                <div class="tp-banner-container">
+                    <div class="tp-banner2">
+
+                        <ul>
+
+                            @foreach (var FrontSlide in ViewBag.ListaFrontSlides)
+                                {
+
+
+                                    if (FrontSlide.IdModulo == M.IdModulo)
+                                    {
+                                        <li data-transition="slidedown" data-slotamount="1" data-masterspeed="1500" data-thumb="~/images/sliders/slider1_thumb.jpg" data-delay="13000" data-saveperformance="off" data-title="Our Workplace">
+
+                                            <!-- MAIN IMAGE -->
+
+                                            <img src="@FrontSlide.Fondo" alt=" kenburns1" data-bgposition="left center" data-kenburns="on" data-duration="14000" data-ease="Linear.easeNone" data-bgfit="100" data-bgfitend="130" data-bgpositionend="right center">
+                                            <!-- LAYERS -->
+
+                                            <div class="tp-caption offerbadge sfb"
+                                                 data-x="928"
+                                                 data-hoffset="0"
+                                                 data-voffset="-10"
+                                                 data-y="200"
+                                                 data-speed="800"
+                                                 data-start="1600"
+                                                 data-easing="Power4.easeOut"
+                                                 data-endspeed="300"
+                                                 data-endeasing="Power1.easeIn"
+                                                 data-captionhidden="off"
+                                                 style="z-index: 6">
+                                                <img src="../images/logo.png">
+                                            </div>
+                                            <div class="tp-caption text15 white sfb"
+                                                 data-x="0"
+                                                 data-hoffset="0"
+                                                 data-voffset="-10"
+                                                 data-y="168"
+                                                 data-speed="800"
+                                                 data-start="2200"
+                                                 data-easing="Power4.easeOut"
+                                                 data-endspeed="300"
+                                                 data-endeasing="Power1.easeIn"
+                                                 data-captionhidden="off"
+                                                 style="z-index: 6">@FrontSlide.Titulo</div>
+                                                <div class="tp-caption slide_list3 sfb"
+                                                     data-x="0"
+                                                     data-hoffset="0"
+                                                     data-voffset="-10"
+                                                     data-y="220"
+                                                     data-speed="800"
+                                                     data-start="2500"
+                                                     data-easing="Power4.easeOut"
+                                                     data-endspeed="300"
+                                                     data-endeasing="Power1.easeIn"
+                                                     data-captionhidden="off"
+                                                     style="z-index: 6"><i class="fa fa-check"></i>@FrontSlide.Contenido1</div>
+                                                    <div class="tp-caption slide_list3 sfb"
+                                                         data-x="0"
+                                                         data-hoffset="0"
+                                                         data-voffset="-10"
+                                                         data-y="250"
+                                                         data-speed="800"
+                                                         data-start="2800"
+                                                         data-easing="Power4.easeOut"
+                                                         data-endspeed="300"
+                                                         data-endeasing="Power1.easeIn"
+                                                         data-captionhidden="off"
+                                                         style="z-index: 6"><i class="fa fa-check"></i>@FrontSlide.Contenido2</div>
+                                                        <div class="tp-caption slide_list3 sfb"
+                                                             data-x="0"
+                                                             data-hoffset="0"
+                                                             data-voffset="-10"
+                                                             data-y="280"
+                                                             data-speed="800"
+                                                             data-start="3100"
+                                                             data-easing="Power4.easeOut"
+                                                             data-endspeed="300"
+                                                             data-endeasing="Power1.easeIn"
+                                                             data-captionhidden="off"
+                                                             style="z-index: 6"><i class="fa fa-check"></i>@FrontSlide.Contenido3</div>
+
+                                                            <div class="tp-caption slider_but1 sfb"
+                                                                 data-x="0"
+                                                                 data-hoffset="0"
+                                                                 data-voffset="-10"
+                                                                 data-y="435"
+                                                                 data-speed="800"
+                                                                 data-start="3900"
+                                                                 data-easing="Power4.easeOut"
+                                                                 data-endspeed="300"
+                                                                 data-endeasing="Power1.easeIn"
+                                                                 data-captionhidden="off"
+                                                                 style="z-index: 6"><a href="#">Conoce Más</a></div>
+                                                        </li>
+                                    }
+                                }
+
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        }
+        <div class="clearfix"></div>
+        @foreach (var Front in ViewBag.ListaFront)
+        {
+
+            <div id="front-@Front.IdFront">
+                <div class="tp-banner-container">
+                    <div class="tp-banner2">
+                        <img src="@Front.Fondo" alt="kenburns1" data-bgposition="left center" data-kenburns="on" data-duration="14000" data-ease="Linear.easeNone" data-bgfit="100" data-bgfitend="130" data-bgpositionend="right center">
+                        <!-- LAYERS -->
+
+                        <div class="tp-caption offerbadge sfb"
+                             data-x="928"
+                             data-hoffset="0"
+                             data-voffset="-10"
+                             data-y="200"
+                             data-speed="800"
+                             data-start="1600"
+                             data-easing="Power4.easeOut"
+                             data-endspeed="300"
+                             data-endeasing="Power1.easeIn"
+                             data-captionhidden="off"
+                             style="z-index: 6">
+                            <img src="../images/logo.png">
+                        </div>
+                        <div class="tp-caption text15 white sfb"
+                             data-x="0"
+                             data-hoffset="0"
+                             data-voffset="-10"
+                             data-y="168"
+                             data-speed="800"
+                             data-start="2200"
+                             data-easing="Power4.easeOut"
+                             data-endspeed="300"
+                             data-endeasing="Power1.easeIn"
+                             data-captionhidden="off"
+                             style="z-index: 6">@Front.Titulo</div>
+                            <div class="tp-caption slide_list3 sfb"
+                                 data-x="0"
+                                 data-hoffset="0"
+                                 data-voffset="-10"
+                                 data-y="220"
+                                 data-speed="800"
+                                 data-start="2500"
+                                 data-easing="Power4.easeOut"
+                                 data-endspeed="300"
+                                 data-endeasing="Power1.easeIn"
+                                 data-captionhidden="off"
+                                 style="z-index: 6"><i class="fa fa-check"></i>@Front.Contenido1</div>
+                                <div class="tp-caption slide_list3 sfb"
+                                     data-x="0"
+                                     data-hoffset="0"
+                                     data-voffset="-10"
+                                     data-y="250"
+                                     data-speed="800"
+                                     data-start="2800"
+                                     data-easing="Power4.easeOut"
+                                     data-endspeed="300"
+                                     data-endeasing="Power1.easeIn"
+                                     data-captionhidden="off"
+                                     style="z-index: 6"><i class="fa fa-check"></i>@Front.Contenido2</div>
+                                    <div class="tp-caption slide_list3 sfb"
+                                         data-x="0"
+                                         data-hoffset="0"
+                                         data-voffset="-10"
+                                         data-y="280"
+                                         data-speed="800"
+                                         data-start="3100"
+                                         data-easing="Power4.easeOut"
+                                         data-endspeed="300"
+                                         data-endeasing="Power1.easeIn"
+                                         data-captionhidden="off"
+                                         style="z-index: 6"><i class="fa fa-check"></i>@Front.Contenido3</div>
+
+                                        <div class="tp-caption slider_but1 sfb"
+                                             data-x="0"
+                                             data-hoffset="0"
+                                             data-voffset="-10"
+                                             data-y="435"
+                                             data-speed="800"
+                                             data-start="3900"
+                                             data-easing="Power4.easeOut"
+                                             data-endspeed="300"
+                                             data-endeasing="Power1.easeIn"
+                                             data-captionhidden="off"
+                                             style="z-index: 6"><a href="#">Conoce Más</a></div>
+
+                        </div>
+                    </div>
+                </div>
+                                        }
+                                        @*
+                                                           <div id="front-1">
+                                                                <div class="tp-banner-container">
+                                                                    <div class="tp-banner2">
+                                                                        <ul>
+                                                                            <!-- SLIDE 1  -->
+                                                                            <li data-transition="fade" data-slotamount="1" data-masterspeed="1500" data-thumb="~/images/sliders/slider1_thumb.jpg" data-delay="13000" data-saveperformance="off" data-title="Our Workplace">
+
+                                                                                <!-- MAIN IMAGE -->
+
+                                                                                <img src="~/images/sliders/slide1.jpg" alt="kenburns1" data-bgposition="left center" data-kenburns="on" data-duration="14000" data-ease="Linear.easeNone" data-bgfit="100" data-bgfitend="130" data-bgpositionend="right center">
+                                                                                <!-- LAYERS -->
+
+                                                                                <div class="tp-caption offerbadge sfb"
+                                                                                     data-x="928"
+                                                                                     data-hoffset="0"
+                                                                                     data-voffset="-10"
+                                                                                     data-y="200"
+                                                                                     data-speed="800"
+                                                                                     data-start="1600"
+                                                                                     data-easing="Power4.easeOut"
+                                                                                     data-endspeed="300"
+                                                                                     data-endeasing="Power1.easeIn"
+                                                                                     data-captionhidden="off"
+                                                                                     style="z-index: 6">
+                                                                                    <img src="~/images/logo.png">
+                                                                                </div>
+                                                                                <div class="tp-caption text15 white sfb"
+                                                                                     data-x="0"
+                                                                                     data-hoffset="0"
+                                                                                     data-voffset="-10"
+                                                                                     data-y="168"
+                                                                                     data-speed="800"
+                                                                                     data-start="2200"
+                                                                                     data-easing="Power4.easeOut"
+                                                                                     data-endspeed="300"
+                                                                                     data-endeasing="Power1.easeIn"
+                                                                                     data-captionhidden="off"
+                                                                                     style="z-index: 6">Terapia Ocupacional</div>
+                                                                                <div class="tp-caption slide_list3 sfb"
+                                                                                     data-x="0"
+                                                                                     data-hoffset="0"
+                                                                                     data-voffset="-10"
+                                                                                     data-y="220"
+                                                                                     data-speed="800"
+                                                                                     data-start="2500"
+                                                                                     data-easing="Power4.easeOut"
+                                                                                     data-endspeed="300"
+                                                                                     data-endeasing="Power1.easeIn"
+                                                                                     data-captionhidden="off"
+                                                                                     style="z-index: 6"><i class="fa fa-check"></i>Unlimited Disk Space, Bandwidth & Email Addresses</div>
+                                                                                <div class="tp-caption slide_list3 sfb"
+                                                                                     data-x="0"
+                                                                                     data-hoffset="0"
+                                                                                     data-voffset="-10"
+                                                                                     data-y="250"
+                                                                                     data-speed="800"
+                                                                                     data-start="2800"
+                                                                                     data-easing="Power4.easeOut"
+                                                                                     data-endspeed="300"
+                                                                                     data-endeasing="Power1.easeIn"
+                                                                                     data-captionhidden="off"
+                                                                                     style="z-index: 6"><i class="fa fa-check"></i>FREE Domain Registration</div>
+                                                                                <div class="tp-caption slide_list3 sfb"
+                                                                                     data-x="0"
+                                                                                     data-hoffset="0"
+                                                                                     data-voffset="-10"
+                                                                                     data-y="280"
+                                                                                     data-speed="800"
+                                                                                     data-start="3100"
+                                                                                     data-easing="Power4.easeOut"
+                                                                                     data-endspeed="300"
+                                                                                     data-endeasing="Power1.easeIn"
+                                                                                     data-captionhidden="off"
+                                                                                     style="z-index: 6"><i class="fa fa-check"></i>FREE Security Suite</div>
+                                                                                <div class="tp-caption slide_list3 sfb"
+                                                                                     data-x="0"
+                                                                                     data-hoffset="0"
+                                                                                     data-voffset="-10"
+                                                                                     data-y="310"
+                                                                                     data-speed="800"
+                                                                                     data-start="3300"
+                                                                                     data-easing="Power4.easeOut"
+                                                                                     data-endspeed="300"
+                                                                                     data-endeasing="Power1.easeIn"
+                                                                                     data-captionhidden="off"
+                                                                                     style="z-index: 6"><i class="fa fa-check"></i>FREE Site-Building Tools</div>
+                                                                                <div class="tp-caption slide_list3 sfb"
+                                                                                     data-x="0"
+                                                                                     data-hoffset="0"
+                                                                                     data-voffset="-10"
+                                                                                     data-y="340"
+                                                                                     data-speed="800"
+                                                                                     data-start="3600"
+                                                                                     data-easing="Power4.easeOut"
+                                                                                     data-endspeed="300"
+                                                                                     data-endeasing="Power1.easeIn"
+                                                                                     data-captionhidden="off"
+                                                                                     style="z-index: 6"><i class="fa fa-check"></i>FREE Search Engine & Marketing Credits</div>
+                                                                                <div class="tp-caption slider_but1 sfb"
+                                                                                     data-x="0"
+                                                                                     data-hoffset="0"
+                                                                                     data-voffset="-10"
+                                                                                     data-y="435"
+                                                                                     data-speed="800"
+                                                                                     data-start="3900"
+                                                                                     data-easing="Power4.easeOut"
+                                                                                     data-endspeed="300"
+                                                                                     data-endeasing="Power1.easeIn"
+                                                                                     data-captionhidden="off"
+                                                                                     style="z-index: 6"><a href="#">Conoce Más</a></div>
+                                                                            </li>
+
+                                                                            <!-- SLIDE 2  -->
+                                                                            <li data-transition="slidedown" data-slotamount="1" data-masterspeed="1500" data-thumb="~/images/sliders/slider1_thumb.jpg" data-delay="13000" data-saveperformance="off" data-title="Our Workplace">
+
+                                                                                <!-- MAIN IMAGE -->
+                                                                                <img src="~/images/sliders/slide2.jpg" alt="kenburns1" data-bgposition="left center" data-kenburns="on" data-duration="14000" data-ease="Linear.easeNone" data-bgfit="100" data-bgfitend="130" data-bgpositionend="right center">
+                                                                                <!-- LAYERS -->
+
+                                                                                <div class="tp-caption lfl"
+                                                                                     data-x="-50"
+                                                                                     data-y="140"
+                                                                                     data-speed="800"
+                                                                                     data-start="1000"
+                                                                                     data-easing="Back.easeOut"
+                                                                                     data-endspeed="300"
+                                                                                     data-captionhidden="on"
+                                                                                     style="z-index: 5"><img src="http://placehold.it/650x380" alt=""></div>
+
+                                                                                <div class="tp-caption offerbadge sfb"
+                                                                                     data-x="500"
+                                                                                     data-hoffset="0"
+                                                                                     data-voffset="-10"
+                                                                                     data-y="230"
+                                                                                     data-speed="800"
+                                                                                     data-start="1600"
+                                                                                     data-easing="Power4.easeOut"
+                                                                                     data-endspeed="300"
+                                                                                     data-endeasing="Power1.easeIn"
+                                                                                     data-captionhidden="off"
+                                                                                     style="z-index: 6">
+                                                                                    <img src="~/images/logo.png">
+                                                                                </div>
+                                                                                <div class="tp-caption text9 randomrotate customout tp-resizeme"
+                                                                                     data-x="750"
+                                                                                     data-y="168"
+                                                                                     data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                                                                                     data-speed="500"
+                                                                                     data-start="2200"
+                                                                                     data-easing="Power3.easeInOut"
+                                                                                     data-splitin="chars"
+                                                                                     data-splitout="chars"
+                                                                                     data-elementdelay="0.08"
+                                                                                     data-endelementdelay="0.08"
+                                                                                     data-endspeed="300"
+                                                                                     style="z-index: 7; max-width: auto; max-height: auto; white-space: nowrap;">Transporte</div>
+                                                                                <div class="tp-caption slide_list sfb"
+                                                                                     data-x="750"
+                                                                                     data-hoffset="0"
+                                                                                     data-voffset="-10"
+                                                                                     data-y="220"
+                                                                                     data-speed="800"
+                                                                                     data-start="2500"
+                                                                                     data-easing="Power4.easeOut"
+                                                                                     data-endspeed="300"
+                                                                                     data-endeasing="Power1.easeIn"
+                                                                                     data-captionhidden="off"
+                                                                                     style="z-index: 6"><i class="fa fa-check"></i>Unlimited Disk Space, Bandwidth & Email Addresses</div>
+                                                                                <div class="tp-caption slide_list sfb"
+                                                                                     data-x="750"
+                                                                                     data-hoffset="0"
+                                                                                     data-voffset="-10"
+                                                                                     data-y="250"
+                                                                                     data-speed="800"
+                                                                                     data-start="2800"
+                                                                                     data-easing="Power4.easeOut"
+                                                                                     data-endspeed="300"
+                                                                                     data-endeasing="Power1.easeIn"
+                                                                                     data-captionhidden="off"
+                                                                                     style="z-index: 6"><i class="fa fa-check"></i>FREE Domain Registration</div>
+                                                                                <div class="tp-caption slide_list sfb"
+                                                                                     data-x="750"
+                                                                                     data-hoffset="0"
+                                                                                     data-voffset="-10"
+                                                                                     data-y="280"
+                                                                                     data-speed="800"
+                                                                                     data-start="3100"
+                                                                                     data-easing="Power4.easeOut"
+                                                                                     data-endspeed="300"
+                                                                                     data-endeasing="Power1.easeIn"
+                                                                                     data-captionhidden="off"
+                                                                                     style="z-index: 6"><i class="fa fa-check"></i>FREE Security Suite</div>
+                                                                                <div class="tp-caption slide_list sfb"
+                                                                                     data-x="750"
+                                                                                     data-hoffset="0"
+                                                                                     data-voffset="-10"
+                                                                                     data-y="310"
+                                                                                     data-speed="800"
+                                                                                     data-start="3300"
+                                                                                     data-easing="Power4.easeOut"
+                                                                                     data-endspeed="300"
+                                                                                     data-endeasing="Power1.easeIn"
+                                                                                     data-captionhidden="off"
+                                                                                     style="z-index: 6"><i class="fa fa-check"></i>FREE Site-Building Tools</div>
+                                                                                <div class="tp-caption slide_list sfb"
+                                                                                     data-x="750"
+                                                                                     data-hoffset="0"
+                                                                                     data-voffset="-10"
+                                                                                     data-y="340"
+                                                                                     data-speed="800"
+                                                                                     data-start="3600"
+                                                                                     data-easing="Power4.easeOut"
+                                                                                     data-endspeed="300"
+                                                                                     data-endeasing="Power1.easeIn"
+                                                                                     data-captionhidden="off"
+                                                                                     style="z-index: 6"><i class="fa fa-check"></i>FREE Search Engine & Marketing Credits</div>
+                                                                                <div class="tp-caption slider_but1 sfb"
+                                                                                     data-x="750"
+                                                                                     data-hoffset="0"
+                                                                                     data-voffset="-10"
+                                                                                     data-y="435"
+                                                                                     data-speed="800"
+                                                                                     data-start="3900"
+                                                                                     data-easing="Power4.easeOut"
+                                                                                     data-endspeed="300"
+                                                                                     data-endeasing="Power1.easeIn"
+                                                                                     data-captionhidden="off"
+                                                                                     style="z-index: 6"><a href="#">Conoce Más</a></div>
+                                                                            </li>
+
+                                                                            <!-- SLIDE 3  -->
+                                                                            <li data-transition="slideleft" data-slotamount="1" data-masterspeed="1500" data-thumb="~/images/sliders/slider1_thumb.jpg" data-delay="13000" data-saveperformance="off" data-title="Our Workplace">
+
+                                                                                <!-- MAIN IMAGE -->
+
+                                                                                <img src="~/images/sliders/slide3.jpg" alt="kenburns1" data-bgposition="left center" data-kenburns="on" data-duration="14000" data-ease="Linear.easeNone" data-bgfit="100" data-bgfitend="130" data-bgpositionend="right center">
+                                                                                <!-- LAYERS -->
+
+                                                                                <div class="tp-caption offerbadge sfb"
+                                                                                     data-x="928"
+                                                                                     data-hoffset="0"
+                                                                                     data-voffset="-10"
+                                                                                     data-y="200"
+                                                                                     data-speed="800"
+                                                                                     data-start="1600"
+                                                                                     data-easing="Power4.easeOut"
+                                                                                     data-endspeed="300"
+                                                                                     data-endeasing="Power1.easeIn"
+                                                                                     data-captionhidden="off"
+                                                                                     style="z-index: 6">
+                                                                                    <img src="~/images/logo.png">
+                                                                                </div>
+                                                                                <div class="tp-caption text15 white sfb"
+                                                                                     data-x="0"
+                                                                                     data-hoffset="0"
+                                                                                     data-voffset="-10"
+                                                                                     data-y="168"
+                                                                                     data-speed="800"
+                                                                                     data-start="2200"
+                                                                                     data-easing="Power4.easeOut"
+                                                                                     data-endspeed="300"
+                                                                                     data-endeasing="Power1.easeIn"
+                                                                                     data-captionhidden="off"
+                                                                                     style="z-index: 6">Servicio de enfermeria</div>
+                                                                                <div class="tp-caption slide_list3 sfb"
+                                                                                     data-x="0"
+                                                                                     data-hoffset="0"
+                                                                                     data-voffset="-10"
+                                                                                     data-y="220"
+                                                                                     data-speed="800"
+                                                                                     data-start="2500"
+                                                                                     data-easing="Power4.easeOut"
+                                                                                     data-endspeed="300"
+                                                                                     data-endeasing="Power1.easeIn"
+                                                                                     data-captionhidden="off"
+                                                                                     style="z-index: 6"><i class="fa fa-check"></i>Unlimited Disk Space, Bandwidth & Email Addresses</div>
+                                                                                <div class="tp-caption slide_list3 sfb"
+                                                                                     data-x="0"
+                                                                                     data-hoffset="0"
+                                                                                     data-voffset="-10"
+                                                                                     data-y="250"
+                                                                                     data-speed="800"
+                                                                                     data-start="2800"
+                                                                                     data-easing="Power4.easeOut"
+                                                                                     data-endspeed="300"
+                                                                                     data-endeasing="Power1.easeIn"
+                                                                                     data-captionhidden="off"
+                                                                                     style="z-index: 6"><i class="fa fa-check"></i>FREE Domain Registration</div>
+                                                                                <div class="tp-caption slide_list3 sfb"
+                                                                                     data-x="0"
+                                                                                     data-hoffset="0"
+                                                                                     data-voffset="-10"
+                                                                                     data-y="280"
+                                                                                     data-speed="800"
+                                                                                     data-start="3100"
+                                                                                     data-easing="Power4.easeOut"
+                                                                                     data-endspeed="300"
+                                                                                     data-endeasing="Power1.easeIn"
+                                                                                     data-captionhidden="off"
+                                                                                     style="z-index: 6"><i class="fa fa-check"></i>FREE Security Suite</div>
+                                                                                <div class="tp-caption slide_list3 sfb"
+                                                                                     data-x="0"
+                                                                                     data-hoffset="0"
+                                                                                     data-voffset="-10"
+                                                                                     data-y="310"
+                                                                                     data-speed="800"
+                                                                                     data-start="3300"
+                                                                                     data-easing="Power4.easeOut"
+                                                                                     data-endspeed="300"
+                                                                                     data-endeasing="Power1.easeIn"
+                                                                                     data-captionhidden="off"
+                                                                                     style="z-index: 6"><i class="fa fa-check"></i>FREE Site-Building Tools</div>
+                                                                                <div class="tp-caption slide_list3 sfb"
+                                                                                     data-x="0"
+                                                                                     data-hoffset="0"
+                                                                                     data-voffset="-10"
+                                                                                     data-y="340"
+                                                                                     data-speed="800"
+                                                                                     data-start="3600"
+                                                                                     data-easing="Power4.easeOut"
+                                                                                     data-endspeed="300"
+                                                                                     data-endeasing="Power1.easeIn"
+                                                                                     data-captionhidden="off"
+                                                                                     style="z-index: 6"><i class="fa fa-check"></i>FREE Search Engine & Marketing Credits</div>
+                                                                                <div class="tp-caption slider_but1 sfb"
+                                                                                     data-x="0"
+                                                                                     data-hoffset="0"
+                                                                                     data-voffset="-10"
+                                                                                     data-y="435"
+                                                                                     data-speed="800"
+                                                                                     data-start="3900"
+                                                                                     data-easing="Power4.easeOut"
+                                                                                     data-endspeed="300"
+                                                                                     data-endeasing="Power1.easeIn"
+                                                                                     data-captionhidden="off"
+                                                                                     style="z-index: 6"><a href="#">Conoce Más</a></div>
+                                                                            </li>
+
+                                                                            <!-- SLIDE 1  -->
+                                                                            <li data-transition="fade" data-slotamount="1" data-masterspeed="1500" data-thumb="~/images/sliders/slider1_thumb.jpg" data-delay="13000" data-saveperformance="off" data-title="Our Workplace">
+
+                                                                                <!-- MAIN IMAGE -->
+
+                                                                                <img src="~/images/sliders/slide1.jpg" alt="kenburns1" data-bgposition="left center" data-kenburns="on" data-duration="14000" data-ease="Linear.easeNone" data-bgfit="100" data-bgfitend="130" data-bgpositionend="right center">
+                                                                                <!-- LAYERS -->
+
+                                                                                <div class="tp-caption offerbadge sfb"
+                                                                                     data-x="928"
+                                                                                     data-hoffset="0"
+                                                                                     data-voffset="-10"
+                                                                                     data-y="200"
+                                                                                     data-speed="800"
+                                                                                     data-start="1600"
+                                                                                     data-easing="Power4.easeOut"
+                                                                                     data-endspeed="300"
+                                                                                     data-endeasing="Power1.easeIn"
+                                                                                     data-captionhidden="off"
+                                                                                     style="z-index: 6">
+                                                                                    <img src="~/images/logo.png">
+                                                                                </div>
+                                                                                <div class="tp-caption text15 white sfb"
+                                                                                     data-x="0"
+                                                                                     data-hoffset="0"
+                                                                                     data-voffset="-10"
+                                                                                     data-y="168"
+                                                                                     data-speed="800"
+                                                                                     data-start="2200"
+                                                                                     data-easing="Power4.easeOut"
+                                                                                     data-endspeed="300"
+                                                                                     data-endeasing="Power1.easeIn"
+                                                                                     data-captionhidden="off"
+                                                                                     style="z-index: 6">Terapia Ocupacional 2</div>
+                                                                                <div class="tp-caption slide_list3 sfb"
+                                                                                     data-x="0"
+                                                                                     data-hoffset="0"
+                                                                                     data-voffset="-10"
+                                                                                     data-y="220"
+                                                                                     data-speed="800"
+                                                                                     data-start="2500"
+                                                                                     data-easing="Power4.easeOut"
+                                                                                     data-endspeed="300"
+                                                                                     data-endeasing="Power1.easeIn"
+                                                                                     data-captionhidden="off"
+                                                                                     style="z-index: 6"><i class="fa fa-check"></i>Unlimited Disk Space, Bandwidth & Email Addresses</div>
+                                                                                <div class="tp-caption slide_list3 sfb"
+                                                                                     data-x="0"
+                                                                                     data-hoffset="0"
+                                                                                     data-voffset="-10"
+                                                                                     data-y="250"
+                                                                                     data-speed="800"
+                                                                                     data-start="2800"
+                                                                                     data-easing="Power4.easeOut"
+                                                                                     data-endspeed="300"
+                                                                                     data-endeasing="Power1.easeIn"
+                                                                                     data-captionhidden="off"
+                                                                                     style="z-index: 6"><i class="fa fa-check"></i>FREE Domain Registration</div>
+                                                                                <div class="tp-caption slide_list3 sfb"
+                                                                                     data-x="0"
+                                                                                     data-hoffset="0"
+                                                                                     data-voffset="-10"
+                                                                                     data-y="280"
+                                                                                     data-speed="800"
+                                                                                     data-start="3100"
+                                                                                     data-easing="Power4.easeOut"
+                                                                                     data-endspeed="300"
+                                                                                     data-endeasing="Power1.easeIn"
+                                                                                     data-captionhidden="off"
+                                                                                     style="z-index: 6"><i class="fa fa-check"></i>FREE Security Suite</div>
+                                                                                <div class="tp-caption slide_list3 sfb"
+                                                                                     data-x="0"
+                                                                                     data-hoffset="0"
+                                                                                     data-voffset="-10"
+                                                                                     data-y="310"
+                                                                                     data-speed="800"
+                                                                                     data-start="3300"
+                                                                                     data-easing="Power4.easeOut"
+                                                                                     data-endspeed="300"
+                                                                                     data-endeasing="Power1.easeIn"
+                                                                                     data-captionhidden="off"
+                                                                                     style="z-index: 6"><i class="fa fa-check"></i>FREE Site-Building Tools</div>
+                                                                                <div class="tp-caption slide_list3 sfb"
+                                                                                     data-x="0"
+                                                                                     data-hoffset="0"
+                                                                                     data-voffset="-10"
+                                                                                     data-y="340"
+                                                                                     data-speed="800"
+                                                                                     data-start="3600"
+                                                                                     data-easing="Power4.easeOut"
+                                                                                     data-endspeed="300"
+                                                                                     data-endeasing="Power1.easeIn"
+                                                                                     data-captionhidden="off"
+                                                                                     style="z-index: 6"><i class="fa fa-check"></i>FREE Search Engine & Marketing Credits</div>
+                                                                                <div class="tp-caption slider_but1 sfb"
+                                                                                     data-x="0"
+                                                                                     data-hoffset="0"
+                                                                                     data-voffset="-10"
+                                                                                     data-y="435"
+                                                                                     data-speed="800"
+                                                                                     data-start="3900"
+                                                                                     data-easing="Power4.easeOut"
+                                                                                     data-endspeed="300"
+                                                                                     data-endeasing="Power1.easeIn"
+                                                                                     data-captionhidden="off"
+                                                                                     style="z-index: 6"><a href="#">Conoce Más</a></div>
+                                                                            </li>
+
+                                                                        </ul>
+                                                                        <div class="tp-bannertimer"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="clearfix"></div>
+                                                            <!--end slider-->
+
+                                                            <div class="section_holder20">
+                                                                <div class="container">
+                                                                    <div class="one_half"><img src="http://placehold.it/575x315" alt="" class="img_size1" /></div>
+                                                                    <div class="one_half last">
+                                                                        <h6>Lorem ipsum dolor sit amet consectetuer adipiscing elit Suspendisse et justo. Praesent mattis comm</h6>
+                                                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Suspendisse et justo. Praesent mattis commyolk augue. Aliquam ornare hendrerit augue. Cras tellus. In pulvinar lectus a est.  Lorem ipsum dolor sit amet.</p>
+                                                                        <br />
+                                                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Suspendisse et justo. Praesent mattis commyolk augue. Aliquam ornare hendrerit augue. Cras tellus. In pulvinar lectus a est. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Suspendisse et justo. Praesent mattis commyolk augue. Aliquam ornare hendrerit augue. Cras tellus. In pulvinar lectus a est. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Suspendisse et justo. Praesent mattis commyolk augue. Aliquam ornare hendrerit augue. Cras tellus.</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!--end section-->
+
+                                                            <div class="clearfix"></div>
+                                                            <div class="section_holder48">
+                                                                <div class="container">
+                                                                    <h1 class="lt_title_big">Sirviendo con <span>PASIÓN</span> transportando con <span>AMOR</span></h1>
+                                                                    <div class="lt_title_line"></div>
+
+                                                                    <div class="box">
+                                                                        <div class="arrow_up"></div>
+                                                                        <h1 class="white padd_top1 bold">TRANSPORTE</h1>
+                                                                        <h3 class="white uppercase">+333333</h3>
+                                                                        <p class="white">Servicio de transporte de pacientes.</p>
+                                                                        <div class="arrow_down"></div>
+                                                                    </div>
+                                                                    <!--end item-->
+
+                                                                    <div class="box">
+                                                                        <div class="arrow_up"></div>
+                                                                        <h1 class="white padd_top1 bold">ASISTENCIA MEDICA</h1>
+                                                                        <h3 class="white uppercase">+666666</h3>
+                                                                        <p class="white">Servicio de asistencia medica domiciliaria.</p>
+                                                                        <div class="arrow_down"></div>
+                                                                    </div>
+                                                                    <!--end item-->
+
+                                                                    <div class="box">
+                                                                        <div class="arrow_up"></div>
+                                                                        <h1 class="white padd_top1 bold">ENFERMERIA</h1>
+                                                                        <h3 class="white uppercase">+999999</h3>
+                                                                        <p class="white">Servicio de atención al cliente.</p>
+                                                                        <div class="arrow_down"></div>
+                                                                    </div>
+                                                                    <!--end item-->
+                                                                    <!-- ==================== -->
+                                                                    <div id="section-3">
+                                                                        <div class="section_holder12">
+                                                                            <div class="container">
+                                                                                <p class="lt_title_bottomtext">OTROS SERVICIOS</p>
+                                                                                <div class="clearfix"></div>
+                                                                                <section class="slider">
+                                                                                    <div class="flexslider style2">
+                                                                                        <ul class="slides">
+                                                                                            <li>
+                                                                                                <div class="one_fourth">
+                                                                                                    <div class="icon"><span class="glyph-item mega" aria-hidden="true" data-icon="&#xe05c;"></span></div>
+                                                                                                    <h5>Transporte</h5>
+                                                                                                    <p>Servicio de transporte.</p>
+                                                                                                </div>
+                                                                                                <!-- end item-->
+
+                                                                                                <div class="one_fourth">
+                                                                                                    <div class="icon"><span class="glyph-item mega" aria-hidden="true" data-icon="&#xe034;"></span></div>
+                                                                                                    <h5>Asistencia Medica</h5>
+                                                                                                    <p>Servicio de asistencia medica domiciliaria.</p>
+                                                                                                </div>
+                                                                                                <!-- end item-->
+
+                                                                                                <div class="one_fourth active">
+                                                                                                    <div class="icon"><span class="glyph-item mega" aria-hidden="true" data-icon="&#xe086;"></span></div>
+                                                                                                    <h5>Enferemeria</h5>
+                                                                                                    <p>Servicio de atención al cliente.</p>
+                                                                                                </div>
+                                                                                                <!-- end item-->
+
+                                                                                                <div class="one_fourth last">
+                                                                                                    <div class="icon"><span class="glyph-item mega" aria-hidden="true" data-icon="&#xe04a;"></span></div>
+                                                                                                    <h5>SAC</h5>
+                                                                                                    <p>Servicio de atenciòn al cliente.</p>
+                                                                                                </div>
+                                                                                                <!-- end item-->
+                                                                                            </li>
+                                                                                            <!--end item-->
+
+                                                                                            <li>
+                                                                                                <div class="one_fourth">
+                                                                                                    <div class="icon"><span class="glyph-item mega" aria-hidden="true" data-icon="&#xe05c;"></span></div>
+                                                                                                    <h5>Otros</h5>
+                                                                                                    <p>Texto descripción.</p>
+                                                                                                </div>
+                                                                                                <!-- end item-->
+
+                                                                                                <div class="one_fourth">
+                                                                                                    <div class="icon"><span class="glyph-item mega" aria-hidden="true" data-icon="&#xe034;"></span></div>
+                                                                                                    <h5>Otros</h5>
+                                                                                                    <p>Texto descripción.</p>
+                                                                                                </div>
+                                                                                                <!-- end item-->
+
+                                                                                                <div class="one_fourth active">
+                                                                                                    <div class="icon"><span class="glyph-item mega" aria-hidden="true" data-icon="&#xe086;"></span></div>
+                                                                                                    <h5>Otros</h5>
+                                                                                                    <p>Texto descripción.</p>
+                                                                                                </div>
+                                                                                                <!-- end item-->
+
+                                                                                                <div class="one_fourth last">
+                                                                                                    <div class="icon"><span class="glyph-item mega" aria-hidden="true" data-icon="&#xe04a;"></span></div>
+                                                                                                    <h5>Otros</h5>
+                                                                                                    <p>Texto descripción.</p>
+                                                                                                </div>
+                                                                                                <!-- end item-->
+                                                                                            </li>
+                                                                                            <!--end item-->
+                                                                                        </ul>
+                                                                                    </div>
+                                                                                </section>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- end section 1-->
+                                                                    <!-- =============================== -->
+
+                                                                </div>
+                                                            </div>
+                                                            <!-- end section 1-->
+                                                            <div class="clearfix"></div>
+
+                                                            <div class="clearfix"></div>
+                                                            <div id="section-2" class="section_holder39">
+                                                                <div class="container">
+                                                                    <div class="one_half">
+                                                                        <h1 class="lt_title_big_left white">Nuestros Servicios</h1>
+                                                                        <div class="clearfix"></div>
+                                                                        <div class="cl_title_line_left"></div>
+                                                                        <div class="clearfix"></div>
+                                                                        <section class="slider">
+                                                                            <div class="flexslider style6">
+                                                                                <ul class="slides">
+                                                                                    <li>
+                                                                                        <div class="img">
+                                                                                            <div class="offerbadge">Servicio</div>
+                                                                                            <img src="http://placehold.it/245x225" alt="" />
+                                                                                        </div>
+                                                                                        <div class="text">
+                                                                                            <h4 class="white lessmar">TRANSPORTE</h4>
+                                                                                            <span class="big"><span class="hili"></span> más texto</span> <a href="#" class="readmore_but3">Leer más</a>
+                                                                                        </div>
+                                                                                    </li>
+                                                                                    <!--end item-->
+
+                                                                                    <li>
+                                                                                        <div class="img">
+                                                                                            <div class="offerbadge">Calidad</div>
+                                                                                            <img src="http://placehold.it/245x225" alt="" />
+                                                                                        </div>
+                                                                                        <div class="text">
+                                                                                            <h4 class="white lessmar">ASISTENCIA MEDICA</h4>
+                                                                                            <span class="big"><span class="hili"></span> más texto</span> <a href="#" class="readmore_but3">Leer más</a>
+                                                                                        </div>
+                                                                                    </li>
+                                                                                    <!--end item-->
+                                                                                    <!--end item-->
+                                                                                </ul>
+                                                                            </div>
+                                                                        </section>
+                                                                    </div>
+                                                                    <!--end item-->
+
+                                                                    <div class="one_half last">
+                                                                        <h1 class="lt_title_big_left white">Texto <span>Estatico</span></h1>
+                                                                        <div class="clearfix"></div>
+                                                                        <div class="cl_title_line_left"></div>
+                                                                        <div class="clearfix"></div>
+                                                                        <div class="img_right">
+                                                                            <div class="offerbadge">Asistencia</div>
+                                                                            <img src="http://placehold.it/245x225" alt="" />
+                                                                        </div>
+                                                                        <div class="text_left">
+                                                                            <h6 class="white">Descripciòn</h6>
+                                                                            <ul class="list">
+                                                                                <li><i class="fa fa-check"></i> Texto 1</li>
+                                                                                <li><i class="fa fa-check"></i> Texto 2</li>
+                                                                                <li><i class="fa fa-check"></i> Texto 3</li>
+                                                                                <li><i class="fa fa-check"></i> Texto 4</li>
+                                                                            </ul>
+                                                                            <a href="#" class="readmore_but3">Leer más</a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!--end item-->
+                                                                </div>
+                                                            </div>
+                                                            <!--end section-->
+                                                            <div class="clearfix"></div>
+
+                                                            <div id="section-3">
+                                                                <div class="section_holder12">
+                                                                    <div class="container">
+
+                                                                        <h1 class="lt_title_big">Quienes Somos</h1>
+                                                                        <div class="lt_title_line"></div>
+                                                                        <p class="lt_title_bottomtext">Sirviendo con PASIÓN transportando con AMOR</p>
+                                                                        <div class="clearfix"></div>
+                                                                        <div class="container">
+                                                                            <div class="one_half">
+                                                                                <h1 class="bold uppercase">Sirviendo con PASIÓN transportando con AMOR</h1>
+                                                                                <ul class="list">
+                                                                                    <li><i class="fa fa-check"></i> Texto 1</li>
+                                                                                    <li><i class="fa fa-check"></i> Texto 2</li>
+                                                                                    <li><i class="fa fa-check"></i> Texto 3</li>
+                                                                                    <li><i class="fa fa-check"></i> Texto 4</li>
+                                                                                    <li><i class="fa fa-check"></i> Texto 5</li>
+                                                                                </ul>
+                                                                            </div>
+
+                                                                            <div class="one_half last">
+
+                                                                                <div class="img_holder">
+                                                                                    <img src="http://placehold.it/590x420" alt="" class="img_size1" />
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- end section 1-->
+
+
+
+                                                            <div class="clearfix"></div>
+                                                            <div id="section-5">
+                                                                <div class="section_holder51">
+                                                                    <div class="container">
+
+                                                                        <h1 class="lt_title_big white"><span>Nosotros</span></h1>
+                                                                        <div class="lt_title_line two"></div>
+                                                                        <p class="lt_title_bottomtext white">Sirviendo con PASIÓN transportando con AMOR</p>
+
+                                                                        <div class="clearfix"></div>
+                                                                        <div class="one_fourth">
+                                                                            <div class="icon"><span class="glyph-item mega" aria-hidden="true" data-icon="&#xe044;"></span></div>
+                                                                            <h5 class="white">Misión</h5>
+                                                                            <p class="white">Descripción.</p>
+                                                                        </div>
+                                                                        <!-- end item-->
+
+                                                                        <div class="one_fourth">
+                                                                            <div class="icon"><span class="glyph-item mega" aria-hidden="true" data-icon="&#xe034;"></span></div>
+                                                                            <h5 class="white">Visión</h5>
+                                                                            <p class="white">Descripción.</p>
+                                                                        </div>
+                                                                        <!-- end item-->
+
+                                                                        <div class="one_fourth active">
+                                                                            <div class="icon"><span class="glyph-item mega" aria-hidden="true" data-icon="&#xe001;"></span></div>
+                                                                            <h5>Calidad</h5>
+                                                                            <p class="white">Descripción.</p>
+                                                                        </div>
+                                                                        <!-- end item-->
+
+                                                                        <div class="one_fourth last">
+                                                                            <div class="icon"><span class="glyph-item mega" aria-hidden="true" data-icon="&#xe04a;"></span></div>
+                                                                            <h5 class="white">Objetivos</h5>
+                                                                            <p class="white">Descripción.</p>
+                                                                        </div>
+                                                                        <!-- end item-->
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- end section 1-->
+                                                            <div class="clearfix"></div>
+
+
+                                                            <div class="clearfix"></div>
+                                                            <div class="section_holder20">
+                                                                <div class="container">
+                                                                    <h1 class="lt_title_big"><span>Póngase en contacto con Nosotros</span></h1>
+                                                                    <div class="lt_title_line two"></div>
+                                                                    <!-- Formulario -->
+                                                                    <div class="one_half">
+                                                                        <div class="form_holder">
+                                                                            <div class="cforms">
+                                                                                <form action="demo-contacts.php" method="post" id="sky-form" class="sky-form">
+                                                                                    <fieldset class="two">
+
+                                                                                        <section>
+                                                                                            <label class="label doc">Nombre</label>
+                                                                                            <label class="input">
+                                                                                                <input class="onepage" type="text" name="name" id="name">
+                                                                                            </label>
+                                                                                        </section>
+                                                                                        <section>
+                                                                                            <label class="label doc">Correo</label>
+                                                                                            <label class="input">
+                                                                                                <input class="onepage" type="email" name="email" id="email">
+                                                                                            </label>
+                                                                                        </section>
+                                                                                        <section>
+                                                                                            <label class="label doc">Asunto</label>
+                                                                                            <label class="input">
+                                                                                                <input class="onepage" type="text" name="asunto" id="asunto">
+                                                                                            </label>
+                                                                                        </section>
+                                                                                        <section>
+                                                                                            <label class="label doc">Proposito</label>
+                                                                                            <label class="input">
+                                                                                                <input class="onepage" type="text" name="proposito" id="proposito">
+                                                                                            </label>
+                                                                                        </section>
+
+                                                                                        <section>
+                                                                                            <label class="label doc">Mensaje</label>
+                                                                                            <label class="textarea">
+                                                                                                <textarea class="onepage" rows="4" name="message" id="message"></textarea>
+                                                                                            </label>
+                                                                                        </section>
+
+                                                                                        <section>
+                                                                                            <label class="label doc">Espacio para CAPTCHA</label>
+                                                                                            <label class="textarea">
+                                                                                                <textarea class="onepage" rows="4" name="captcha" id="captcha"></textarea>
+                                                                                            </label>
+                                                                                        </section>
+
+                                                                                    </fieldset>
+                                                                                    <footer class="doc">
+                                                                                        <button type="submit" class="button five">Enviar mensaje</button>
+                                                                                    </footer>
+                                                                                    <div class="message">
+                                                                                        <i class="icon-ok"></i>
+                                                                                        <p>Su mensaje se envio correctamente!</p>
+                                                                                    </div>
+                                                                                </form>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="one_half last">
+                                                                        <div class="address_info3">
+                                                                            <iframe src="https://www.google.com/maps/d/u/0/embed?mid=z0bxB6WA8aHE.k-pcHuxgOyoA" width="100%" height="350"></iframe>
+                                                                            <h3>Direccíon</h3>
+                                                                            <ul>
+                                                                                <h6><strong>IPS SER</strong></h6>
+                                                                                No.28 - 63739 Bogotá, Colombia
+                                                                                <br />
+                                                                                Telefono: +1 1234-567-89000
+                                                                                <br />
+                                                                                FAX: +1 0123-4567-8900
+                                                                                <br />
+                                                                                <br />
+                                                                                E-mail:
+                                                                                <a href="mailto:mail@companyname.com">info@jhwebpasto.com</a>
+                                                                                <br />
+                                                                                Web:
+                                                                                <a href="index.html">www.jhwebpasto.com</a> </li>
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                            <!--end section-->
+                                            <!--end section 22-->
+                                                            <div class="clearfix"></div>
+                                                            <div id="section-7">
+
+                                                                <div class="footer_payment_types">
+                                                                    <div class="container">
+                                                                        <ul class="payment_logos two">
+                                                                            <li class="white">
+                                                                                Nuetros <br />
+                                                                                Certificados
+                                                                            </li>
+                                                                            <li><img src="http://placehold.it/60x45" alt="" /></li>
+                                                                            <li><img src="http://placehold.it/60x45" alt="" /></li>
+                                                                            <li><img src="http://placehold.it/60x45" alt="" /></li>
+                                                                            <li><img src="http://placehold.it/40x45" alt="" /></li>
+                                                                            <li><img src="http://placehold.it/60x45" alt="" /></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                                <!--end payment types-->
+
+                                                                <div class="copyrights">
+                                                                    <div class="container">
+                                                                        <div class="one_half"><span>Copyright © 2014 JHWEBPASTO S.A.S.</span></div>
+                                                                        <div class="one_half last">
+                                                                            <ul class="social_icons">
+                                                                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                                                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                                                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                                                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                                                                                <li><a href="#"><i class="fa fa-wordpress"></i></a></li>
+                                                                                <li><a href="#"><i class="fa fa-android"></i></a></li>
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <!--end copy rights-->
+
+                                                                <a href="#" class="scrollup"></a><!-- end scroll to top of the page-->
+                                        *@
+                                    </div>
+                                    <!--end sitewraper-->
+                                    <!-- ######### JS FILES ######### -->
+                                    <!-- get jQuery from the google apis -->
+                                    <script type="text/javascript" src="~/js/universal/jquery.js"></script>
+
+                                    <!-- style switcher -->
+                                    <script src="~/js/style-switcher/jquery-1.js"></script>
+                                    <script src="~/js/style-switcher/styleselector.js"></script>
+
+                                    <!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
+                                    <script type="text/javascript" src="~/js/revolutionslider/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+                                    <script type="text/javascript" src="~/js/revolutionslider/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+                                    <script type="text/javascript" src="~/js/revolutionslider/custom1.js"></script>
+
+                                    <!-- mega menu -->
+                                    <script src="~/js/mainmenu/bootstrap.min.js"></script>
+                                    <script src="~/js/mainmenu/customeUI.js"></script>
+
+                                    <!-- sticky menu -->
+                                    <script type="text/javascript" src="~/js/mainmenu/sticky.js"></script>
+                                    <script type="text/javascript" src="~/js/mainmenu/modernizr.custom.75180.js"></script>
+
+                                    <script>
+                                        $(function () {
+                                            // Add click-event listener
+                                            $(".menu li a").click(function () {
+                                                // Remove the current class from all a tags
+                                                $(".menu li a").removeClass("current");
+                                                // Add the current class to the clicked a
+                                                $(this).addClass("current");
+                                            });
+                                        });
+                                    </script>
+
+                                    <!-- tabs -->
+                                    <script src="~/js/tabs/assets/js/responsive-tabs.min.js" type="text/javascript"></script>
+
+                                    <!-- scroll up -->
+                                    <script src="~/js/scrolltotop/totop.js" type="text/javascript"></script>
+
+                                    <!-- accordion -->
+                                    <script type="text/javascript" src="~/js/accordion/custom.js"></script>
+
+                                    <!-- scrollto -->
+                                    <script src="~/js/pagescroll/animatescroll.js"></script>
+
+                                    <!--toogle menu-->
+                                    <script type="text/javascript" src="~/js/Toggle-Menu/menu.js"></script>
+
+
+                                    <!--forms-->
+                                    <script src="~/js/form/jquery.form.min.js"></script>
+                                    <script src="~/js/form/jquery.validate.min.js"></script>
+                                    <script type="text/javascript">
+                                        $(function () {
+                                            // Validation
+                                            $("#sky-form").validate(
+                                            {
+                                                // Rules for form validation
+                                                rules:
+                                                {
+                                                    name:
+                                                    {
+                                                        required: true
+                                                    },
+                                                    email:
+                                                    {
+                                                        required: true,
+                                                        email: true
+                                                    },
+                                                    message:
+                                                    {
+                                                        required: true,
+                                                        minlength: 10
+                                                    }
+                                                },
+
+                                                // Messages for form validation
+                                                messages:
+                                                {
+                                                    name:
+                                                    {
+                                                        required: 'Please enter your name',
+                                                    },
+                                                    email:
+                                                    {
+                                                        required: 'Please enter your email address',
+                                                        email: 'Please enter a VALID email address'
+                                                    },
+                                                    message:
+                                                    {
+                                                        required: 'Please enter your message'
+                                                    }
+                                                },
+
+                                                // Ajax form submition
+                                                submitHandler: function (form) {
+                                                    $(form).ajaxSubmit(
+                                                    {
+                                                        success: function () {
+                                                            $("#sky-form").addClass('submited');
+                                                        }
+                                                    });
+                                                },
+
+                                                // Do not change code below
+                                                errorPlacement: function (error, element) {
+                                                    error.insertAfter(element.parent());
+                                                }
+                                            });
+                                        });
+                                    </script>
+                                    <!-- Flexslider -->
+                                    <script src="~/js/flexslider/jquery.flexslider.js"></script>
+                                    <script src="~/js/flexslider/custom.js"></script>
+
+
+</body>
+</html>

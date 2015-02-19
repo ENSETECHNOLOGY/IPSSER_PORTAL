@@ -1,0 +1,34 @@
+﻿@model IPSSER.DATOS.TBL_PORTAL_CONTENIDO_IMAGENES
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TBL_PORTAL_CONTENIDO_IMAGENES</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TBL_PORTAL_BIBLIOTECA_IMAGENES.Titulo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TBL_PORTAL_BIBLIOTECA_IMAGENES.Titulo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TBL_PORTAL_CONTENIDOFRONT.Titulo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TBL_PORTAL_CONTENIDOFRONT.Titulo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdContenidoImagen }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
