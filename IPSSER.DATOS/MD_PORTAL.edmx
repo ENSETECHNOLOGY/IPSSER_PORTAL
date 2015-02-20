@@ -277,6 +277,12 @@
         </Function>
         <Function Name="PA_SELECT_FRONTS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="PA_SELECT_FRONTS_CON_SLIDES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="PA_SELECT_FRONTS_CON_SLIDESXIDMODULO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdModulo" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PA_SELECT_FRONTSXIDMODULO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdModulo" Type="int" Mode="In" />
+        </Function>
         <Function Name="PA_SELECT_TBL_PORTAL_BIBLIOTECA_IMAGENES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="PA_SELECT_TBL_PORTAL_BIBLIOTECA_IMAGENESXID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IdImagen" Type="int" Mode="In" />
@@ -855,6 +861,12 @@
             <End Role="TBL_PORTAL_BIBLIOTECA_IMAGENES" EntitySet="TBL_PORTAL_BIBLIOTECA_IMAGENES" />
             <End Role="TBL_PORTAL_FRONT" EntitySet="TBL_PORTAL_FRONT" />
           </AssociationSet>
+          <FunctionImport Name="PA_SELECT_FRONTS_CON_SLIDESXIDMODULO" ReturnType="Collection(IPSSER_PORTALModel.PA_SELECT_FRONTS_CON_SLIDESXIDMODULO_Result)">
+            <Parameter Name="IdModulo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PA_SELECT_FRONTSXIDMODULO" ReturnType="Collection(IPSSER_PORTALModel.PA_SELECT_FRONTSXIDMODULO_Result)">
+            <Parameter Name="IdModulo" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="PA_SELECT_TBL_PORTAL_FRONT_Result">
           <Property Type="Int32" Name="IdFront" Nullable="false" />
@@ -1021,6 +1033,29 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="PA_SELECT_FRONTS_CON_SLIDESXIDMODULO_Result">
+          <Property Type="Int32" Name="IdModulo" Nullable="false" />
+          <Property Type="Int32" Name="IdFront" Nullable="false" />
+          <Property Type="Int32" Name="IdSlide" Nullable="false" />
+          <Property Type="String" Name="Fondo" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="Titulo" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="Contenido1" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="Contenido2" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Contenido3" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Imagen" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="Link" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="PA_SELECT_FRONTSXIDMODULO_Result">
+          <Property Type="Int32" Name="IdModulo" Nullable="false" />
+          <Property Type="Int32" Name="IdFront" Nullable="false" />
+          <Property Type="String" Name="Fondo" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="Titulo" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="Contenido1" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Contenido2" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Contenido3" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Imagen" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="Link" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1346,6 +1381,37 @@
                 <ScalarProperty Name="Contenido1" ColumnName="Contenido1" />
                 <ScalarProperty Name="Contenido2" ColumnName="Contenido2" />
                 <ScalarProperty Name="Contenido3" ColumnName="Contenido3" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PA_SELECT_FRONTS_CON_SLIDESXIDMODULO" FunctionName="IPSSER_PORTALModel.Store.PA_SELECT_FRONTS_CON_SLIDESXIDMODULO">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IPSSER_PORTALModel.PA_SELECT_FRONTS_CON_SLIDESXIDMODULO_Result">
+                <ScalarProperty Name="IdModulo" ColumnName="IdModulo" />
+                <ScalarProperty Name="IdFront" ColumnName="IdFront" />
+                <ScalarProperty Name="IdSlide" ColumnName="IdSlide" />
+                <ScalarProperty Name="Fondo" ColumnName="Fondo" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Contenido1" ColumnName="Contenido1" />
+                <ScalarProperty Name="Contenido2" ColumnName="Contenido2" />
+                <ScalarProperty Name="Contenido3" ColumnName="Contenido3" />
+                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PA_SELECT_FRONTSXIDMODULO" FunctionName="IPSSER_PORTALModel.Store.PA_SELECT_FRONTSXIDMODULO">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IPSSER_PORTALModel.PA_SELECT_FRONTSXIDMODULO_Result">
+                <ScalarProperty Name="IdModulo" ColumnName="IdModulo" />
+                <ScalarProperty Name="IdFront" ColumnName="IdFront" />
+                <ScalarProperty Name="Fondo" ColumnName="Fondo" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Contenido1" ColumnName="Contenido1" />
+                <ScalarProperty Name="Contenido2" ColumnName="Contenido2" />
+                <ScalarProperty Name="Contenido3" ColumnName="Contenido3" />
+                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

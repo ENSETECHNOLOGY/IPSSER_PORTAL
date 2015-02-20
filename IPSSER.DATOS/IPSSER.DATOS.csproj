@@ -103,6 +103,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MD_PORTAL.edmx</DependentUpon>
     </Compile>
+    <Compile Include="PA_SELECT_FRONTSXIDMODULO_Result.cs">
+      <DependentUpon>MD_PORTAL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PA_SELECT_FRONTS_CON_SLIDESXIDMODULO_Result.cs">
+      <DependentUpon>MD_PORTAL.tt</DependentUpon>
+    </Compile>
     <Compile Include="PA_SELECT_FRONTS_CON_SLIDES_Result.cs">
       <DependentUpon>MD_PORTAL.tt</DependentUpon>
     </Compile>

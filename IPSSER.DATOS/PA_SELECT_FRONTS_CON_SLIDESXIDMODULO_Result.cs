@@ -11,10 +11,17 @@ namespace IPSSER.DATOS
 {
     using System;
     
-    public partial class PA_SELECT_TBL_PORTAL_CONTENIDO_IMAGENESXID_Result
+    public partial class PA_SELECT_FRONTS_CON_SLIDESXIDMODULO_Result
     {
-        public int IdContenidoImagen { get; set; }
-        public int IdContenido { get; set; }
-        public int IdImagen { get; set; }
+        public int IdModulo { get; set; }
+        public int IdFront { get; set; }
+        public int IdSlide { get; set; }
+        public string Fondo { get; set; }
+        public string Titulo { get; set; }
+        public string Contenido1 { get; set; }
+        public string Contenido2 { get; set; }
+        public string Contenido3 { get; set; }
+        public string Imagen { get; set; }
+        public string Link { get; set; }
     }
 }
