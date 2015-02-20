@@ -74,7 +74,8 @@ namespace IPSSER_PORTAL.Controllers
            var ListaContacto = Contacto.ToList();
            ViewBag.ListaContacto = ListaContacto;
 
-           
+            //Logo
+           ViewBag.Logo = "../images/logo.png";
 
 
 

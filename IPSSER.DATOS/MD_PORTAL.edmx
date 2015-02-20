@@ -862,10 +862,10 @@
             <End Role="TBL_PORTAL_FRONT" EntitySet="TBL_PORTAL_FRONT" />
           </AssociationSet>
           <FunctionImport Name="PA_SELECT_FRONTS_CON_SLIDESXIDMODULO" ReturnType="Collection(IPSSER_PORTALModel.PA_SELECT_FRONTS_CON_SLIDESXIDMODULO_Result)">
-            <Parameter Name="IdModulo" Mode="In" Type="Int32" />
+          <Parameter Name="IdModulo" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="PA_SELECT_FRONTSXIDMODULO" ReturnType="Collection(IPSSER_PORTALModel.PA_SELECT_FRONTSXIDMODULO_Result)">
-            <Parameter Name="IdModulo" Mode="In" Type="Int32" />
+          <Parameter Name="IdModulo" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="PA_SELECT_TBL_PORTAL_FRONT_Result">
