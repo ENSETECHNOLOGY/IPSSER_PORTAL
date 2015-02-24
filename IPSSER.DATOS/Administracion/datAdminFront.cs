@@ -37,12 +37,12 @@ namespace IPSSER.DATOS.Administracion
         #endregion
 
         #region <<-- Metodos de Actualizacion -->>
-            public string ActualizarFront(int IdFront, int IdModulo, string Titulo, string Descripcion)
+            public string ActualizarFront(int IdFront, int IdModulo, string Titulo, string Descripcion, int IdImagen)
             {
             string strResultado = "";
             var Contexto = new IPSSER_PORTALEntities();
 
-            strResultado = Contexto.PA_UPDATE_TBL_PORTAL_FRONT(IdFront, IdModulo, Titulo, Descripcion).ToString();
+            strResultado = Contexto.PA_UPDATE_TBL_PORTAL_FRONT(IdFront, IdModulo, Titulo, Descripcion, IdImagen).ToString();
 
             return strResultado;
             }

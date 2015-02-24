@@ -350,6 +350,7 @@
           <Parameter Name="IdModulo" Type="int" Mode="In" />
           <Parameter Name="Titulo" Type="varchar" Mode="In" />
           <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+          <Parameter Name="IdImagen" Type="int" Mode="In" />
         </Function>
         <Function Name="PA_UPDATE_TBL_PORTAL_FRONT_IMAGENES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IdFrontImagenes" Type="int" Mode="In" />
@@ -736,6 +737,7 @@
             <Parameter Name="IdModulo" Mode="In" Type="Int32" />
             <Parameter Name="Titulo" Mode="In" Type="String" />
             <Parameter Name="Descripcion" Mode="In" Type="String" />
+            <Parameter Name="IdImagen" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="PA_UPDATE_TBL_PORTAL_SLIDE">
             <Parameter Name="IdSlide" Mode="In" Type="Int32" />
