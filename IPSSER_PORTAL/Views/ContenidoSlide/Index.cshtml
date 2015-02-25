@@ -9,55 +9,58 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Titulo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Contenido_Uno)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Contenido_Dos)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Contenido_Tres)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TBL_PORTAL_SLIDE.Titulo)
-        </th>
-        <th></th>
-    </tr>
+<div class="table-responsive">
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Titulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contenido_Uno)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contenido_Dos)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contenido_Tres)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TBL_PORTAL_SLIDE.Titulo)
+            </th>
+            <th></th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Titulo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descripcion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Contenido_Uno)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Contenido_Dos)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Contenido_Tres)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TBL_PORTAL_SLIDE.Titulo)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdContenidoSlide }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdContenidoSlide }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdContenidoSlide })
-        </td>
-    </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Titulo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Contenido_Uno)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Contenido_Dos)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Contenido_Tres)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TBL_PORTAL_SLIDE.Titulo)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.IdContenidoSlide }) |
+                    @Html.ActionLink("Dettalles", "Details", new { id = item.IdContenidoSlide }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.IdContenidoSlide })
+                </td>
+            </tr>
+        }
 
-</table>
+    </table>
+</div>
