@@ -187,6 +187,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdministracionController.cs" />
     <Compile Include="Controllers\ContenidoFrontController.cs" />
     <Compile Include="Controllers\ContenidoSlideController.cs" />
     <Compile Include="Controllers\FrontController.cs" />
@@ -779,6 +780,7 @@
     <Content Include="Views\ImagenesContenido\Edit.cshtml" />
     <Content Include="Views\ImagenesContenido\Index.cshtml" />
     <Content Include="Views\Inicio\Index.cshtml" />
+    <Content Include="Views\Administracion\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

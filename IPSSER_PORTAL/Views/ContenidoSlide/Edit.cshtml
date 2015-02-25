@@ -65,19 +65,33 @@
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.IdImagen, "IdImagen", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("IdImagen", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.IdImagen, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
+       <div class="form-group">
             @Html.LabelFor(model => model.Link, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Link, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Link, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="archivo">Seleccione Imagen</label>
+            <div class="col-md-10">
+                <div class="col-md-offset-2 col-md-10" style="height:150px; overflow: scroll;">
+                    <ul>
+                        @foreach (var image in ViewBag.IdImagen)
+                        {
+                            if (image.IdImagen == Model.IdImagen)
+                            {
+                                <li><input id="Imagen" type="radio" checked="checked" name="Imagen" value="@image.IdImagen"></input><img src="@Url.Content("../"+image.Path)" style="width:100px; height:100px;" class="imgBox" /></li>
+                            }
+                            else
+                            {
+                                <li><input id="Imagen" type="radio" name="Imagen" value="@image.IdImagen"></input><img src="@Url.Content("../" + image.Path)" style="width:100px; height:100px;" class="imgBox" /></li>
+                            }
+                        }
+                    </ul>
+                </div>
+
             </div>
         </div>
 

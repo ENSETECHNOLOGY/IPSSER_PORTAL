@@ -39,7 +39,10 @@ namespace IPSSER_PORTAL.Controllers
         // GET: Slide/Create
         public ActionResult Create()
         {
-            ViewBag.IdImagen = new SelectList(db.TBL_PORTAL_BIBLIOTECA_IMAGENES, "IdImagen", "Titulo");
+            var Imagenes = db.TBL_PORTAL_BIBLIOTECA_IMAGENES;
+            var ListaImagenes = Imagenes.ToList();
+            ViewBag.IdImagen = ListaImagenes;
+
             ViewBag.IdFront = new SelectList(db.TBL_PORTAL_FRONT, "IdFront", "Titulo");
             return View();
         }
@@ -54,15 +57,50 @@ namespace IPSSER_PORTAL.Controllers
             string Respuesta = "";
             IPSSER.DATOS.Administracion.datAdminSlide ObjDatAdministracion = new IPSSER.DATOS.Administracion.datAdminSlide();
 
-            if (ModelState.IsValid)
+            try
             {
-                Respuesta = ObjDatAdministracion.InsertarSlide(tBL_PORTAL_SLIDE.IdFront, tBL_PORTAL_SLIDE.IdImagen, tBL_PORTAL_SLIDE.Titulo, tBL_PORTAL_SLIDE.Descripcion);
-                return RedirectToAction("Index");
-            }
 
-            ViewBag.IdImagen = new SelectList(db.TBL_PORTAL_BIBLIOTECA_IMAGENES, "IdImagen", "Titulo", tBL_PORTAL_SLIDE.IdImagen);
-            ViewBag.IdFront = new SelectList(db.TBL_PORTAL_FRONT, "IdFront", "Titulo", tBL_PORTAL_SLIDE.IdFront);
-            return View(tBL_PORTAL_SLIDE);
+                if (Request.Form.Get("Imagen") == null)
+                {
+                    ModelState.AddModelError("", "Falta Seleccionar la Imagen");
+
+                    var Imagenes = db.TBL_PORTAL_BIBLIOTECA_IMAGENES;
+                    var ListaImagenes = Imagenes.ToList();
+                    ViewBag.IdImagen = ListaImagenes;
+
+                    ViewBag.IdFront = new SelectList(db.TBL_PORTAL_FRONT, "IdFront", "Titulo", tBL_PORTAL_SLIDE.IdFront);
+
+                    return View(tBL_PORTAL_SLIDE);
+                }
+                string idImagen = Request.Form.Get("Imagen");
+                int Id_Imagen = Convert.ToInt32(idImagen);
+
+                if (ModelState.IsValid)
+                {
+                    Respuesta = ObjDatAdministracion.InsertarSlide(tBL_PORTAL_SLIDE.IdFront, Id_Imagen, tBL_PORTAL_SLIDE.Titulo, tBL_PORTAL_SLIDE.Descripcion);
+                    return RedirectToAction("Index");
+                }
+
+                var Images = db.TBL_PORTAL_BIBLIOTECA_IMAGENES;
+                var ListaImages = Images.ToList();
+                ViewBag.IdImagen = ListaImages;
+
+                ViewBag.IdFront = new SelectList(db.TBL_PORTAL_FRONT, "IdFront", "Titulo", tBL_PORTAL_SLIDE.IdFront);
+                return View(tBL_PORTAL_SLIDE);
+            }
+            catch (DataException ex)
+            {
+                ModelState.AddModelError("", "No se pudo Crear el slide se presento un error: " + ex.Message.ToString());
+
+               
+                var Imagenes = db.TBL_PORTAL_BIBLIOTECA_IMAGENES;
+                var ListaImagenes = Imagenes.ToList();
+                ViewBag.IdImagen = ListaImagenes;
+
+                ViewBag.IdFront = new SelectList(db.TBL_PORTAL_FRONT, "IdFront", "Titulo", tBL_PORTAL_SLIDE.IdFront);
+
+                return View(tBL_PORTAL_SLIDE);
+            }
         }
 
         // GET: Slide/Edit/5
@@ -77,7 +115,11 @@ namespace IPSSER_PORTAL.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.IdImagen = new SelectList(db.TBL_PORTAL_BIBLIOTECA_IMAGENES, "IdImagen", "Titulo", tBL_PORTAL_SLIDE.IdImagen);
+
+            var Imagenes = db.TBL_PORTAL_BIBLIOTECA_IMAGENES;
+            var ListaImagenes = Imagenes.ToList();
+            ViewBag.IdImagen = ListaImagenes;
+
             ViewBag.IdFront = new SelectList(db.TBL_PORTAL_FRONT, "IdFront", "Titulo", tBL_PORTAL_SLIDE.IdFront);
             return View(tBL_PORTAL_SLIDE);
         }
@@ -92,15 +134,52 @@ namespace IPSSER_PORTAL.Controllers
             string Respuesta = "";
             IPSSER.DATOS.Administracion.datAdminSlide ObjDatAdministracion = new IPSSER.DATOS.Administracion.datAdminSlide();
 
-            if (ModelState.IsValid)
+            try
             {
-                Respuesta = ObjDatAdministracion.ActualizarSlide(tBL_PORTAL_SLIDE.IdSlide, tBL_PORTAL_SLIDE.IdFront, tBL_PORTAL_SLIDE.IdImagen, tBL_PORTAL_SLIDE.Titulo, tBL_PORTAL_SLIDE.Descripcion);
-                return RedirectToAction("Index");
+
+                if (Request.Form.Get("Imagen") == null)
+                {
+                    ModelState.AddModelError("", "Falta Seleccionar la Imagen");
+
+                    var Imagenes = db.TBL_PORTAL_BIBLIOTECA_IMAGENES;
+                    var ListaImagenes = Imagenes.ToList();
+                    ViewBag.IdImagen = ListaImagenes;
+
+                    ViewBag.IdFront = new SelectList(db.TBL_PORTAL_FRONT, "IdFront", "Titulo", tBL_PORTAL_SLIDE.IdFront);
+
+                    return View(tBL_PORTAL_SLIDE);
+                }
+                string idImagen = Request.Form.Get("Imagen");
+                int Id_Imagen = Convert.ToInt32(idImagen);
+
+                if (ModelState.IsValid)
+                {
+                    Respuesta = ObjDatAdministracion.ActualizarSlide(tBL_PORTAL_SLIDE.IdSlide, tBL_PORTAL_SLIDE.IdFront, Id_Imagen, tBL_PORTAL_SLIDE.Titulo, tBL_PORTAL_SLIDE.Descripcion);
+                    return RedirectToAction("Index");
+                }
+
+                var Images = db.TBL_PORTAL_BIBLIOTECA_IMAGENES;
+                var ListaImages = Images.ToList();
+                ViewBag.IdImagen = ListaImages;
+
+                ViewBag.IdFront = new SelectList(db.TBL_PORTAL_FRONT, "IdFront", "Titulo", tBL_PORTAL_SLIDE.IdFront);
+                return View(tBL_PORTAL_SLIDE);
             }
-            ViewBag.IdImagen = new SelectList(db.TBL_PORTAL_BIBLIOTECA_IMAGENES, "IdImagen", "Titulo", tBL_PORTAL_SLIDE.IdImagen);
-            ViewBag.IdFront = new SelectList(db.TBL_PORTAL_FRONT, "IdFront", "Titulo", tBL_PORTAL_SLIDE.IdFront);
-            return View(tBL_PORTAL_SLIDE);
+            catch (DataException ex)
+            {
+                ModelState.AddModelError("", "No se pudo Editar el slide se presento un error: " + ex.Message.ToString());
+
+               
+                var Imagenes = db.TBL_PORTAL_BIBLIOTECA_IMAGENES;
+                var ListaImagenes = Imagenes.ToList();
+                ViewBag.IdImagen = ListaImagenes;
+
+                ViewBag.IdFront = new SelectList(db.TBL_PORTAL_FRONT, "IdFront", "Titulo", tBL_PORTAL_SLIDE.IdFront);
+
+                return View(tBL_PORTAL_SLIDE);
+            }
         }
+        
 
         // GET: Slide/Delete/5
         public ActionResult Delete(int? id)

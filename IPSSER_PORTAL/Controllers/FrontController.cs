@@ -41,7 +41,11 @@ namespace IPSSER_PORTAL.Controllers
         public ActionResult Create()
         {
             ViewBag.IdModulo = new SelectList(db.TBL_PORTAL_MODULO, "IdModulo", "NombreModulo");
-            ViewBag.IdImagen = new SelectList(db.TBL_PORTAL_BIBLIOTECA_IMAGENES, "IdImagen", "Path");
+
+            var Imagenes = db.TBL_PORTAL_BIBLIOTECA_IMAGENES;
+            var ListaImagenes = Imagenes.ToList();
+            ViewBag.IdImagen = ListaImagenes;
+
             return View();
         }
 
@@ -61,7 +65,11 @@ namespace IPSSER_PORTAL.Controllers
                  {
                      ModelState.AddModelError("", "Falta Seleccionar la Imagen");
                      ViewBag.IdModulo = new SelectList(db.TBL_PORTAL_MODULO, "IdModulo", "NombreModulo", tBL_PORTAL_FRONT.IdModulo);
-                     ViewBag.IdImagen = new SelectList(db.TBL_PORTAL_BIBLIOTECA_IMAGENES, "IdImagen", "Path");
+
+                     var Imagenes = db.TBL_PORTAL_BIBLIOTECA_IMAGENES;
+                     var ListaImagenes = Imagenes.ToList();
+                     ViewBag.IdImagen = ListaImagenes;
+
                      return View(tBL_PORTAL_FRONT);
                  }
                 string idImagen = Request.Form.Get("Imagen");
@@ -75,14 +83,22 @@ namespace IPSSER_PORTAL.Controllers
                 }
 
                 ViewBag.IdModulo = new SelectList(db.TBL_PORTAL_MODULO, "IdModulo", "NombreModulo", tBL_PORTAL_FRONT.IdModulo);
-                ViewBag.IdImagen = new SelectList(db.TBL_PORTAL_BIBLIOTECA_IMAGENES, "IdImagen", "Path");
+
+                var Images = db.TBL_PORTAL_BIBLIOTECA_IMAGENES;
+                var ListaImages = Images.ToList();
+                ViewBag.IdImagen = ListaImages;
+
                 return View(tBL_PORTAL_FRONT);
             }catch(DataException ex)
             {
                 ModelState.AddModelError("","No se pudo Crear el front se presento un error: "+ex.Message.ToString());
 
                 ViewBag.IdModulo = new SelectList(db.TBL_PORTAL_MODULO, "IdModulo", "NombreModulo", tBL_PORTAL_FRONT.IdModulo);
-                ViewBag.IdImagen = new SelectList(db.TBL_PORTAL_BIBLIOTECA_IMAGENES, "IdImagen", "Path");
+
+                var Imagenes = db.TBL_PORTAL_BIBLIOTECA_IMAGENES;
+                var ListaImagenes = Imagenes.ToList();
+                ViewBag.IdImagen = ListaImagenes;
+
                 return View(tBL_PORTAL_FRONT);
             }
         }
@@ -100,7 +116,11 @@ namespace IPSSER_PORTAL.Controllers
                 return HttpNotFound();
             }
             ViewBag.IdModulo = new SelectList(db.TBL_PORTAL_MODULO, "IdModulo", "NombreModulo", tBL_PORTAL_FRONT.IdModulo);
-            ViewBag.IdImagen = new SelectList(db.TBL_PORTAL_BIBLIOTECA_IMAGENES, "IdImagen", "Titulo");
+
+            var Imagenes = db.TBL_PORTAL_BIBLIOTECA_IMAGENES;
+            var ListaImagenes = Imagenes.ToList();
+            ViewBag.IdImagen = ListaImagenes;
+
             return View(tBL_PORTAL_FRONT);
         }
 
@@ -114,16 +134,48 @@ namespace IPSSER_PORTAL.Controllers
             string Respuesta = "";
             IPSSER.DATOS.Administracion.datAdminFront ObjDatAdministracion = new IPSSER.DATOS.Administracion.datAdminFront();
 
-            if (ModelState.IsValid)
+            try
             {
-                Respuesta = ObjDatAdministracion.ActualizarFront(tBL_PORTAL_FRONT.IdFront, tBL_PORTAL_FRONT.IdModulo, tBL_PORTAL_FRONT.Titulo, tBL_PORTAL_FRONT.Descripcion);
-                return RedirectToAction("Index");
-            }
-            ViewBag.IdModulo = new SelectList(db.TBL_PORTAL_MODULO, "IdModulo", "NombreModulo", tBL_PORTAL_FRONT.IdModulo);
-            ViewBag.IdImagen = new SelectList(db.TBL_PORTAL_BIBLIOTECA_IMAGENES, "IdImagen", "Path");
-            ViewData["Imagenes"] = new SelectList(db.TBL_PORTAL_BIBLIOTECA_IMAGENES, "IdImagen", "Path");
+                if (Request.Form.Get("Imagen") == null)
+                {
+                    ModelState.AddModelError("", "Falta Seleccionar la Imagen");
+                    ViewBag.IdModulo = new SelectList(db.TBL_PORTAL_MODULO, "IdModulo", "NombreModulo", tBL_PORTAL_FRONT.IdModulo);
 
-            return View(tBL_PORTAL_FRONT);
+                    var Imagenes = db.TBL_PORTAL_BIBLIOTECA_IMAGENES;
+                    var ListaImagenes = Imagenes.ToList();
+                    ViewBag.IdImagen = ListaImagenes;
+
+                    return View(tBL_PORTAL_FRONT);
+                }
+                string idImagen = Request.Form.Get("Imagen");
+                int Id_Imagen = Convert.ToInt32(idImagen);
+
+                if (ModelState.IsValid)
+                {
+                    Respuesta = ObjDatAdministracion.ActualizarFront(tBL_PORTAL_FRONT.IdFront, tBL_PORTAL_FRONT.IdModulo, tBL_PORTAL_FRONT.Titulo, tBL_PORTAL_FRONT.Descripcion, Id_Imagen);
+                    return RedirectToAction("Index");
+                }
+                ViewBag.IdModulo = new SelectList(db.TBL_PORTAL_MODULO, "IdModulo", "NombreModulo", tBL_PORTAL_FRONT.IdModulo);
+
+                var Images = db.TBL_PORTAL_BIBLIOTECA_IMAGENES;
+                var ListaImages = Images.ToList();
+                ViewBag.IdImagen = ListaImages;
+
+                return View(tBL_PORTAL_FRONT);
+            }
+            catch (DataException ex)
+            {
+                ModelState.AddModelError("", "No se pudo Crear el front se presento un error: " + ex.Message.ToString());
+
+                ViewBag.IdModulo = new SelectList(db.TBL_PORTAL_MODULO, "IdModulo", "NombreModulo", tBL_PORTAL_FRONT.IdModulo);
+
+                var Imagenes = db.TBL_PORTAL_BIBLIOTECA_IMAGENES;
+                var ListaImagenes = Imagenes.ToList();
+                ViewBag.IdImagen = ListaImagenes;
+
+                return View(tBL_PORTAL_FRONT);
+            }
+            
         }
 
         // GET: Front/Delete/5
