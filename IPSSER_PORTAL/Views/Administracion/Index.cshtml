@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+<br/>
+<div class="navbar-collapse collapse">
+    <ul class="nav nav-tabsv" >
+
+        <li class="dropdown">
+            <a href="#" style="background-color: #0686FC; font-size:medium; color:white;" class="dropdown-toggle" data-toggle="dropdown">FRONT</a>
+            <div>
+
+                <h3>@Html.ActionLink("Administrar Front", "Index", "Front")</h3>
+                Seleccione este Item para registrar un Front.
+            </div>
+            <div>
+
+                <h3>@Html.ActionLink("Administrar Contenido Front", "Index", "ContenidoFront")</h3>
+                Seleccione este Item para registrar el contenido de un front
+            </div>
+            <div>
+
+                <h3>@Html.ActionLink("Administrar Imagenes Contenido", "Index", "ImagenesContenido")</h3>
+                Seleccione este Item para registrar una iamgen por contenido
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#" style="background-color: #0686FC; font-size:medium; color:white;" class="dropdown-toggle" data-toggle="dropdown">SLIDE</a>
+            <div>
+
+                <h3>@Html.ActionLink("Administrar Slide", "Index", "Slide")</h3>
+                Seleccione este Item para registrar un Slide.
+            </div>
+            <div>
+
+                <h3>@Html.ActionLink("Administrar Contenido Slide", "Index", "ContenidoSlide")</h3>
+                Seleccione este Item para registrar el contenido de un slide.
+            </div>
+        </li>
+
+        <li class="dropdown">
+            <a href="#" style="background-color: #0686FC; font-size:medium; color:white;" class="dropdown-toggle" data-toggle="dropdown">BIBLIOTECA DE IMAGENES</a>
+            <div>
+
+                <h3>@Html.ActionLink("Administrar Imagenes", "Index", "Imagenes")</h3>
+                Seleccione este Item para registrar una Imagen.
+            </div>
+           
+        </li>
+
+    </ul>
+</div>

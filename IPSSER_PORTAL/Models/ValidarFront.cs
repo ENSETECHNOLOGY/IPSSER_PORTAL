@@ -29,7 +29,9 @@ namespace IPSSER_PORTAL.Models
 
             [Required(ErrorMessage = "Falta la Descripcion")]
             public object Descripcion { get; set; }
-                
+
+            [Required(ErrorMessage = "Seleccione la Imagen")]
+            public int IdImagen { get; set; }
         }
         
     }
