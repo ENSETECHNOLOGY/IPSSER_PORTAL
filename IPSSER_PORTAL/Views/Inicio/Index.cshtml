@@ -240,28 +240,25 @@
                             <div class="flexslider style2">
                                 <ul class="slides">
                                     <!-- Delimitar cada 4 un nuevo li -->
-@*                                     @{int x = 0;}
-    @foreach (var FrontServices2 in ViewBag.ListaServicios2)
-    {
-            @if (x % 4 == 0) {
-            <li>
-            }
-                <div class="one_fourth white">
-                    <div class="icon"><span class="glyph-item mega" aria-hidden="true" data-icon="&#xe044;"></span></div>
-                    <h5 class="white">@FrontServices2.Titulo</h5>
-                    <p>@FrontServices2.Contenido1</p>
-                </div>
-            @if (x % 4 == 0) {
-            </li>
-            }
-        @{x = x + 1;}
-    }
+                                     @{int x = 0; int numCount = 1;}
+                                        @foreach (var FrontServices2 in ViewBag.ListaServicios2)
+                                        {
+                                                if ((x % 4) == 0) { @Html.Raw("<li>") }
+                                                    <div class="one_fourth">
+                                                        <div class="icon"><span class="glyph-item mega" aria-hidden="true" data-icon="&#xe044;"></span></div>
+                                                        <h5>@FrontServices2.Titulo</h5>
+                                                        <p>@FrontServices2.Contenido1</p>
+                                                    </div>
+                                               if ((numCount % 4) == 0) { @Html.Raw("</li>") }
+                                            x = x + 1;
+                                            numCount++;
+                                        }
             <!--end item-->
 
 
 
-*@
-                                <li>
+
+                                @*<li>
                                     @foreach (var FrontServices2 in ViewBag.ListaServicios2)
                                     {
                                     <div class="one_fourth">
@@ -270,7 +267,7 @@
                                         <p>@FrontServices2.Contenido1</p>
                                     </div>
                                     }
-                                </li>
+                                </li>*@
                                     </ul>
                                 </div>
                             </section>
