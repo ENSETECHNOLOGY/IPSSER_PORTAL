@@ -4,10 +4,15 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<br />
+<center>
+    <h2>CONTENIDO PANEL</h2>
+</center>
+<br />
+<br />
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crear nuevo contenido", "Create", null, new { @class = "btn btn-primary btn-xs" })
 </p>
 <div class="table-responsive">
     <table class="table table-bordered table-hover">
@@ -55,9 +60,9 @@
                     @Html.DisplayFor(modelItem => item.TBL_PORTAL_SLIDE.Titulo)
                 </td>
                 <td>
-                    @Html.ActionLink("Editar", "Edit", new { id = item.IdContenidoSlide }) |
-                    @Html.ActionLink("Dettalles", "Details", new { id = item.IdContenidoSlide }) |
-                    @Html.ActionLink("Eliminar", "Delete", new { id = item.IdContenidoSlide })
+                    @Html.ActionLink("Editar", "Edit", new { id = item.IdContenidoSlide }, new { @class = "btn btn-primary btn-xs" }) |
+                    @Html.ActionLink("Ver Detalles", "Details", new { id = item.IdContenidoSlide }, new { @class = "btn btn-primary btn-xs" }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.IdContenidoSlide }, new { @class = "btn btn-primary btn-xs" })
                 </td>
             </tr>
         }

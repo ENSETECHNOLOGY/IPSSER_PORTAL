@@ -4,48 +4,56 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<br />
+<center>
+    <h2>DEFINICION PANEL</h2>
+</center>
+<br />
+<br />
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crear Nuevo Panel", "Create", null, new { @class = "btn btn-primary btn-xs" })
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Titulo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TBL_PORTAL_BIBLIOTECA_IMAGENES.Titulo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TBL_PORTAL_FRONT.Titulo)
-        </th>
-        <th></th>
-    </tr>
+<div class="table-responsive">
+    <table class="table table-bordered table-hover">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Titulo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Descripcion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TBL_PORTAL_BIBLIOTECA_IMAGENES.Titulo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TBL_PORTAL_FRONT.Titulo)
+                </th>
+                <th></th>
+            </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Titulo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descripcion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TBL_PORTAL_BIBLIOTECA_IMAGENES.Titulo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TBL_PORTAL_FRONT.Titulo)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdSlide }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdSlide }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdSlide })
-        </td>
-    </tr>
-}
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Titulo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descripcion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TBL_PORTAL_BIBLIOTECA_IMAGENES.Titulo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TBL_PORTAL_FRONT.Titulo)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Editar", "Edit", new { id = item.IdSlide }, new { @class = "btn btn-primary btn-xs" }) |
+                        @Html.ActionLink("Ver Detalles", "Details", new { id = item.IdSlide }, new { @class = "btn btn-primary btn-xs" }) |
+                        @Html.ActionLink("Eliminar", "Delete", new { id = item.IdSlide }, new { @class = "btn btn-primary btn-xs" })
+                    </td>
+                </tr>
+            }
 
-</table>
+    </table>
+ </div>

@@ -19,25 +19,29 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Nombre de aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @*@Html.ActionLink("Portal Web", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Administracion", "Index", "Administracion")</li>
+                    @*<li>@Html.ActionLink("Inicio", "Index", "Home")</li>*@
+                    @*<li>@Html.ActionLink("Acerca de", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>*@
+                    <li>@Html.ActionLink("| MENU PRINCIPAL |", "Index", "Administracion")</li>
+                    <li>@Html.ActionLink("| Definicion Front |", "Index", "Front")</li>
+                    <li>@Html.ActionLink("| Definicion Panel |", "Index", "Slide")</li>
+                    <li>@Html.ActionLink("| Contenido Panel |", "Index", "ContenidoSlide")</li>
+                    <li>@Html.ActionLink("| Biblioteca de Imagenes |", "Index", "Imagenes")</li>
                 </ul>
-                @Html.Partial("_LoginPartial")
+                @*@Html.Partial("_LoginPartial")*@
             </div>
         </div>
     </div>
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
+        @*<footer>
             <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
-        </footer>
+        </footer>*@
     </div>
 
     @Scripts.Render("~/bundles/jquery")
