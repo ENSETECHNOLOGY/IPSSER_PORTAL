@@ -14,7 +14,8 @@ namespace IPSSER_PORTAL.Controllers
         {
             IPSSER.DATOS.IPSSER_PORTALEntities db = new IPSSER.DATOS.IPSSER_PORTALEntities();
 
-           
+           //Listas de prueba
+            //desq¿de aqui 
            var Modulos = db.PA_SELECT_TBL_PORTAL_MODULO();
            var ListaModulos = Modulos.ToList();
            ViewBag.ListaModulos = ListaModulos;
@@ -28,7 +29,7 @@ namespace IPSSER_PORTAL.Controllers
            var Front = db.PA_SELECT_FRONTS();
            var ListaFront = Front.ToList();
            ViewBag.ListaFront = ListaFront;
-
+            //hasta aqui
 
            //1	Inicio	Inicio
            //2	Servicios 1	Servicio primarios
