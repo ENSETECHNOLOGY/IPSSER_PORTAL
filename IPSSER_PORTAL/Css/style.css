@@ -8715,3 +8715,19 @@ ul.icon_boxes_st3 {
 	transition-duration: 0.3s;
 	transition-timing-function: ease-out;
 }
+
+.menu_principal_link{
+    color:#fff !important;
+}
+.menu_principal_link:hover{
+    color:#13bfff !important;
+}
+
+.img_selector{
+    width:100px;
+    height:100px;
+    padding:4px;
+    background:#fff;
+    border:1px solid #fff;
+    border-radius:10px;
+}

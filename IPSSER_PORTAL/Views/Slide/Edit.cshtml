@@ -44,22 +44,28 @@
         <div class="form-group">
             <label class="control-label col-md-2" for="archivo">Seleccione Imagen</label>
             <div class="col-md-10">
-                <div class="col-md-offset-2 col-md-10" style="height:150px; overflow: scroll;">
-                    <ul>
+                <div class="well">
+                    <div class="row">
                         @foreach (var image in ViewBag.IdImagen)
                         {
                             if (image.IdImagen == Model.IdImagen)
                             {
-                                <li><input id="Imagen" type="radio" checked="checked" name="Imagen" value="@image.IdImagen"></input><img src="@Url.Content("../"+image.Path)" style="width:100px; height:100px;" class="imgBox" /></li>
+                                <div class="col-md-2">
+                                    <input id="Imagen" type="radio" checked="checked" name="Imagen" value="@image.IdImagen"></input>
+                                    <img src="@Url.Content("../"+image.Path)" alt="@image.IdImagen" class="img_selector">
+                                </div>
                             }
                             else
                             {
-                                <li><input id="Imagen" type="radio" name="Imagen" value="@image.IdImagen"></input><img src="@Url.Content("../" + image.Path)" style="width:100px; height:100px;" class="imgBox" /></li>
+                                <div class="col-md-2">
+                                    <input id="Imagen" type="radio" name="Imagen" value="@image.IdImagen"></input>
+                                    <img src="@Url.Content("../" + image.Path)" alt="@image.IdImagen" class="img_selector">
+                                </div>
                             }
-                        }
-                    </ul>
-                </div>
 
+                        }
+                    </div>
+                </div>
             </div>
         </div>
 
