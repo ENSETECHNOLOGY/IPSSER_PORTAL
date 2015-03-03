@@ -1266,6 +1266,7 @@ border-style:none;
 	font-weight: 700;
 	text-transform: uppercase;
 	padding: 0px 0px 0px 0px;
+    text-shadow: 5px 5px 5px #000;
 }
 .tp-caption.slide_list{
 	margin:0px;
@@ -1310,6 +1311,7 @@ border-style:none;
 	font-weight:normal;
 	line-height:40px;
 	text-align:left;
+    text-shadow: 2px 3px 1px #000;
 	}	
 .tp-caption.slide_list3 i{
 	margin:0px;
