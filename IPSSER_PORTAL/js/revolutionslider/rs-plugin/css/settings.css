@@ -1010,7 +1010,11 @@ border-width:0px;
 border-color:rgb(255, 214, 88);
 border-style:none;
 }
-
+/**/
+.tp-caption.offerbadge img {
+    opacity: 0.3;
+    filter: alpha(opacity=30);
+}
 
 /*offer badges*/
 .tp-caption.offerbadge{
@@ -1023,7 +1027,7 @@ border-style:none;
 	font-size:18px;
 	color:#272727;
 	border-radius:50%;
-	background-color:#fff;
+	/*background-color:#fff;*/
 	}	
 
 .tp-caption.offerbadge.two{
