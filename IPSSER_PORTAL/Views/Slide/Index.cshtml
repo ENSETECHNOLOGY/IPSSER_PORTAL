@@ -18,16 +18,13 @@
     <table class="table table-bordered table-hover">
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Titulo)
+                    Título Panel
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Descripcion)
+                    Descripción Panel
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.TBL_PORTAL_BIBLIOTECA_IMAGENES.Titulo)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.TBL_PORTAL_FRONT.Titulo)
+                    Nombre Front
                 </th>
                 <th></th>
             </tr>
@@ -40,9 +37,6 @@
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Descripcion)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.TBL_PORTAL_BIBLIOTECA_IMAGENES.Titulo)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.TBL_PORTAL_FRONT.Titulo)

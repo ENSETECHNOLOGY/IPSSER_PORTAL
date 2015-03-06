@@ -5,16 +5,6 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="IPSSER_PORTALModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
         <EntityType Name="TBL_PORTAL_BIBLIOTECA_IMAGENES">
           <Key>
             <PropertyRef Name="IdImagen" />
@@ -23,42 +13,23 @@
           <Property Name="Titulo" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="Descripcion" Type="varchar" MaxLength="550" Nullable="false" />
           <Property Name="Path" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="IdCategoriaBibliotecaImagenes" Type="numeric" Precision="18" Scale="0" />
         </EntityType>
-        <EntityType Name="TBL_PORTAL_CONTENIDO_IMAGENES">
+        <EntityType Name="TBL_PORTAL_CATEGORIA_BIBLIOTECA_IMAGENES">
           <Key>
-            <PropertyRef Name="IdContenidoImagen" />
+            <PropertyRef Name="IdCategoriaBibliotecaImagenes" />
           </Key>
-          <Property Name="IdContenidoImagen" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IdContenido" Type="int" Nullable="false" />
-          <Property Name="IdImagen" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="TBL_PORTAL_CONTENIDOFRONT">
-          <Key>
-            <PropertyRef Name="IdContenidoFront" />
-          </Key>
-          <Property Name="IdContenidoFront" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IdFront" Type="int" Nullable="false" />
+          <Property Name="IdCategoriaBibliotecaImagenes" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Titulo" Type="varchar" MaxLength="200" Nullable="false" />
-          <Property Name="Descripcion" Type="varchar" MaxLength="250" Nullable="false" />
-          <Property Name="Contenido_Uno" Type="varchar" MaxLength="500" />
-          <Property Name="Contenido_Dos" Type="varchar" MaxLength="500" />
-          <Property Name="Contenido_Tres" Type="varchar" MaxLength="500" />
-          <Property Name="IdImagen" Type="int" Nullable="false" />
-          <Property Name="Link" Type="varchar(max)" />
         </EntityType>
-        <EntityType Name="TBL_PORTAL_CONTENIDOSLIDE">
+        <EntityType Name="TBL_PORTAL_DIRECTORIO_INTERNO">
           <Key>
-            <PropertyRef Name="IdContenidoSlide" />
+            <PropertyRef Name="IdDirectorioInterno" />
           </Key>
-          <Property Name="IdContenidoSlide" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IdSlide" Type="int" Nullable="false" />
-          <Property Name="Titulo" Type="varchar" MaxLength="200" Nullable="false" />
-          <Property Name="Descripcion" Type="varchar" MaxLength="250" Nullable="false" />
-          <Property Name="Contenido_Uno" Type="varchar" MaxLength="500" Nullable="false" />
-          <Property Name="Contenido_Dos" Type="varchar" MaxLength="500" />
-          <Property Name="Contenido_Tres" Type="varchar" MaxLength="500" />
-          <Property Name="IdImagen" Type="int" Nullable="false" />
-          <Property Name="Link" Type="varchar(max)" />
+          <Property Name="IdDirectorioInterno" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Departamento" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Extension" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="320" Nullable="false" />
         </EntityType>
         <EntityType Name="TBL_PORTAL_FRONT">
           <Key>
@@ -87,79 +58,17 @@
           <Property Name="IdImagen" Type="int" Nullable="false" />
           <Property Name="Titulo" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="Descripcion" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Contenido_Uno" Type="varchar" MaxLength="500" />
+          <Property Name="Contenido_Dos" Type="varchar" MaxLength="500" />
+          <Property Name="Contenido_Tres" Type="varchar" MaxLength="500" />
+          <Property Name="Link" Type="varchar(max)" />
         </EntityType>
-        <Association Name="FK_TBL_PORTAL_CONTENIDO_IMAGENES_TBL_PORTAL_BIBLIOTECA_IMAGENES">
-          <End Role="TBL_PORTAL_BIBLIOTECA_IMAGENES" Type="Self.TBL_PORTAL_BIBLIOTECA_IMAGENES" Multiplicity="1" />
-          <End Role="TBL_PORTAL_CONTENIDO_IMAGENES" Type="Self.TBL_PORTAL_CONTENIDO_IMAGENES" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TBL_PORTAL_BIBLIOTECA_IMAGENES">
-              <PropertyRef Name="IdImagen" />
-            </Principal>
-            <Dependent Role="TBL_PORTAL_CONTENIDO_IMAGENES">
-              <PropertyRef Name="IdImagen" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TBL_PORTAL_CONTENIDO_IMAGENES_TBL_PORTAL_CONTENIDOFRONT">
-          <End Role="TBL_PORTAL_CONTENIDOFRONT" Type="Self.TBL_PORTAL_CONTENIDOFRONT" Multiplicity="1" />
-          <End Role="TBL_PORTAL_CONTENIDO_IMAGENES" Type="Self.TBL_PORTAL_CONTENIDO_IMAGENES" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TBL_PORTAL_CONTENIDOFRONT">
-              <PropertyRef Name="IdContenidoFront" />
-            </Principal>
-            <Dependent Role="TBL_PORTAL_CONTENIDO_IMAGENES">
-              <PropertyRef Name="IdContenido" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TBL_PORTAL_CONTENIDOFRONT_TBL_PORTAL_BIBLIOTECA_IMAGENES">
-          <End Role="TBL_PORTAL_BIBLIOTECA_IMAGENES" Type="Self.TBL_PORTAL_BIBLIOTECA_IMAGENES" Multiplicity="1" />
-          <End Role="TBL_PORTAL_CONTENIDOFRONT" Type="Self.TBL_PORTAL_CONTENIDOFRONT" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TBL_PORTAL_BIBLIOTECA_IMAGENES">
-              <PropertyRef Name="IdImagen" />
-            </Principal>
-            <Dependent Role="TBL_PORTAL_CONTENIDOFRONT">
-              <PropertyRef Name="IdImagen" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TBL_PORTAL_CONTENIDOFRONT_TBL_PORTAL_FRONT">
-          <End Role="TBL_PORTAL_FRONT" Type="Self.TBL_PORTAL_FRONT" Multiplicity="1" />
-          <End Role="TBL_PORTAL_CONTENIDOFRONT" Type="Self.TBL_PORTAL_CONTENIDOFRONT" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TBL_PORTAL_FRONT">
-              <PropertyRef Name="IdFront" />
-            </Principal>
-            <Dependent Role="TBL_PORTAL_CONTENIDOFRONT">
-              <PropertyRef Name="IdFront" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TBL_PORTAL_CONTENIDOSLIDE_TBL_PORTAL_BIBLIOTECA_IMAGENES">
-          <End Role="TBL_PORTAL_BIBLIOTECA_IMAGENES" Type="Self.TBL_PORTAL_BIBLIOTECA_IMAGENES" Multiplicity="1" />
-          <End Role="TBL_PORTAL_CONTENIDOSLIDE" Type="Self.TBL_PORTAL_CONTENIDOSLIDE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TBL_PORTAL_BIBLIOTECA_IMAGENES">
-              <PropertyRef Name="IdImagen" />
-            </Principal>
-            <Dependent Role="TBL_PORTAL_CONTENIDOSLIDE">
-              <PropertyRef Name="IdImagen" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TBL_PORTAL_CONTENIDOSLIDE_TBL_PORTAL_SLIDE">
-          <End Role="TBL_PORTAL_SLIDE" Type="Self.TBL_PORTAL_SLIDE" Multiplicity="1" />
-          <End Role="TBL_PORTAL_CONTENIDOSLIDE" Type="Self.TBL_PORTAL_CONTENIDOSLIDE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TBL_PORTAL_SLIDE">
-              <PropertyRef Name="IdSlide" />
-            </Principal>
-            <Dependent Role="TBL_PORTAL_CONTENIDOSLIDE">
-              <PropertyRef Name="IdSlide" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
+        <EntityType Name="TBL_PORTAL_TRABAJA_CON_NOSOTROS">
+          <Key>
+            <PropertyRef Name="IdTrabajaConNosotros" />
+          </Key>
+          <Property Name="IdTrabajaConNosotros" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
         <Association Name="FK_TBL_PORTAL_FRONT_TBL_PORTAL_BIBLIOTECA_IMAGENES">
           <End Role="TBL_PORTAL_BIBLIOTECA_IMAGENES" Type="Self.TBL_PORTAL_BIBLIOTECA_IMAGENES" Multiplicity="1" />
           <End Role="TBL_PORTAL_FRONT" Type="Self.TBL_PORTAL_FRONT" Multiplicity="*" />
@@ -208,7 +117,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
         <Function Name="PA_DELETE_TBL_PORTAL_BIBLIOTECA_IMAGENES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IdImagen" Type="int" Mode="In" />
         </Function>
@@ -274,6 +182,10 @@
           <Parameter Name="IdImagen" Type="int" Mode="In" />
           <Parameter Name="Titulo" Type="varchar" Mode="In" />
           <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+          <Parameter Name="Contenido_Uno" Type="varchar" Mode="In" />
+          <Parameter Name="Contenido_Dos" Type="varchar" Mode="In" />
+          <Parameter Name="Contenido_Tres" Type="varchar" Mode="In" />
+          <Parameter Name="Link" Type="varchar(max)" Mode="In" />
         </Function>
         <Function Name="PA_SELECT_FRONTS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="PA_SELECT_FRONTS_CON_SLIDES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -350,7 +262,6 @@
           <Parameter Name="IdModulo" Type="int" Mode="In" />
           <Parameter Name="Titulo" Type="varchar" Mode="In" />
           <Parameter Name="Descripcion" Type="varchar" Mode="In" />
-          <Parameter Name="IdImagen" Type="int" Mode="In" />
         </Function>
         <Function Name="PA_UPDATE_TBL_PORTAL_FRONT_IMAGENES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IdFrontImagenes" Type="int" Mode="In" />
@@ -363,70 +274,19 @@
           <Parameter Name="IdImagen" Type="int" Mode="In" />
           <Parameter Name="Titulo" Type="varchar" Mode="In" />
           <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+          <Parameter Name="Contenido_Uno" Type="varchar" Mode="In" />
+          <Parameter Name="Contenido_Dos" Type="varchar" Mode="In" />
+          <Parameter Name="Contenido_Tres" Type="varchar" Mode="In" />
+          <Parameter Name="Link" Type="varchar(max)" Mode="In" />
         </Function>
-        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-        </Function>
-        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-        </Function>
-        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
-        </Function>
-        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="IPSSER_PORTALModelStoreContainer">
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBL_PORTAL_BIBLIOTECA_IMAGENES" EntityType="Self.TBL_PORTAL_BIBLIOTECA_IMAGENES" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TBL_PORTAL_CONTENIDO_IMAGENES" EntityType="Self.TBL_PORTAL_CONTENIDO_IMAGENES" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TBL_PORTAL_CONTENIDOFRONT" EntityType="Self.TBL_PORTAL_CONTENIDOFRONT" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TBL_PORTAL_CONTENIDOSLIDE" EntityType="Self.TBL_PORTAL_CONTENIDOSLIDE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_PORTAL_CATEGORIA_BIBLIOTECA_IMAGENES" EntityType="Self.TBL_PORTAL_CATEGORIA_BIBLIOTECA_IMAGENES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_PORTAL_DIRECTORIO_INTERNO" EntityType="Self.TBL_PORTAL_DIRECTORIO_INTERNO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBL_PORTAL_FRONT" EntityType="Self.TBL_PORTAL_FRONT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBL_PORTAL_MODULO" EntityType="Self.TBL_PORTAL_MODULO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBL_PORTAL_SLIDE" EntityType="Self.TBL_PORTAL_SLIDE" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_TBL_PORTAL_CONTENIDO_IMAGENES_TBL_PORTAL_BIBLIOTECA_IMAGENES" Association="Self.FK_TBL_PORTAL_CONTENIDO_IMAGENES_TBL_PORTAL_BIBLIOTECA_IMAGENES">
-            <End Role="TBL_PORTAL_BIBLIOTECA_IMAGENES" EntitySet="TBL_PORTAL_BIBLIOTECA_IMAGENES" />
-            <End Role="TBL_PORTAL_CONTENIDO_IMAGENES" EntitySet="TBL_PORTAL_CONTENIDO_IMAGENES" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TBL_PORTAL_CONTENIDO_IMAGENES_TBL_PORTAL_CONTENIDOFRONT" Association="Self.FK_TBL_PORTAL_CONTENIDO_IMAGENES_TBL_PORTAL_CONTENIDOFRONT">
-            <End Role="TBL_PORTAL_CONTENIDOFRONT" EntitySet="TBL_PORTAL_CONTENIDOFRONT" />
-            <End Role="TBL_PORTAL_CONTENIDO_IMAGENES" EntitySet="TBL_PORTAL_CONTENIDO_IMAGENES" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TBL_PORTAL_CONTENIDOFRONT_TBL_PORTAL_BIBLIOTECA_IMAGENES" Association="Self.FK_TBL_PORTAL_CONTENIDOFRONT_TBL_PORTAL_BIBLIOTECA_IMAGENES">
-            <End Role="TBL_PORTAL_BIBLIOTECA_IMAGENES" EntitySet="TBL_PORTAL_BIBLIOTECA_IMAGENES" />
-            <End Role="TBL_PORTAL_CONTENIDOFRONT" EntitySet="TBL_PORTAL_CONTENIDOFRONT" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TBL_PORTAL_CONTENIDOFRONT_TBL_PORTAL_FRONT" Association="Self.FK_TBL_PORTAL_CONTENIDOFRONT_TBL_PORTAL_FRONT">
-            <End Role="TBL_PORTAL_FRONT" EntitySet="TBL_PORTAL_FRONT" />
-            <End Role="TBL_PORTAL_CONTENIDOFRONT" EntitySet="TBL_PORTAL_CONTENIDOFRONT" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TBL_PORTAL_CONTENIDOSLIDE_TBL_PORTAL_BIBLIOTECA_IMAGENES" Association="Self.FK_TBL_PORTAL_CONTENIDOSLIDE_TBL_PORTAL_BIBLIOTECA_IMAGENES">
-            <End Role="TBL_PORTAL_BIBLIOTECA_IMAGENES" EntitySet="TBL_PORTAL_BIBLIOTECA_IMAGENES" />
-            <End Role="TBL_PORTAL_CONTENIDOSLIDE" EntitySet="TBL_PORTAL_CONTENIDOSLIDE" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TBL_PORTAL_CONTENIDOSLIDE_TBL_PORTAL_SLIDE" Association="Self.FK_TBL_PORTAL_CONTENIDOSLIDE_TBL_PORTAL_SLIDE">
-            <End Role="TBL_PORTAL_SLIDE" EntitySet="TBL_PORTAL_SLIDE" />
-            <End Role="TBL_PORTAL_CONTENIDOSLIDE" EntitySet="TBL_PORTAL_CONTENIDOSLIDE" />
-          </AssociationSet>
+          <EntitySet Name="TBL_PORTAL_TRABAJA_CON_NOSOTROS" EntityType="Self.TBL_PORTAL_TRABAJA_CON_NOSOTROS" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_TBL_PORTAL_FRONT_TBL_PORTAL_BIBLIOTECA_IMAGENES" Association="Self.FK_TBL_PORTAL_FRONT_TBL_PORTAL_BIBLIOTECA_IMAGENES">
             <End Role="TBL_PORTAL_BIBLIOTECA_IMAGENES" EntitySet="TBL_PORTAL_BIBLIOTECA_IMAGENES" />
             <End Role="TBL_PORTAL_FRONT" EntitySet="TBL_PORTAL_FRONT" />
@@ -448,16 +308,6 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="IPSSER_PORTALModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
         <EntityType Name="TBL_PORTAL_BIBLIOTECA_IMAGENES">
           <Key>
             <PropertyRef Name="IdImagen" />
@@ -466,54 +316,16 @@
           <Property Name="Titulo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Descripcion" Type="String" MaxLength="550" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Path" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="TBL_PORTAL_CONTENIDO_IMAGENES" Relationship="Self.FK_TBL_PORTAL_CONTENIDO_IMAGENES_TBL_PORTAL_BIBLIOTECA_IMAGENES" FromRole="TBL_PORTAL_BIBLIOTECA_IMAGENES" ToRole="TBL_PORTAL_CONTENIDO_IMAGENES" />
+          <Property Name="IdCategoriaBibliotecaImagenes" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="TBL_PORTAL_FRONT" Relationship="Self.FK_TBL_PORTAL_FRONT_TBL_PORTAL_BIBLIOTECA_IMAGENES" FromRole="TBL_PORTAL_BIBLIOTECA_IMAGENES" ToRole="TBL_PORTAL_FRONT" />
           <NavigationProperty Name="TBL_PORTAL_SLIDE" Relationship="Self.FK_TBL_PORTAL_SLIDE_TBL_PORTAL_BIBLIOTECA_IMAGENES" FromRole="TBL_PORTAL_BIBLIOTECA_IMAGENES" ToRole="TBL_PORTAL_SLIDE" />
-          <NavigationProperty Name="TBL_PORTAL_CONTENIDOFRONT" Relationship="IPSSER_PORTALModel.FK_TBL_PORTAL_CONTENIDOFRONT_TBL_PORTAL_BIBLIOTECA_IMAGENES" FromRole="TBL_PORTAL_BIBLIOTECA_IMAGENES" ToRole="TBL_PORTAL_CONTENIDOFRONT" />
-          <NavigationProperty Name="TBL_PORTAL_CONTENIDOSLIDE" Relationship="IPSSER_PORTALModel.FK_TBL_PORTAL_CONTENIDOSLIDE_TBL_PORTAL_BIBLIOTECA_IMAGENES" FromRole="TBL_PORTAL_BIBLIOTECA_IMAGENES" ToRole="TBL_PORTAL_CONTENIDOSLIDE" />
-          <NavigationProperty Name="TBL_PORTAL_FRONT" Relationship="IPSSER_PORTALModel.FK_TBL_PORTAL_FRONT_TBL_PORTAL_BIBLIOTECA_IMAGENES" FromRole="TBL_PORTAL_BIBLIOTECA_IMAGENES" ToRole="TBL_PORTAL_FRONT" />
         </EntityType>
-        <EntityType Name="TBL_PORTAL_CONTENIDO_IMAGENES">
+        <EntityType Name="TBL_PORTAL_CATEGORIA_BIBLIOTECA_IMAGENES">
           <Key>
-            <PropertyRef Name="IdContenidoImagen" />
+            <PropertyRef Name="IdCategoriaBibliotecaImagenes" />
           </Key>
-          <Property Name="IdContenidoImagen" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdContenido" Type="Int32" Nullable="false" />
-          <Property Name="IdImagen" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="TBL_PORTAL_BIBLIOTECA_IMAGENES" Relationship="Self.FK_TBL_PORTAL_CONTENIDO_IMAGENES_TBL_PORTAL_BIBLIOTECA_IMAGENES" FromRole="TBL_PORTAL_CONTENIDO_IMAGENES" ToRole="TBL_PORTAL_BIBLIOTECA_IMAGENES" />
-          <NavigationProperty Name="TBL_PORTAL_CONTENIDOFRONT" Relationship="Self.FK_TBL_PORTAL_CONTENIDO_IMAGENES_TBL_PORTAL_CONTENIDOFRONT" FromRole="TBL_PORTAL_CONTENIDO_IMAGENES" ToRole="TBL_PORTAL_CONTENIDOFRONT" />
-        </EntityType>
-        <EntityType Name="TBL_PORTAL_CONTENIDOFRONT">
-          <Key>
-            <PropertyRef Name="IdContenidoFront" />
-          </Key>
-          <Property Name="IdContenidoFront" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdFront" Type="Int32" Nullable="false" />
+          <Property Name="IdCategoriaBibliotecaImagenes" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Titulo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Contenido_Uno" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="Contenido_Dos" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="Contenido_Tres" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="TBL_PORTAL_CONTENIDO_IMAGENES" Relationship="Self.FK_TBL_PORTAL_CONTENIDO_IMAGENES_TBL_PORTAL_CONTENIDOFRONT" FromRole="TBL_PORTAL_CONTENIDOFRONT" ToRole="TBL_PORTAL_CONTENIDO_IMAGENES" />
-          <NavigationProperty Name="TBL_PORTAL_FRONT" Relationship="Self.FK_TBL_PORTAL_CONTENIDOFRONT_TBL_PORTAL_FRONT" FromRole="TBL_PORTAL_CONTENIDOFRONT" ToRole="TBL_PORTAL_FRONT" />
-          <Property Name="IdImagen" Type="Int32" Nullable="false" />
-          <Property Name="Link" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="TBL_PORTAL_BIBLIOTECA_IMAGENES" Relationship="IPSSER_PORTALModel.FK_TBL_PORTAL_CONTENIDOFRONT_TBL_PORTAL_BIBLIOTECA_IMAGENES" FromRole="TBL_PORTAL_CONTENIDOFRONT" ToRole="TBL_PORTAL_BIBLIOTECA_IMAGENES" />
-        </EntityType>
-        <EntityType Name="TBL_PORTAL_CONTENIDOSLIDE">
-          <Key>
-            <PropertyRef Name="IdContenidoSlide" />
-          </Key>
-          <Property Name="IdContenidoSlide" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdSlide" Type="Int32" Nullable="false" />
-          <Property Name="Titulo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Contenido_Uno" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Contenido_Dos" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="Contenido_Tres" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="TBL_PORTAL_SLIDE" Relationship="Self.FK_TBL_PORTAL_CONTENIDOSLIDE_TBL_PORTAL_SLIDE" FromRole="TBL_PORTAL_CONTENIDOSLIDE" ToRole="TBL_PORTAL_SLIDE" />
-          <Property Name="IdImagen" Type="Int32" Nullable="false" />
-          <Property Name="Link" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="TBL_PORTAL_BIBLIOTECA_IMAGENES" Relationship="IPSSER_PORTALModel.FK_TBL_PORTAL_CONTENIDOSLIDE_TBL_PORTAL_BIBLIOTECA_IMAGENES" FromRole="TBL_PORTAL_CONTENIDOSLIDE" ToRole="TBL_PORTAL_BIBLIOTECA_IMAGENES" />
         </EntityType>
         <EntityType Name="TBL_PORTAL_FRONT">
           <Key>
@@ -523,11 +335,10 @@
           <Property Name="IdModulo" Type="Int32" Nullable="false" />
           <Property Name="Titulo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="TBL_PORTAL_CONTENIDOFRONT" Relationship="Self.FK_TBL_PORTAL_CONTENIDOFRONT_TBL_PORTAL_FRONT" FromRole="TBL_PORTAL_FRONT" ToRole="TBL_PORTAL_CONTENIDOFRONT" />
+          <Property Name="IdImagen" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TBL_PORTAL_BIBLIOTECA_IMAGENES" Relationship="Self.FK_TBL_PORTAL_FRONT_TBL_PORTAL_BIBLIOTECA_IMAGENES" FromRole="TBL_PORTAL_FRONT" ToRole="TBL_PORTAL_BIBLIOTECA_IMAGENES" />
           <NavigationProperty Name="TBL_PORTAL_MODULO" Relationship="Self.FK_TBL_PORTAL_FRONT_TBL_PORTAL_MODULO" FromRole="TBL_PORTAL_FRONT" ToRole="TBL_PORTAL_MODULO" />
           <NavigationProperty Name="TBL_PORTAL_SLIDE" Relationship="Self.FK_TBL_PORTAL_SLIDE_TBL_PORTAL_FRONT" FromRole="TBL_PORTAL_FRONT" ToRole="TBL_PORTAL_SLIDE" />
-          <Property Name="IdImagen" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="TBL_PORTAL_BIBLIOTECA_IMAGENES" Relationship="IPSSER_PORTALModel.FK_TBL_PORTAL_FRONT_TBL_PORTAL_BIBLIOTECA_IMAGENES" FromRole="TBL_PORTAL_FRONT" ToRole="TBL_PORTAL_BIBLIOTECA_IMAGENES" />
         </EntityType>
         <EntityType Name="TBL_PORTAL_MODULO">
           <Key>
@@ -547,18 +358,21 @@
           <Property Name="IdImagen" Type="Int32" Nullable="false" />
           <Property Name="Titulo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Contenido_Uno" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Contenido_Dos" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Contenido_Tres" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Link" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="TBL_PORTAL_BIBLIOTECA_IMAGENES" Relationship="Self.FK_TBL_PORTAL_SLIDE_TBL_PORTAL_BIBLIOTECA_IMAGENES" FromRole="TBL_PORTAL_SLIDE" ToRole="TBL_PORTAL_BIBLIOTECA_IMAGENES" />
-          <NavigationProperty Name="TBL_PORTAL_CONTENIDOSLIDE" Relationship="Self.FK_TBL_PORTAL_CONTENIDOSLIDE_TBL_PORTAL_SLIDE" FromRole="TBL_PORTAL_SLIDE" ToRole="TBL_PORTAL_CONTENIDOSLIDE" />
           <NavigationProperty Name="TBL_PORTAL_FRONT" Relationship="Self.FK_TBL_PORTAL_SLIDE_TBL_PORTAL_FRONT" FromRole="TBL_PORTAL_SLIDE" ToRole="TBL_PORTAL_FRONT" />
         </EntityType>
-        <Association Name="FK_TBL_PORTAL_CONTENIDO_IMAGENES_TBL_PORTAL_BIBLIOTECA_IMAGENES">
+        <Association Name="FK_TBL_PORTAL_FRONT_TBL_PORTAL_BIBLIOTECA_IMAGENES">
           <End Role="TBL_PORTAL_BIBLIOTECA_IMAGENES" Type="Self.TBL_PORTAL_BIBLIOTECA_IMAGENES" Multiplicity="1" />
-          <End Role="TBL_PORTAL_CONTENIDO_IMAGENES" Type="Self.TBL_PORTAL_CONTENIDO_IMAGENES" Multiplicity="*" />
+          <End Role="TBL_PORTAL_FRONT" Type="Self.TBL_PORTAL_FRONT" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TBL_PORTAL_BIBLIOTECA_IMAGENES">
               <PropertyRef Name="IdImagen" />
             </Principal>
-            <Dependent Role="TBL_PORTAL_CONTENIDO_IMAGENES">
+            <Dependent Role="TBL_PORTAL_FRONT">
               <PropertyRef Name="IdImagen" />
             </Dependent>
           </ReferentialConstraint>
@@ -572,42 +386,6 @@
             </Principal>
             <Dependent Role="TBL_PORTAL_SLIDE">
               <PropertyRef Name="IdImagen" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TBL_PORTAL_CONTENIDO_IMAGENES_TBL_PORTAL_CONTENIDOFRONT">
-          <End Role="TBL_PORTAL_CONTENIDOFRONT" Type="Self.TBL_PORTAL_CONTENIDOFRONT" Multiplicity="1" />
-          <End Role="TBL_PORTAL_CONTENIDO_IMAGENES" Type="Self.TBL_PORTAL_CONTENIDO_IMAGENES" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TBL_PORTAL_CONTENIDOFRONT">
-              <PropertyRef Name="IdContenidoFront" />
-            </Principal>
-            <Dependent Role="TBL_PORTAL_CONTENIDO_IMAGENES">
-              <PropertyRef Name="IdContenido" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TBL_PORTAL_CONTENIDOFRONT_TBL_PORTAL_FRONT">
-          <End Role="TBL_PORTAL_FRONT" Type="Self.TBL_PORTAL_FRONT" Multiplicity="1" />
-          <End Role="TBL_PORTAL_CONTENIDOFRONT" Type="Self.TBL_PORTAL_CONTENIDOFRONT" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TBL_PORTAL_FRONT">
-              <PropertyRef Name="IdFront" />
-            </Principal>
-            <Dependent Role="TBL_PORTAL_CONTENIDOFRONT">
-              <PropertyRef Name="IdFront" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TBL_PORTAL_CONTENIDOSLIDE_TBL_PORTAL_SLIDE">
-          <End Role="TBL_PORTAL_SLIDE" Type="Self.TBL_PORTAL_SLIDE" Multiplicity="1" />
-          <End Role="TBL_PORTAL_CONTENIDOSLIDE" Type="Self.TBL_PORTAL_CONTENIDOSLIDE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TBL_PORTAL_SLIDE">
-              <PropertyRef Name="IdSlide" />
-            </Principal>
-            <Dependent Role="TBL_PORTAL_CONTENIDOSLIDE">
-              <PropertyRef Name="IdSlide" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -636,33 +414,18 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="IPSSER_PORTALEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="TBL_PORTAL_BIBLIOTECA_IMAGENES" EntityType="Self.TBL_PORTAL_BIBLIOTECA_IMAGENES" />
-          <EntitySet Name="TBL_PORTAL_CONTENIDO_IMAGENES" EntityType="Self.TBL_PORTAL_CONTENIDO_IMAGENES" />
-          <EntitySet Name="TBL_PORTAL_CONTENIDOFRONT" EntityType="Self.TBL_PORTAL_CONTENIDOFRONT" />
-          <EntitySet Name="TBL_PORTAL_CONTENIDOSLIDE" EntityType="Self.TBL_PORTAL_CONTENIDOSLIDE" />
+          <EntitySet Name="TBL_PORTAL_CATEGORIA_BIBLIOTECA_IMAGENES" EntityType="Self.TBL_PORTAL_CATEGORIA_BIBLIOTECA_IMAGENES" />
           <EntitySet Name="TBL_PORTAL_FRONT" EntityType="Self.TBL_PORTAL_FRONT" />
           <EntitySet Name="TBL_PORTAL_MODULO" EntityType="Self.TBL_PORTAL_MODULO" />
           <EntitySet Name="TBL_PORTAL_SLIDE" EntityType="Self.TBL_PORTAL_SLIDE" />
-          <AssociationSet Name="FK_TBL_PORTAL_CONTENIDO_IMAGENES_TBL_PORTAL_BIBLIOTECA_IMAGENES" Association="Self.FK_TBL_PORTAL_CONTENIDO_IMAGENES_TBL_PORTAL_BIBLIOTECA_IMAGENES">
+          <AssociationSet Name="FK_TBL_PORTAL_FRONT_TBL_PORTAL_BIBLIOTECA_IMAGENES" Association="Self.FK_TBL_PORTAL_FRONT_TBL_PORTAL_BIBLIOTECA_IMAGENES">
             <End Role="TBL_PORTAL_BIBLIOTECA_IMAGENES" EntitySet="TBL_PORTAL_BIBLIOTECA_IMAGENES" />
-            <End Role="TBL_PORTAL_CONTENIDO_IMAGENES" EntitySet="TBL_PORTAL_CONTENIDO_IMAGENES" />
+            <End Role="TBL_PORTAL_FRONT" EntitySet="TBL_PORTAL_FRONT" />
           </AssociationSet>
           <AssociationSet Name="FK_TBL_PORTAL_SLIDE_TBL_PORTAL_BIBLIOTECA_IMAGENES" Association="Self.FK_TBL_PORTAL_SLIDE_TBL_PORTAL_BIBLIOTECA_IMAGENES">
             <End Role="TBL_PORTAL_BIBLIOTECA_IMAGENES" EntitySet="TBL_PORTAL_BIBLIOTECA_IMAGENES" />
             <End Role="TBL_PORTAL_SLIDE" EntitySet="TBL_PORTAL_SLIDE" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TBL_PORTAL_CONTENIDO_IMAGENES_TBL_PORTAL_CONTENIDOFRONT" Association="Self.FK_TBL_PORTAL_CONTENIDO_IMAGENES_TBL_PORTAL_CONTENIDOFRONT">
-            <End Role="TBL_PORTAL_CONTENIDOFRONT" EntitySet="TBL_PORTAL_CONTENIDOFRONT" />
-            <End Role="TBL_PORTAL_CONTENIDO_IMAGENES" EntitySet="TBL_PORTAL_CONTENIDO_IMAGENES" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TBL_PORTAL_CONTENIDOFRONT_TBL_PORTAL_FRONT" Association="Self.FK_TBL_PORTAL_CONTENIDOFRONT_TBL_PORTAL_FRONT">
-            <End Role="TBL_PORTAL_FRONT" EntitySet="TBL_PORTAL_FRONT" />
-            <End Role="TBL_PORTAL_CONTENIDOFRONT" EntitySet="TBL_PORTAL_CONTENIDOFRONT" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TBL_PORTAL_CONTENIDOSLIDE_TBL_PORTAL_SLIDE" Association="Self.FK_TBL_PORTAL_CONTENIDOSLIDE_TBL_PORTAL_SLIDE">
-            <End Role="TBL_PORTAL_SLIDE" EntitySet="TBL_PORTAL_SLIDE" />
-            <End Role="TBL_PORTAL_CONTENIDOSLIDE" EntitySet="TBL_PORTAL_CONTENIDOSLIDE" />
           </AssociationSet>
           <AssociationSet Name="FK_TBL_PORTAL_FRONT_TBL_PORTAL_MODULO" Association="Self.FK_TBL_PORTAL_FRONT_TBL_PORTAL_MODULO">
             <End Role="TBL_PORTAL_MODULO" EntitySet="TBL_PORTAL_MODULO" />
@@ -675,11 +438,20 @@
           <FunctionImport Name="PA_DELETE_TBL_PORTAL_BIBLIOTECA_IMAGENES">
           <Parameter Name="IdImagen" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="PA_DELETE_TBL_PORTAL_CONTENIDO_IMAGENES">
+          <Parameter Name="IdContenidoImagen" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PA_DELETE_TBL_PORTAL_CONTENIDOFRONT">
+          <Parameter Name="IdContenidoFront" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="PA_DELETE_TBL_PORTAL_CONTENIDOSLIDE">
           <Parameter Name="IdContenidoSlide" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="PA_DELETE_TBL_PORTAL_FRONT">
           <Parameter Name="IdFront" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PA_DELETE_TBL_PORTAL_FRONT_IMAGENES">
+          <Parameter Name="IdFrontImagenes" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="PA_DELETE_TBL_PORTAL_SLIDE">
           <Parameter Name="IdSlide" Mode="In" Type="Int32" />
@@ -688,6 +460,20 @@
             <Parameter Name="Titulo" Mode="In" Type="String" />
             <Parameter Name="Descripcion" Mode="In" Type="String" />
             <Parameter Name="Path" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_INSERT_TBL_PORTAL_CONTENIDO_IMAGENES">
+            <Parameter Name="IdContenido" Mode="In" Type="Int32" />
+            <Parameter Name="IdImagen" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PA_INSERT_TBL_PORTAL_CONTENIDOFRONT">
+            <Parameter Name="IdFront" Mode="In" Type="Int32" />
+            <Parameter Name="Titulo" Mode="In" Type="String" />
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+            <Parameter Name="Contenido_Uno" Mode="In" Type="String" />
+            <Parameter Name="Contenido_Dos" Mode="In" Type="String" />
+            <Parameter Name="Contenido_Tres" Mode="In" Type="String" />
+            <Parameter Name="IdImagen" Mode="In" Type="Int32" />
+            <Parameter Name="Link" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="PA_INSERT_TBL_PORTAL_CONTENIDOSLIDE">
             <Parameter Name="IdSlide" Mode="In" Type="Int32" />
@@ -705,21 +491,78 @@
             <Parameter Name="Descripcion" Mode="In" Type="String" />
             <Parameter Name="IdImagen" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="PA_INSERT_TBL_PORTAL_FRONT_IMAGENES">
+            <Parameter Name="IdFront" Mode="In" Type="Int32" />
+            <Parameter Name="IdImagen" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="PA_INSERT_TBL_PORTAL_SLIDE">
             <Parameter Name="IdFront" Mode="In" Type="Int32" />
             <Parameter Name="IdImagen" Mode="In" Type="Int32" />
             <Parameter Name="Titulo" Mode="In" Type="String" />
             <Parameter Name="Descripcion" Mode="In" Type="String" />
+            <Parameter Name="Contenido_Uno" Mode="In" Type="String" />
+            <Parameter Name="Contenido_Dos" Mode="In" Type="String" />
+            <Parameter Name="Contenido_Tres" Mode="In" Type="String" />
+            <Parameter Name="Link" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_SELECT_FRONTS" ReturnType="Collection(IPSSER_PORTALModel.PA_SELECT_FRONTS_Result)" />
+          <FunctionImport Name="PA_SELECT_FRONTS_CON_SLIDES" ReturnType="Collection(IPSSER_PORTALModel.PA_SELECT_FRONTS_CON_SLIDES_Result)" />
+          <FunctionImport Name="PA_SELECT_FRONTS_CON_SLIDESXIDMODULO" ReturnType="Collection(IPSSER_PORTALModel.PA_SELECT_FRONTS_CON_SLIDESXIDMODULO_Result)">
+          <Parameter Name="IdModulo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PA_SELECT_FRONTSXIDMODULO">
+          <Parameter Name="IdModulo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PA_SELECT_TBL_PORTAL_BIBLIOTECA_IMAGENES" ReturnType="Collection(IPSSER_PORTALModel.PA_SELECT_TBL_PORTAL_BIBLIOTECA_IMAGENES_Result)" />
+          <FunctionImport Name="PA_SELECT_TBL_PORTAL_BIBLIOTECA_IMAGENESXID" ReturnType="Collection(IPSSER_PORTALModel.PA_SELECT_TBL_PORTAL_BIBLIOTECA_IMAGENESXID_Result)">
+          <Parameter Name="IdImagen" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PA_SELECT_TBL_PORTAL_CONTENIDO_IMAGENES" />
+          <FunctionImport Name="PA_SELECT_TBL_PORTAL_CONTENIDO_IMAGENESXID">
+          <Parameter Name="IdContenidoImagen" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PA_SELECT_TBL_PORTAL_CONTENIDOFRONT" />
+          <FunctionImport Name="PA_SELECT_TBL_PORTAL_CONTENIDOFRONTXID">
+          <Parameter Name="IdContenidoFront" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PA_SELECT_TBL_PORTAL_CONTENIDOSLIDE" />
+          <FunctionImport Name="PA_SELECT_TBL_PORTAL_CONTENIDOSLIDEXID">
+          <Parameter Name="IdContenidoSlide" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="PA_SELECT_TBL_PORTAL_FRONT" ReturnType="Collection(IPSSER_PORTALModel.PA_SELECT_TBL_PORTAL_FRONT_Result)" />
+          <FunctionImport Name="PA_SELECT_TBL_PORTAL_FRONT_IMAGENES" />
+          <FunctionImport Name="PA_SELECT_TBL_PORTAL_FRONT_IMAGENESXID">
+          <Parameter Name="IdFrontImagenes" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="PA_SELECT_TBL_PORTAL_FRONTXID" ReturnType="Collection(IPSSER_PORTALModel.PA_SELECT_TBL_PORTAL_FRONTXID_Result)">
           <Parameter Name="IdFront" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PA_SELECT_TBL_PORTAL_MODULO" ReturnType="Collection(IPSSER_PORTALModel.PA_SELECT_TBL_PORTAL_MODULO_Result)" />
+          <FunctionImport Name="PA_SELECT_TBL_PORTAL_SLIDE" ReturnType="Collection(IPSSER_PORTALModel.PA_SELECT_TBL_PORTAL_SLIDE_Result)" />
+          <FunctionImport Name="PA_SELECT_TBL_PORTAL_SLIDEXID" ReturnType="Collection(IPSSER_PORTALModel.PA_SELECT_TBL_PORTAL_SLIDEXID_Result)">
+          <Parameter Name="IdSlide" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="PA_UPDATE_TBL_PORTAL_BIBLIOTECA_IMAGENES">
             <Parameter Name="IdImagen" Mode="In" Type="Int32" />
             <Parameter Name="Titulo" Mode="In" Type="String" />
             <Parameter Name="Descripcion" Mode="In" Type="String" />
             <Parameter Name="Path" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_UPDATE_TBL_PORTAL_CONTENIDO_IMAGENES">
+            <Parameter Name="IdContenidoImagen" Mode="In" Type="Int32" />
+            <Parameter Name="IdContenido" Mode="In" Type="Int32" />
+            <Parameter Name="IdImagen" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PA_UPDATE_TBL_PORTAL_CONTENIDOFRONT">
+            <Parameter Name="IdContenidoFront" Mode="In" Type="Int32" />
+            <Parameter Name="IdFront" Mode="In" Type="Int32" />
+            <Parameter Name="Titulo" Mode="In" Type="String" />
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+            <Parameter Name="Contenido_Uno" Mode="In" Type="String" />
+            <Parameter Name="Contenido_Dos" Mode="In" Type="String" />
+            <Parameter Name="Contenido_Tres" Mode="In" Type="String" />
+            <Parameter Name="IdImagen" Mode="In" Type="Int32" />
+            <Parameter Name="Link" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="PA_UPDATE_TBL_PORTAL_CONTENIDOSLIDE">
             <Parameter Name="IdContenidoSlide" Mode="In" Type="Int32" />
@@ -737,6 +580,10 @@
             <Parameter Name="IdModulo" Mode="In" Type="Int32" />
             <Parameter Name="Titulo" Mode="In" Type="String" />
             <Parameter Name="Descripcion" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_UPDATE_TBL_PORTAL_FRONT_IMAGENES">
+            <Parameter Name="IdFrontImagenes" Mode="In" Type="Int32" />
+            <Parameter Name="IdFront" Mode="In" Type="Int32" />
             <Parameter Name="IdImagen" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="PA_UPDATE_TBL_PORTAL_SLIDE">
@@ -745,240 +592,25 @@
             <Parameter Name="IdImagen" Mode="In" Type="Int32" />
             <Parameter Name="Titulo" Mode="In" Type="String" />
             <Parameter Name="Descripcion" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_alterdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="version" Mode="In" Type="Int32" />
-            <Parameter Name="definition" Mode="In" Type="Binary" />
-          </FunctionImport>
-          <FunctionImport Name="sp_creatediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="version" Mode="In" Type="Int32" />
-            <Parameter Name="definition" Mode="In" Type="Binary" />
-          </FunctionImport>
-          <FunctionImport Name="sp_dropdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(IPSSER_PORTALModel.sp_helpdiagramdefinition_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(IPSSER_PORTALModel.sp_helpdiagrams_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_renamediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="new_diagramname" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_upgraddiagrams" />
-          <FunctionImport Name="PA_DELETE_TBL_PORTAL_FRONT_IMAGENES">
-          <Parameter Name="IdFrontImagenes" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="PA_INSERT_TBL_PORTAL_FRONT_IMAGENES">
-            <Parameter Name="IdFront" Mode="In" Type="Int32" />
-            <Parameter Name="IdImagen" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="PA_UPDATE_TBL_PORTAL_FRONT_IMAGENES">
-            <Parameter Name="IdFrontImagenes" Mode="In" Type="Int32" />
-            <Parameter Name="IdFront" Mode="In" Type="Int32" />
-            <Parameter Name="IdImagen" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="PA_DELETE_TBL_PORTAL_CONTENIDOFRONT">
-          <Parameter Name="IdContenidoFront" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="PA_INSERT_TBL_PORTAL_CONTENIDOFRONT">
-            <Parameter Name="IdFront" Mode="In" Type="Int32" />
-            <Parameter Name="Titulo" Mode="In" Type="String" />
-            <Parameter Name="Descripcion" Mode="In" Type="String" />
             <Parameter Name="Contenido_Uno" Mode="In" Type="String" />
             <Parameter Name="Contenido_Dos" Mode="In" Type="String" />
             <Parameter Name="Contenido_Tres" Mode="In" Type="String" />
-            <Parameter Name="IdImagen" Mode="In" Type="Int32" />
             <Parameter Name="Link" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="PA_UPDATE_TBL_PORTAL_CONTENIDOFRONT">
-            <Parameter Name="IdContenidoFront" Mode="In" Type="Int32" />
-            <Parameter Name="IdFront" Mode="In" Type="Int32" />
-            <Parameter Name="Titulo" Mode="In" Type="String" />
-            <Parameter Name="Descripcion" Mode="In" Type="String" />
-            <Parameter Name="Contenido_Uno" Mode="In" Type="String" />
-            <Parameter Name="Contenido_Dos" Mode="In" Type="String" />
-            <Parameter Name="Contenido_Tres" Mode="In" Type="String" />
-            <Parameter Name="IdImagen" Mode="In" Type="Int32" />
-            <Parameter Name="Link" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="PA_DELETE_TBL_PORTAL_CONTENIDO_IMAGENES">
-          <Parameter Name="IdContenidoImagen" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="PA_INSERT_TBL_PORTAL_CONTENIDO_IMAGENES">
-            <Parameter Name="IdContenido" Mode="In" Type="Int32" />
-            <Parameter Name="IdImagen" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="PA_UPDATE_TBL_PORTAL_CONTENIDO_IMAGENES">
-            <Parameter Name="IdContenidoImagen" Mode="In" Type="Int32" />
-            <Parameter Name="IdContenido" Mode="In" Type="Int32" />
-            <Parameter Name="IdImagen" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="PA_SELECT_TBL_PORTAL_BIBLIOTECA_IMAGENES" ReturnType="Collection(IPSSER_PORTALModel.PA_SELECT_TBL_PORTAL_BIBLIOTECA_IMAGENES_Result)" />
-          <FunctionImport Name="PA_SELECT_TBL_PORTAL_BIBLIOTECA_IMAGENESXID" ReturnType="Collection(IPSSER_PORTALModel.PA_SELECT_TBL_PORTAL_BIBLIOTECA_IMAGENESXID_Result)">
-          <Parameter Name="IdImagen" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="PA_SELECT_TBL_PORTAL_CONTENIDO_IMAGENES" ReturnType="Collection(IPSSER_PORTALModel.PA_SELECT_TBL_PORTAL_CONTENIDO_IMAGENES_Result)" />
-          <FunctionImport Name="PA_SELECT_TBL_PORTAL_CONTENIDO_IMAGENESXID" ReturnType="Collection(IPSSER_PORTALModel.PA_SELECT_TBL_PORTAL_CONTENIDO_IMAGENESXID_Result)">
-          <Parameter Name="IdContenidoImagen" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="PA_SELECT_TBL_PORTAL_CONTENIDOFRONT" ReturnType="Collection(IPSSER_PORTALModel.PA_SELECT_TBL_PORTAL_CONTENIDOFRONT_Result)" />
-          <FunctionImport Name="PA_SELECT_TBL_PORTAL_CONTENIDOFRONTXID" ReturnType="Collection(IPSSER_PORTALModel.PA_SELECT_TBL_PORTAL_CONTENIDOFRONTXID_Result)">
-          <Parameter Name="IdContenidoFront" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="PA_SELECT_TBL_PORTAL_CONTENIDOSLIDE" ReturnType="Collection(IPSSER_PORTALModel.PA_SELECT_TBL_PORTAL_CONTENIDOSLIDE_Result)" />
-          <FunctionImport Name="PA_SELECT_TBL_PORTAL_CONTENIDOSLIDEXID" ReturnType="Collection(IPSSER_PORTALModel.PA_SELECT_TBL_PORTAL_CONTENIDOSLIDEXID_Result)">
-          <Parameter Name="IdContenidoSlide" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="PA_SELECT_TBL_PORTAL_FRONT_IMAGENES" ReturnType="Collection(IPSSER_PORTALModel.PA_SELECT_TBL_PORTAL_FRONT_IMAGENES_Result)" />
-          <FunctionImport Name="PA_SELECT_TBL_PORTAL_FRONT_IMAGENESXID" ReturnType="Collection(IPSSER_PORTALModel.PA_SELECT_TBL_PORTAL_FRONT_IMAGENESXID_Result)">
-          <Parameter Name="IdFrontImagenes" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="PA_SELECT_TBL_PORTAL_SLIDE" ReturnType="Collection(IPSSER_PORTALModel.PA_SELECT_TBL_PORTAL_SLIDE_Result)" />
-          <FunctionImport Name="PA_SELECT_TBL_PORTAL_SLIDEXID" ReturnType="Collection(IPSSER_PORTALModel.PA_SELECT_TBL_PORTAL_SLIDEXID_Result)">
-          <Parameter Name="IdSlide" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="PA_SELECT_TBL_PORTAL_MODULO" ReturnType="Collection(IPSSER_PORTALModel.PA_SELECT_TBL_PORTAL_MODULO_Result)" />
-          <FunctionImport Name="PA_SELECT_FRONTS_CON_SLIDES" ReturnType="Collection(IPSSER_PORTALModel.PA_SELECT_FRONTS_CON_SLIDES_Result)" />
-          <FunctionImport Name="PA_SELECT_FRONTS" ReturnType="Collection(IPSSER_PORTALModel.PA_SELECT_FRONTS_Result)" />
-          <AssociationSet Name="FK_TBL_PORTAL_CONTENIDOFRONT_TBL_PORTAL_BIBLIOTECA_IMAGENES" Association="IPSSER_PORTALModel.FK_TBL_PORTAL_CONTENIDOFRONT_TBL_PORTAL_BIBLIOTECA_IMAGENES">
-            <End Role="TBL_PORTAL_BIBLIOTECA_IMAGENES" EntitySet="TBL_PORTAL_BIBLIOTECA_IMAGENES" />
-            <End Role="TBL_PORTAL_CONTENIDOFRONT" EntitySet="TBL_PORTAL_CONTENIDOFRONT" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TBL_PORTAL_CONTENIDOSLIDE_TBL_PORTAL_BIBLIOTECA_IMAGENES" Association="IPSSER_PORTALModel.FK_TBL_PORTAL_CONTENIDOSLIDE_TBL_PORTAL_BIBLIOTECA_IMAGENES">
-            <End Role="TBL_PORTAL_BIBLIOTECA_IMAGENES" EntitySet="TBL_PORTAL_BIBLIOTECA_IMAGENES" />
-            <End Role="TBL_PORTAL_CONTENIDOSLIDE" EntitySet="TBL_PORTAL_CONTENIDOSLIDE" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TBL_PORTAL_FRONT_TBL_PORTAL_BIBLIOTECA_IMAGENES" Association="IPSSER_PORTALModel.FK_TBL_PORTAL_FRONT_TBL_PORTAL_BIBLIOTECA_IMAGENES">
-            <End Role="TBL_PORTAL_BIBLIOTECA_IMAGENES" EntitySet="TBL_PORTAL_BIBLIOTECA_IMAGENES" />
-            <End Role="TBL_PORTAL_FRONT" EntitySet="TBL_PORTAL_FRONT" />
-          </AssociationSet>
-          <FunctionImport Name="PA_SELECT_FRONTS_CON_SLIDESXIDMODULO" ReturnType="Collection(IPSSER_PORTALModel.PA_SELECT_FRONTS_CON_SLIDESXIDMODULO_Result)">
-          <Parameter Name="IdModulo" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="PA_SELECT_FRONTSXIDMODULO" ReturnType="Collection(IPSSER_PORTALModel.PA_SELECT_FRONTSXIDMODULO_Result)">
-          <Parameter Name="IdModulo" Mode="In" Type="Int32" />
-          </FunctionImport>
+          <EntitySet Name="TBL_PORTAL_DIRECTORIO_INTERNO" EntityType="IPSSER_PORTALModel.TBL_PORTAL_DIRECTORIO_INTERNO" />
+          <EntitySet Name="TBL_PORTAL_TRABAJA_CON_NOSOTROS" EntityType="IPSSER_PORTALModel.TBL_PORTAL_TRABAJA_CON_NOSOTROS" />
         </EntityContainer>
-        <ComplexType Name="PA_SELECT_TBL_PORTAL_FRONT_Result">
-          <Property Type="Int32" Name="IdFront" Nullable="false" />
+        <ComplexType Name="PA_SELECT_FRONTS_Result">
           <Property Type="Int32" Name="IdModulo" Nullable="false" />
-          <Property Type="String" Name="Titulo" Nullable="false" MaxLength="200" />
-          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="250" />
-        </ComplexType>
-        <ComplexType Name="PA_SELECT_TBL_PORTAL_FRONTXID_Result">
           <Property Type="Int32" Name="IdFront" Nullable="false" />
-          <Property Type="Int32" Name="IdModulo" Nullable="false" />
-          <Property Type="String" Name="Titulo" Nullable="false" MaxLength="200" />
-          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="250" />
-        </ComplexType>
-        <ComplexType Name="sp_helpdiagramdefinition_Result">
-          <Property Type="Int32" Name="version" Nullable="true" />
-          <Property Type="Binary" Name="definition" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="sp_helpdiagrams_Result">
-          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
-          <Property Type="Int32" Name="OwnerID" Nullable="false" />
-        </ComplexType>
-        <ComplexType Name="PA_SELECT_TBL_PORTAL_BIBLIOTECA_IMAGENES_Result">
-          <Property Type="Int32" Name="IdImagen" Nullable="false" />
-          <Property Type="String" Name="Titulo" Nullable="false" MaxLength="200" />
-          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="550" />
-          <Property Type="String" Name="Path" Nullable="false" MaxLength="500" />
-        </ComplexType>
-        <ComplexType Name="PA_SELECT_TBL_PORTAL_BIBLIOTECA_IMAGENESXID_Result">
-          <Property Type="Int32" Name="IdImagen" Nullable="false" />
-          <Property Type="String" Name="Titulo" Nullable="false" MaxLength="200" />
-          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="550" />
-          <Property Type="String" Name="Path" Nullable="false" MaxLength="500" />
-        </ComplexType>
-        <ComplexType Name="PA_SELECT_TBL_PORTAL_CONTENIDO_IMAGENES_Result">
-          <Property Type="Int32" Name="IdContenidoImagen" Nullable="false" />
-          <Property Type="Int32" Name="IdContenido" Nullable="false" />
-          <Property Type="Int32" Name="IdImagen" Nullable="false" />
-        </ComplexType>
-        <ComplexType Name="PA_SELECT_TBL_PORTAL_CONTENIDO_IMAGENESXID_Result">
-          <Property Type="Int32" Name="IdContenidoImagen" Nullable="false" />
-          <Property Type="Int32" Name="IdContenido" Nullable="false" />
-          <Property Type="Int32" Name="IdImagen" Nullable="false" />
-        </ComplexType>
-        <ComplexType Name="PA_SELECT_TBL_PORTAL_CONTENIDOFRONT_Result">
-          <Property Type="Int32" Name="IdContenidoFront" Nullable="false" />
-          <Property Type="Int32" Name="IdFront" Nullable="false" />
+          <Property Type="String" Name="Fondo" Nullable="false" MaxLength="500" />
           <Property Type="String" Name="Titulo" Nullable="false" MaxLength="200" />
           <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="250" />
-          <Property Type="String" Name="Contenido_Uno" Nullable="true" MaxLength="500" />
-          <Property Type="String" Name="Contenido_Dos" Nullable="true" MaxLength="500" />
-          <Property Type="String" Name="Contenido_Tres" Nullable="true" MaxLength="500" />
-        </ComplexType>
-        <ComplexType Name="PA_SELECT_TBL_PORTAL_CONTENIDOFRONTXID_Result">
-          <Property Type="Int32" Name="IdContenidoFront" Nullable="false" />
-          <Property Type="Int32" Name="IdFront" Nullable="false" />
-          <Property Type="String" Name="Titulo" Nullable="false" MaxLength="200" />
-          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="250" />
-          <Property Type="String" Name="Contenido_Uno" Nullable="true" MaxLength="500" />
-          <Property Type="String" Name="Contenido_Dos" Nullable="true" MaxLength="500" />
-          <Property Type="String" Name="Contenido_Tres" Nullable="true" MaxLength="500" />
-        </ComplexType>
-        <ComplexType Name="PA_SELECT_TBL_PORTAL_CONTENIDOSLIDE_Result">
-          <Property Type="Int32" Name="IdContenidoSlide" Nullable="false" />
-          <Property Type="Int32" Name="IdSlide" Nullable="false" />
-          <Property Type="String" Name="Titulo" Nullable="false" MaxLength="200" />
-          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="250" />
-          <Property Type="String" Name="Contenido_Uno" Nullable="false" MaxLength="500" />
-          <Property Type="String" Name="Contenido_Dos" Nullable="true" MaxLength="500" />
-          <Property Type="String" Name="Contenido_Tres" Nullable="true" MaxLength="500" />
-        </ComplexType>
-        <ComplexType Name="PA_SELECT_TBL_PORTAL_CONTENIDOSLIDEXID_Result">
-          <Property Type="Int32" Name="IdContenidoSlide" Nullable="false" />
-          <Property Type="Int32" Name="IdSlide" Nullable="false" />
-          <Property Type="String" Name="Titulo" Nullable="false" MaxLength="200" />
-          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="250" />
-          <Property Type="String" Name="Contenido_Uno" Nullable="false" MaxLength="500" />
-          <Property Type="String" Name="Contenido_Dos" Nullable="true" MaxLength="500" />
-          <Property Type="String" Name="Contenido_Tres" Nullable="true" MaxLength="500" />
-        </ComplexType>
-        <ComplexType Name="PA_SELECT_TBL_PORTAL_FRONT_IMAGENES_Result">
-          <Property Type="Int32" Name="IdFrontImagenes" Nullable="false" />
-          <Property Type="Int32" Name="IdFront" Nullable="false" />
-          <Property Type="Int32" Name="IdImagen" Nullable="false" />
-        </ComplexType>
-        <ComplexType Name="PA_SELECT_TBL_PORTAL_FRONT_IMAGENESXID_Result">
-          <Property Type="Int32" Name="IdFrontImagenes" Nullable="false" />
-          <Property Type="Int32" Name="IdFront" Nullable="false" />
-          <Property Type="Int32" Name="IdImagen" Nullable="false" />
-        </ComplexType>
-        <ComplexType Name="PA_SELECT_TBL_PORTAL_SLIDE_Result">
-          <Property Type="Int32" Name="IdSlide" Nullable="false" />
-          <Property Type="Int32" Name="IdFront" Nullable="false" />
-          <Property Type="Int32" Name="IdImagen" Nullable="false" />
-          <Property Type="String" Name="Titulo" Nullable="false" MaxLength="200" />
-          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="250" />
-        </ComplexType>
-        <ComplexType Name="PA_SELECT_TBL_PORTAL_SLIDEXID_Result">
-          <Property Type="Int32" Name="IdSlide" Nullable="false" />
-          <Property Type="Int32" Name="IdFront" Nullable="false" />
-          <Property Type="Int32" Name="IdImagen" Nullable="false" />
-          <Property Type="String" Name="Titulo" Nullable="false" MaxLength="200" />
-          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="250" />
-        </ComplexType>
-        <ComplexType Name="PA_SELECT_TBL_PORTAL_MODULO_Result">
-          <Property Type="Int32" Name="IdModulo" Nullable="false" />
-          <Property Type="String" Name="NombreModulo" Nullable="true" MaxLength="200" />
-          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Contenido1" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Contenido2" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Contenido3" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Imagen" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="Link" Nullable="true" />
         </ComplexType>
         <ComplexType Name="PA_SELECT_FRONTS_CON_SLIDES_Result">
           <Property Type="Int32" Name="IdModulo" Nullable="false" />
@@ -986,95 +618,102 @@
           <Property Type="Int32" Name="IdSlide" Nullable="false" />
           <Property Type="String" Name="Fondo" Nullable="false" MaxLength="500" />
           <Property Type="String" Name="Titulo" Nullable="false" MaxLength="200" />
-          <Property Type="String" Name="Contenido1" Nullable="false" MaxLength="500" />
-          <Property Type="String" Name="Contenido2" Nullable="true" MaxLength="500" />
-          <Property Type="String" Name="Contenido3" Nullable="true" MaxLength="500" />
-        </ComplexType>
-        <ComplexType Name="PA_SELECT_FRONTS_Result">
-          <Property Type="Int32" Name="IdModulo" Nullable="false" />
-          <Property Type="Int32" Name="IdFront" Nullable="false" />
-          <Property Type="String" Name="Fondo" Nullable="false" MaxLength="500" />
-          <Property Type="String" Name="Titulo" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="250" />
           <Property Type="String" Name="Contenido1" Nullable="true" MaxLength="500" />
           <Property Type="String" Name="Contenido2" Nullable="true" MaxLength="500" />
           <Property Type="String" Name="Contenido3" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Imagen" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="Link" Nullable="true" />
         </ComplexType>
-        <Association Name="FK_TBL_PORTAL_CONTENIDOFRONT_TBL_PORTAL_BIBLIOTECA_IMAGENES">
-          <End Type="IPSSER_PORTALModel.TBL_PORTAL_BIBLIOTECA_IMAGENES" Role="TBL_PORTAL_BIBLIOTECA_IMAGENES" Multiplicity="1" />
-          <End Type="IPSSER_PORTALModel.TBL_PORTAL_CONTENIDOFRONT" Role="TBL_PORTAL_CONTENIDOFRONT" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TBL_PORTAL_BIBLIOTECA_IMAGENES">
-              <PropertyRef Name="IdImagen" />
-            </Principal>
-            <Dependent Role="TBL_PORTAL_CONTENIDOFRONT">
-              <PropertyRef Name="IdImagen" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TBL_PORTAL_CONTENIDOSLIDE_TBL_PORTAL_BIBLIOTECA_IMAGENES">
-          <End Type="IPSSER_PORTALModel.TBL_PORTAL_BIBLIOTECA_IMAGENES" Role="TBL_PORTAL_BIBLIOTECA_IMAGENES" Multiplicity="1" />
-          <End Type="IPSSER_PORTALModel.TBL_PORTAL_CONTENIDOSLIDE" Role="TBL_PORTAL_CONTENIDOSLIDE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TBL_PORTAL_BIBLIOTECA_IMAGENES">
-              <PropertyRef Name="IdImagen" />
-            </Principal>
-            <Dependent Role="TBL_PORTAL_CONTENIDOSLIDE">
-              <PropertyRef Name="IdImagen" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TBL_PORTAL_FRONT_TBL_PORTAL_BIBLIOTECA_IMAGENES">
-          <End Type="IPSSER_PORTALModel.TBL_PORTAL_BIBLIOTECA_IMAGENES" Role="TBL_PORTAL_BIBLIOTECA_IMAGENES" Multiplicity="1" />
-          <End Type="IPSSER_PORTALModel.TBL_PORTAL_FRONT" Role="TBL_PORTAL_FRONT" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TBL_PORTAL_BIBLIOTECA_IMAGENES">
-              <PropertyRef Name="IdImagen" />
-            </Principal>
-            <Dependent Role="TBL_PORTAL_FRONT">
-              <PropertyRef Name="IdImagen" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <ComplexType Name="PA_SELECT_FRONTS_CON_SLIDESXIDMODULO_Result">
           <Property Type="Int32" Name="IdModulo" Nullable="false" />
           <Property Type="Int32" Name="IdFront" Nullable="false" />
           <Property Type="Int32" Name="IdSlide" Nullable="false" />
           <Property Type="String" Name="Fondo" Nullable="false" MaxLength="500" />
           <Property Type="String" Name="Titulo" Nullable="false" MaxLength="200" />
-          <Property Type="String" Name="Contenido1" Nullable="false" MaxLength="500" />
-          <Property Type="String" Name="Contenido2" Nullable="true" MaxLength="500" />
-          <Property Type="String" Name="Contenido3" Nullable="true" MaxLength="500" />
-          <Property Type="String" Name="Imagen" Nullable="false" MaxLength="500" />
-          <Property Type="String" Name="Link" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="PA_SELECT_FRONTSXIDMODULO_Result">
-          <Property Type="Int32" Name="IdModulo" Nullable="false" />
-          <Property Type="Int32" Name="IdFront" Nullable="false" />
-          <Property Type="String" Name="Fondo" Nullable="false" MaxLength="500" />
-          <Property Type="String" Name="Titulo" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="250" />
           <Property Type="String" Name="Contenido1" Nullable="true" MaxLength="500" />
           <Property Type="String" Name="Contenido2" Nullable="true" MaxLength="500" />
           <Property Type="String" Name="Contenido3" Nullable="true" MaxLength="500" />
           <Property Type="String" Name="Imagen" Nullable="false" MaxLength="500" />
           <Property Type="String" Name="Link" Nullable="true" />
         </ComplexType>
+        <ComplexType Name="PA_SELECT_TBL_PORTAL_BIBLIOTECA_IMAGENES_Result">
+          <Property Type="Int32" Name="IdImagen" Nullable="false" />
+          <Property Type="String" Name="Titulo" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="550" />
+          <Property Type="String" Name="Path" Nullable="false" MaxLength="500" />
+          <Property Type="Decimal" Name="IdCategoriaBibliotecaImagenes" Nullable="true" Precision="18" Scale="0" />
+        </ComplexType>
+        <ComplexType Name="PA_SELECT_TBL_PORTAL_BIBLIOTECA_IMAGENESXID_Result">
+          <Property Type="Int32" Name="IdImagen" Nullable="false" />
+          <Property Type="String" Name="Titulo" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="550" />
+          <Property Type="String" Name="Path" Nullable="false" MaxLength="500" />
+          <Property Type="Decimal" Name="IdCategoriaBibliotecaImagenes" Nullable="true" Precision="18" Scale="0" />
+        </ComplexType>
+        <ComplexType Name="PA_SELECT_TBL_PORTAL_FRONT_Result">
+          <Property Type="Int32" Name="IdFront" Nullable="false" />
+          <Property Type="Int32" Name="IdModulo" Nullable="false" />
+          <Property Type="String" Name="Titulo" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="IdImagen" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="PA_SELECT_TBL_PORTAL_FRONTXID_Result">
+          <Property Type="Int32" Name="IdFront" Nullable="false" />
+          <Property Type="Int32" Name="IdModulo" Nullable="false" />
+          <Property Type="String" Name="Titulo" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="IdImagen" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="PA_SELECT_TBL_PORTAL_MODULO_Result">
+          <Property Type="Int32" Name="IdModulo" Nullable="false" />
+          <Property Type="String" Name="NombreModulo" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="PA_SELECT_TBL_PORTAL_SLIDE_Result">
+          <Property Type="Int32" Name="IdSlide" Nullable="false" />
+          <Property Type="Int32" Name="IdFront" Nullable="false" />
+          <Property Type="Int32" Name="IdImagen" Nullable="false" />
+          <Property Type="String" Name="Titulo" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="Contenido_Uno" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Contenido_Dos" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Contenido_Tres" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Link" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="PA_SELECT_TBL_PORTAL_SLIDEXID_Result">
+          <Property Type="Int32" Name="IdSlide" Nullable="false" />
+          <Property Type="Int32" Name="IdFront" Nullable="false" />
+          <Property Type="Int32" Name="IdImagen" Nullable="false" />
+          <Property Type="String" Name="Titulo" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="Contenido_Uno" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Contenido_Dos" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Contenido_Tres" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Link" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="TBL_PORTAL_DIRECTORIO_INTERNO">
+          <Key>
+            <PropertyRef Name="IdDirectorioInterno" />
+          </Key>
+          <Property Name="IdDirectorioInterno" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Departamento" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Extension" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="320" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TBL_PORTAL_TRABAJA_CON_NOSOTROS">
+          <Key>
+            <PropertyRef Name="IdTrabajaConNosotros" />
+          </Key>
+          <Property Name="IdTrabajaConNosotros" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="IPSSER_PORTALModelStoreContainer" CdmEntityContainer="IPSSER_PORTALEntities">
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="IPSSER_PORTALModel.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="TBL_PORTAL_BIBLIOTECA_IMAGENES">
             <EntityTypeMapping TypeName="IPSSER_PORTALModel.TBL_PORTAL_BIBLIOTECA_IMAGENES">
               <MappingFragment StoreEntitySet="TBL_PORTAL_BIBLIOTECA_IMAGENES">
@@ -1082,56 +721,26 @@
                 <ScalarProperty Name="Titulo" ColumnName="Titulo" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="Path" ColumnName="Path" />
+                <ScalarProperty Name="IdCategoriaBibliotecaImagenes" ColumnName="IdCategoriaBibliotecaImagenes" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TBL_PORTAL_CONTENIDO_IMAGENES">
-            <EntityTypeMapping TypeName="IPSSER_PORTALModel.TBL_PORTAL_CONTENIDO_IMAGENES">
-              <MappingFragment StoreEntitySet="TBL_PORTAL_CONTENIDO_IMAGENES">
-                <ScalarProperty Name="IdContenidoImagen" ColumnName="IdContenidoImagen" />
-                <ScalarProperty Name="IdContenido" ColumnName="IdContenido" />
-                <ScalarProperty Name="IdImagen" ColumnName="IdImagen" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TBL_PORTAL_CONTENIDOFRONT">
-            <EntityTypeMapping TypeName="IPSSER_PORTALModel.TBL_PORTAL_CONTENIDOFRONT">
-              <MappingFragment StoreEntitySet="TBL_PORTAL_CONTENIDOFRONT">
-                <ScalarProperty Name="Link" ColumnName="Link" />
-                <ScalarProperty Name="IdImagen" ColumnName="IdImagen" />
-                <ScalarProperty Name="IdContenidoFront" ColumnName="IdContenidoFront" />
-                <ScalarProperty Name="IdFront" ColumnName="IdFront" />
+          <EntitySetMapping Name="TBL_PORTAL_CATEGORIA_BIBLIOTECA_IMAGENES">
+            <EntityTypeMapping TypeName="IPSSER_PORTALModel.TBL_PORTAL_CATEGORIA_BIBLIOTECA_IMAGENES">
+              <MappingFragment StoreEntitySet="TBL_PORTAL_CATEGORIA_BIBLIOTECA_IMAGENES">
+                <ScalarProperty Name="IdCategoriaBibliotecaImagenes" ColumnName="IdCategoriaBibliotecaImagenes" />
                 <ScalarProperty Name="Titulo" ColumnName="Titulo" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="Contenido_Uno" ColumnName="Contenido_Uno" />
-                <ScalarProperty Name="Contenido_Dos" ColumnName="Contenido_Dos" />
-                <ScalarProperty Name="Contenido_Tres" ColumnName="Contenido_Tres" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TBL_PORTAL_CONTENIDOSLIDE">
-            <EntityTypeMapping TypeName="IPSSER_PORTALModel.TBL_PORTAL_CONTENIDOSLIDE">
-              <MappingFragment StoreEntitySet="TBL_PORTAL_CONTENIDOSLIDE">
-                <ScalarProperty Name="Link" ColumnName="Link" />
-                <ScalarProperty Name="IdImagen" ColumnName="IdImagen" />
-                <ScalarProperty Name="IdContenidoSlide" ColumnName="IdContenidoSlide" />
-                <ScalarProperty Name="IdSlide" ColumnName="IdSlide" />
-                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="Contenido_Uno" ColumnName="Contenido_Uno" />
-                <ScalarProperty Name="Contenido_Dos" ColumnName="Contenido_Dos" />
-                <ScalarProperty Name="Contenido_Tres" ColumnName="Contenido_Tres" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TBL_PORTAL_FRONT">
             <EntityTypeMapping TypeName="IPSSER_PORTALModel.TBL_PORTAL_FRONT">
               <MappingFragment StoreEntitySet="TBL_PORTAL_FRONT">
-                <ScalarProperty Name="IdImagen" ColumnName="IdImagen" />
                 <ScalarProperty Name="IdFront" ColumnName="IdFront" />
                 <ScalarProperty Name="IdModulo" ColumnName="IdModulo" />
                 <ScalarProperty Name="Titulo" ColumnName="Titulo" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="IdImagen" ColumnName="IdImagen" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1152,74 +761,78 @@
                 <ScalarProperty Name="IdImagen" ColumnName="IdImagen" />
                 <ScalarProperty Name="Titulo" ColumnName="Titulo" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Contenido_Uno" ColumnName="Contenido_Uno" />
+                <ScalarProperty Name="Contenido_Dos" ColumnName="Contenido_Dos" />
+                <ScalarProperty Name="Contenido_Tres" ColumnName="Contenido_Tres" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="PA_DELETE_TBL_PORTAL_BIBLIOTECA_IMAGENES" FunctionName="IPSSER_PORTALModel.Store.PA_DELETE_TBL_PORTAL_BIBLIOTECA_IMAGENES" />
+          <FunctionImportMapping FunctionImportName="PA_DELETE_TBL_PORTAL_CONTENIDO_IMAGENES" FunctionName="IPSSER_PORTALModel.Store.PA_DELETE_TBL_PORTAL_CONTENIDO_IMAGENES" />
+          <FunctionImportMapping FunctionImportName="PA_DELETE_TBL_PORTAL_CONTENIDOFRONT" FunctionName="IPSSER_PORTALModel.Store.PA_DELETE_TBL_PORTAL_CONTENIDOFRONT" />
           <FunctionImportMapping FunctionImportName="PA_DELETE_TBL_PORTAL_CONTENIDOSLIDE" FunctionName="IPSSER_PORTALModel.Store.PA_DELETE_TBL_PORTAL_CONTENIDOSLIDE" />
           <FunctionImportMapping FunctionImportName="PA_DELETE_TBL_PORTAL_FRONT" FunctionName="IPSSER_PORTALModel.Store.PA_DELETE_TBL_PORTAL_FRONT" />
+          <FunctionImportMapping FunctionImportName="PA_DELETE_TBL_PORTAL_FRONT_IMAGENES" FunctionName="IPSSER_PORTALModel.Store.PA_DELETE_TBL_PORTAL_FRONT_IMAGENES" />
           <FunctionImportMapping FunctionImportName="PA_DELETE_TBL_PORTAL_SLIDE" FunctionName="IPSSER_PORTALModel.Store.PA_DELETE_TBL_PORTAL_SLIDE" />
           <FunctionImportMapping FunctionImportName="PA_INSERT_TBL_PORTAL_BIBLIOTECA_IMAGENES" FunctionName="IPSSER_PORTALModel.Store.PA_INSERT_TBL_PORTAL_BIBLIOTECA_IMAGENES" />
+          <FunctionImportMapping FunctionImportName="PA_INSERT_TBL_PORTAL_CONTENIDO_IMAGENES" FunctionName="IPSSER_PORTALModel.Store.PA_INSERT_TBL_PORTAL_CONTENIDO_IMAGENES" />
+          <FunctionImportMapping FunctionImportName="PA_INSERT_TBL_PORTAL_CONTENIDOFRONT" FunctionName="IPSSER_PORTALModel.Store.PA_INSERT_TBL_PORTAL_CONTENIDOFRONT" />
           <FunctionImportMapping FunctionImportName="PA_INSERT_TBL_PORTAL_CONTENIDOSLIDE" FunctionName="IPSSER_PORTALModel.Store.PA_INSERT_TBL_PORTAL_CONTENIDOSLIDE" />
           <FunctionImportMapping FunctionImportName="PA_INSERT_TBL_PORTAL_FRONT" FunctionName="IPSSER_PORTALModel.Store.PA_INSERT_TBL_PORTAL_FRONT" />
-          <FunctionImportMapping FunctionImportName="PA_INSERT_TBL_PORTAL_SLIDE" FunctionName="IPSSER_PORTALModel.Store.PA_INSERT_TBL_PORTAL_SLIDE" />
-          <FunctionImportMapping FunctionImportName="PA_SELECT_TBL_PORTAL_FRONT" FunctionName="IPSSER_PORTALModel.Store.PA_SELECT_TBL_PORTAL_FRONT">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="IPSSER_PORTALModel.PA_SELECT_TBL_PORTAL_FRONT_Result">
-                <ScalarProperty Name="IdFront" ColumnName="IdFront" />
-                <ScalarProperty Name="IdModulo" ColumnName="IdModulo" />
-                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="PA_SELECT_TBL_PORTAL_FRONTXID" FunctionName="IPSSER_PORTALModel.Store.PA_SELECT_TBL_PORTAL_FRONTXID">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="IPSSER_PORTALModel.PA_SELECT_TBL_PORTAL_FRONTXID_Result">
-                <ScalarProperty Name="IdFront" ColumnName="IdFront" />
-                <ScalarProperty Name="IdModulo" ColumnName="IdModulo" />
-                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="PA_UPDATE_TBL_PORTAL_BIBLIOTECA_IMAGENES" FunctionName="IPSSER_PORTALModel.Store.PA_UPDATE_TBL_PORTAL_BIBLIOTECA_IMAGENES" />
-          <FunctionImportMapping FunctionImportName="PA_UPDATE_TBL_PORTAL_CONTENIDOSLIDE" FunctionName="IPSSER_PORTALModel.Store.PA_UPDATE_TBL_PORTAL_CONTENIDOSLIDE" />
-          <FunctionImportMapping FunctionImportName="PA_UPDATE_TBL_PORTAL_FRONT" FunctionName="IPSSER_PORTALModel.Store.PA_UPDATE_TBL_PORTAL_FRONT" />
-          <FunctionImportMapping FunctionImportName="PA_UPDATE_TBL_PORTAL_SLIDE" FunctionName="IPSSER_PORTALModel.Store.PA_UPDATE_TBL_PORTAL_SLIDE" />
-          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="IPSSER_PORTALModel.Store.sp_alterdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="IPSSER_PORTALModel.Store.sp_creatediagram" />
-          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="IPSSER_PORTALModel.Store.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="IPSSER_PORTALModel.Store.sp_helpdiagramdefinition">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="IPSSER_PORTALModel.sp_helpdiagramdefinition_Result">
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="IPSSER_PORTALModel.Store.sp_helpdiagrams">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="IPSSER_PORTALModel.sp_helpdiagrams_Result">
-                <ScalarProperty Name="Database" ColumnName="Database" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Owner" ColumnName="Owner" />
-                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="IPSSER_PORTALModel.Store.sp_renamediagram" />
-          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="IPSSER_PORTALModel.Store.sp_upgraddiagrams" />
-          <FunctionImportMapping FunctionImportName="PA_DELETE_TBL_PORTAL_FRONT_IMAGENES" FunctionName="IPSSER_PORTALModel.Store.PA_DELETE_TBL_PORTAL_FRONT_IMAGENES" />
           <FunctionImportMapping FunctionImportName="PA_INSERT_TBL_PORTAL_FRONT_IMAGENES" FunctionName="IPSSER_PORTALModel.Store.PA_INSERT_TBL_PORTAL_FRONT_IMAGENES" />
-          <FunctionImportMapping FunctionImportName="PA_UPDATE_TBL_PORTAL_FRONT_IMAGENES" FunctionName="IPSSER_PORTALModel.Store.PA_UPDATE_TBL_PORTAL_FRONT_IMAGENES" />
-          <FunctionImportMapping FunctionImportName="PA_DELETE_TBL_PORTAL_CONTENIDOFRONT" FunctionName="IPSSER_PORTALModel.Store.PA_DELETE_TBL_PORTAL_CONTENIDOFRONT" />
-          <FunctionImportMapping FunctionImportName="PA_INSERT_TBL_PORTAL_CONTENIDOFRONT" FunctionName="IPSSER_PORTALModel.Store.PA_INSERT_TBL_PORTAL_CONTENIDOFRONT" />
-          <FunctionImportMapping FunctionImportName="PA_UPDATE_TBL_PORTAL_CONTENIDOFRONT" FunctionName="IPSSER_PORTALModel.Store.PA_UPDATE_TBL_PORTAL_CONTENIDOFRONT" />
-          <FunctionImportMapping FunctionImportName="PA_DELETE_TBL_PORTAL_CONTENIDO_IMAGENES" FunctionName="IPSSER_PORTALModel.Store.PA_DELETE_TBL_PORTAL_CONTENIDO_IMAGENES" />
-          <FunctionImportMapping FunctionImportName="PA_INSERT_TBL_PORTAL_CONTENIDO_IMAGENES" FunctionName="IPSSER_PORTALModel.Store.PA_INSERT_TBL_PORTAL_CONTENIDO_IMAGENES" />
-          <FunctionImportMapping FunctionImportName="PA_UPDATE_TBL_PORTAL_CONTENIDO_IMAGENES" FunctionName="IPSSER_PORTALModel.Store.PA_UPDATE_TBL_PORTAL_CONTENIDO_IMAGENES" />
+          <FunctionImportMapping FunctionImportName="PA_INSERT_TBL_PORTAL_SLIDE" FunctionName="IPSSER_PORTALModel.Store.PA_INSERT_TBL_PORTAL_SLIDE" />
+          <FunctionImportMapping FunctionImportName="PA_SELECT_FRONTS" FunctionName="IPSSER_PORTALModel.Store.PA_SELECT_FRONTS">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IPSSER_PORTALModel.PA_SELECT_FRONTS_Result">
+                <ScalarProperty Name="IdModulo" ColumnName="IdModulo" />
+                <ScalarProperty Name="IdFront" ColumnName="IdFront" />
+                <ScalarProperty Name="Fondo" ColumnName="Fondo" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Contenido1" ColumnName="Contenido1" />
+                <ScalarProperty Name="Contenido2" ColumnName="Contenido2" />
+                <ScalarProperty Name="Contenido3" ColumnName="Contenido3" />
+                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PA_SELECT_FRONTS_CON_SLIDES" FunctionName="IPSSER_PORTALModel.Store.PA_SELECT_FRONTS_CON_SLIDES">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IPSSER_PORTALModel.PA_SELECT_FRONTS_CON_SLIDES_Result">
+                <ScalarProperty Name="IdModulo" ColumnName="IdModulo" />
+                <ScalarProperty Name="IdFront" ColumnName="IdFront" />
+                <ScalarProperty Name="IdSlide" ColumnName="IdSlide" />
+                <ScalarProperty Name="Fondo" ColumnName="Fondo" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Contenido1" ColumnName="Contenido1" />
+                <ScalarProperty Name="Contenido2" ColumnName="Contenido2" />
+                <ScalarProperty Name="Contenido3" ColumnName="Contenido3" />
+                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PA_SELECT_FRONTS_CON_SLIDESXIDMODULO" FunctionName="IPSSER_PORTALModel.Store.PA_SELECT_FRONTS_CON_SLIDESXIDMODULO">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IPSSER_PORTALModel.PA_SELECT_FRONTS_CON_SLIDESXIDMODULO_Result">
+                <ScalarProperty Name="IdModulo" ColumnName="IdModulo" />
+                <ScalarProperty Name="IdFront" ColumnName="IdFront" />
+                <ScalarProperty Name="IdSlide" ColumnName="IdSlide" />
+                <ScalarProperty Name="Fondo" ColumnName="Fondo" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Contenido1" ColumnName="Contenido1" />
+                <ScalarProperty Name="Contenido2" ColumnName="Contenido2" />
+                <ScalarProperty Name="Contenido3" ColumnName="Contenido3" />
+                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PA_SELECT_FRONTSXIDMODULO" FunctionName="IPSSER_PORTALModel.Store.PA_SELECT_FRONTSXIDMODULO" />
           <FunctionImportMapping FunctionImportName="PA_SELECT_TBL_PORTAL_BIBLIOTECA_IMAGENES" FunctionName="IPSSER_PORTALModel.Store.PA_SELECT_TBL_PORTAL_BIBLIOTECA_IMAGENES">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IPSSER_PORTALModel.PA_SELECT_TBL_PORTAL_BIBLIOTECA_IMAGENES_Result">
@@ -1227,6 +840,7 @@
                 <ScalarProperty Name="Titulo" ColumnName="Titulo" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="Path" ColumnName="Path" />
+                <ScalarProperty Name="IdCategoriaBibliotecaImagenes" ColumnName="IdCategoriaBibliotecaImagenes" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -1237,116 +851,37 @@
                 <ScalarProperty Name="Titulo" ColumnName="Titulo" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="Path" ColumnName="Path" />
+                <ScalarProperty Name="IdCategoriaBibliotecaImagenes" ColumnName="IdCategoriaBibliotecaImagenes" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="PA_SELECT_TBL_PORTAL_CONTENIDO_IMAGENES" FunctionName="IPSSER_PORTALModel.Store.PA_SELECT_TBL_PORTAL_CONTENIDO_IMAGENES">
+          <FunctionImportMapping FunctionImportName="PA_SELECT_TBL_PORTAL_CONTENIDO_IMAGENES" FunctionName="IPSSER_PORTALModel.Store.PA_SELECT_TBL_PORTAL_CONTENIDO_IMAGENES" />
+          <FunctionImportMapping FunctionImportName="PA_SELECT_TBL_PORTAL_CONTENIDO_IMAGENESXID" FunctionName="IPSSER_PORTALModel.Store.PA_SELECT_TBL_PORTAL_CONTENIDO_IMAGENESXID" />
+          <FunctionImportMapping FunctionImportName="PA_SELECT_TBL_PORTAL_CONTENIDOFRONT" FunctionName="IPSSER_PORTALModel.Store.PA_SELECT_TBL_PORTAL_CONTENIDOFRONT" />
+          <FunctionImportMapping FunctionImportName="PA_SELECT_TBL_PORTAL_CONTENIDOFRONTXID" FunctionName="IPSSER_PORTALModel.Store.PA_SELECT_TBL_PORTAL_CONTENIDOFRONTXID" />
+          <FunctionImportMapping FunctionImportName="PA_SELECT_TBL_PORTAL_CONTENIDOSLIDE" FunctionName="IPSSER_PORTALModel.Store.PA_SELECT_TBL_PORTAL_CONTENIDOSLIDE" />
+          <FunctionImportMapping FunctionImportName="PA_SELECT_TBL_PORTAL_CONTENIDOSLIDEXID" FunctionName="IPSSER_PORTALModel.Store.PA_SELECT_TBL_PORTAL_CONTENIDOSLIDEXID" />
+          <FunctionImportMapping FunctionImportName="PA_SELECT_TBL_PORTAL_FRONT" FunctionName="IPSSER_PORTALModel.Store.PA_SELECT_TBL_PORTAL_FRONT">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="IPSSER_PORTALModel.PA_SELECT_TBL_PORTAL_CONTENIDO_IMAGENES_Result">
-                <ScalarProperty Name="IdContenidoImagen" ColumnName="IdContenidoImagen" />
-                <ScalarProperty Name="IdContenido" ColumnName="IdContenido" />
+              <ComplexTypeMapping TypeName="IPSSER_PORTALModel.PA_SELECT_TBL_PORTAL_FRONT_Result">
+                <ScalarProperty Name="IdFront" ColumnName="IdFront" />
+                <ScalarProperty Name="IdModulo" ColumnName="IdModulo" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="IdImagen" ColumnName="IdImagen" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="PA_SELECT_TBL_PORTAL_CONTENIDO_IMAGENESXID" FunctionName="IPSSER_PORTALModel.Store.PA_SELECT_TBL_PORTAL_CONTENIDO_IMAGENESXID">
+          <FunctionImportMapping FunctionImportName="PA_SELECT_TBL_PORTAL_FRONT_IMAGENES" FunctionName="IPSSER_PORTALModel.Store.PA_SELECT_TBL_PORTAL_FRONT_IMAGENES" />
+          <FunctionImportMapping FunctionImportName="PA_SELECT_TBL_PORTAL_FRONT_IMAGENESXID" FunctionName="IPSSER_PORTALModel.Store.PA_SELECT_TBL_PORTAL_FRONT_IMAGENESXID" />
+          <FunctionImportMapping FunctionImportName="PA_SELECT_TBL_PORTAL_FRONTXID" FunctionName="IPSSER_PORTALModel.Store.PA_SELECT_TBL_PORTAL_FRONTXID">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="IPSSER_PORTALModel.PA_SELECT_TBL_PORTAL_CONTENIDO_IMAGENESXID_Result">
-                <ScalarProperty Name="IdContenidoImagen" ColumnName="IdContenidoImagen" />
-                <ScalarProperty Name="IdContenido" ColumnName="IdContenido" />
+              <ComplexTypeMapping TypeName="IPSSER_PORTALModel.PA_SELECT_TBL_PORTAL_FRONTXID_Result">
+                <ScalarProperty Name="IdFront" ColumnName="IdFront" />
+                <ScalarProperty Name="IdModulo" ColumnName="IdModulo" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="IdImagen" ColumnName="IdImagen" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="PA_SELECT_TBL_PORTAL_CONTENIDOFRONT" FunctionName="IPSSER_PORTALModel.Store.PA_SELECT_TBL_PORTAL_CONTENIDOFRONT">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="IPSSER_PORTALModel.PA_SELECT_TBL_PORTAL_CONTENIDOFRONT_Result">
-                <ScalarProperty Name="IdContenidoFront" ColumnName="IdContenidoFront" />
-                <ScalarProperty Name="IdFront" ColumnName="IdFront" />
-                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="Contenido_Uno" ColumnName="Contenido_Uno" />
-                <ScalarProperty Name="Contenido_Dos" ColumnName="Contenido_Dos" />
-                <ScalarProperty Name="Contenido_Tres" ColumnName="Contenido_Tres" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="PA_SELECT_TBL_PORTAL_CONTENIDOFRONTXID" FunctionName="IPSSER_PORTALModel.Store.PA_SELECT_TBL_PORTAL_CONTENIDOFRONTXID">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="IPSSER_PORTALModel.PA_SELECT_TBL_PORTAL_CONTENIDOFRONTXID_Result">
-                <ScalarProperty Name="IdContenidoFront" ColumnName="IdContenidoFront" />
-                <ScalarProperty Name="IdFront" ColumnName="IdFront" />
-                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="Contenido_Uno" ColumnName="Contenido_Uno" />
-                <ScalarProperty Name="Contenido_Dos" ColumnName="Contenido_Dos" />
-                <ScalarProperty Name="Contenido_Tres" ColumnName="Contenido_Tres" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="PA_SELECT_TBL_PORTAL_CONTENIDOSLIDE" FunctionName="IPSSER_PORTALModel.Store.PA_SELECT_TBL_PORTAL_CONTENIDOSLIDE">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="IPSSER_PORTALModel.PA_SELECT_TBL_PORTAL_CONTENIDOSLIDE_Result">
-                <ScalarProperty Name="IdContenidoSlide" ColumnName="IdContenidoSlide" />
-                <ScalarProperty Name="IdSlide" ColumnName="IdSlide" />
-                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="Contenido_Uno" ColumnName="Contenido_Uno" />
-                <ScalarProperty Name="Contenido_Dos" ColumnName="Contenido_Dos" />
-                <ScalarProperty Name="Contenido_Tres" ColumnName="Contenido_Tres" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="PA_SELECT_TBL_PORTAL_CONTENIDOSLIDEXID" FunctionName="IPSSER_PORTALModel.Store.PA_SELECT_TBL_PORTAL_CONTENIDOSLIDEXID">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="IPSSER_PORTALModel.PA_SELECT_TBL_PORTAL_CONTENIDOSLIDEXID_Result">
-                <ScalarProperty Name="IdContenidoSlide" ColumnName="IdContenidoSlide" />
-                <ScalarProperty Name="IdSlide" ColumnName="IdSlide" />
-                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="Contenido_Uno" ColumnName="Contenido_Uno" />
-                <ScalarProperty Name="Contenido_Dos" ColumnName="Contenido_Dos" />
-                <ScalarProperty Name="Contenido_Tres" ColumnName="Contenido_Tres" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="PA_SELECT_TBL_PORTAL_FRONT_IMAGENES" FunctionName="IPSSER_PORTALModel.Store.PA_SELECT_TBL_PORTAL_FRONT_IMAGENES">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="IPSSER_PORTALModel.PA_SELECT_TBL_PORTAL_FRONT_IMAGENES_Result">
-                <ScalarProperty Name="IdFrontImagenes" ColumnName="IdFrontImagenes" />
-                <ScalarProperty Name="IdFront" ColumnName="IdFront" />
-                <ScalarProperty Name="IdImagen" ColumnName="IdImagen" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="PA_SELECT_TBL_PORTAL_FRONT_IMAGENESXID" FunctionName="IPSSER_PORTALModel.Store.PA_SELECT_TBL_PORTAL_FRONT_IMAGENESXID">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="IPSSER_PORTALModel.PA_SELECT_TBL_PORTAL_FRONT_IMAGENESXID_Result">
-                <ScalarProperty Name="IdFrontImagenes" ColumnName="IdFrontImagenes" />
-                <ScalarProperty Name="IdFront" ColumnName="IdFront" />
-                <ScalarProperty Name="IdImagen" ColumnName="IdImagen" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="PA_SELECT_TBL_PORTAL_SLIDE" FunctionName="IPSSER_PORTALModel.Store.PA_SELECT_TBL_PORTAL_SLIDE">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="IPSSER_PORTALModel.PA_SELECT_TBL_PORTAL_SLIDE_Result">
-                <ScalarProperty Name="IdSlide" ColumnName="IdSlide" />
-                <ScalarProperty Name="IdFront" ColumnName="IdFront" />
-                <ScalarProperty Name="IdImagen" ColumnName="IdImagen" />
-                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="PA_SELECT_TBL_PORTAL_SLIDEXID" FunctionName="IPSSER_PORTALModel.Store.PA_SELECT_TBL_PORTAL_SLIDEXID">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="IPSSER_PORTALModel.PA_SELECT_TBL_PORTAL_SLIDEXID_Result">
-                <ScalarProperty Name="IdSlide" ColumnName="IdSlide" />
-                <ScalarProperty Name="IdFront" ColumnName="IdFront" />
-                <ScalarProperty Name="IdImagen" ColumnName="IdImagen" />
-                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -1359,64 +894,60 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="PA_SELECT_FRONTS_CON_SLIDES" FunctionName="IPSSER_PORTALModel.Store.PA_SELECT_FRONTS_CON_SLIDES">
+          <FunctionImportMapping FunctionImportName="PA_SELECT_TBL_PORTAL_SLIDE" FunctionName="IPSSER_PORTALModel.Store.PA_SELECT_TBL_PORTAL_SLIDE">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="IPSSER_PORTALModel.PA_SELECT_FRONTS_CON_SLIDES_Result">
-                <ScalarProperty Name="IdModulo" ColumnName="IdModulo" />
-                <ScalarProperty Name="IdFront" ColumnName="IdFront" />
+              <ComplexTypeMapping TypeName="IPSSER_PORTALModel.PA_SELECT_TBL_PORTAL_SLIDE_Result">
                 <ScalarProperty Name="IdSlide" ColumnName="IdSlide" />
-                <ScalarProperty Name="Fondo" ColumnName="Fondo" />
-                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
-                <ScalarProperty Name="Contenido1" ColumnName="Contenido1" />
-                <ScalarProperty Name="Contenido2" ColumnName="Contenido2" />
-                <ScalarProperty Name="Contenido3" ColumnName="Contenido3" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="PA_SELECT_FRONTS" FunctionName="IPSSER_PORTALModel.Store.PA_SELECT_FRONTS">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="IPSSER_PORTALModel.PA_SELECT_FRONTS_Result">
-                <ScalarProperty Name="IdModulo" ColumnName="IdModulo" />
                 <ScalarProperty Name="IdFront" ColumnName="IdFront" />
-                <ScalarProperty Name="Fondo" ColumnName="Fondo" />
+                <ScalarProperty Name="IdImagen" ColumnName="IdImagen" />
                 <ScalarProperty Name="Titulo" ColumnName="Titulo" />
-                <ScalarProperty Name="Contenido1" ColumnName="Contenido1" />
-                <ScalarProperty Name="Contenido2" ColumnName="Contenido2" />
-                <ScalarProperty Name="Contenido3" ColumnName="Contenido3" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="PA_SELECT_FRONTS_CON_SLIDESXIDMODULO" FunctionName="IPSSER_PORTALModel.Store.PA_SELECT_FRONTS_CON_SLIDESXIDMODULO">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="IPSSER_PORTALModel.PA_SELECT_FRONTS_CON_SLIDESXIDMODULO_Result">
-                <ScalarProperty Name="IdModulo" ColumnName="IdModulo" />
-                <ScalarProperty Name="IdFront" ColumnName="IdFront" />
-                <ScalarProperty Name="IdSlide" ColumnName="IdSlide" />
-                <ScalarProperty Name="Fondo" ColumnName="Fondo" />
-                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
-                <ScalarProperty Name="Contenido1" ColumnName="Contenido1" />
-                <ScalarProperty Name="Contenido2" ColumnName="Contenido2" />
-                <ScalarProperty Name="Contenido3" ColumnName="Contenido3" />
-                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Contenido_Uno" ColumnName="Contenido_Uno" />
+                <ScalarProperty Name="Contenido_Dos" ColumnName="Contenido_Dos" />
+                <ScalarProperty Name="Contenido_Tres" ColumnName="Contenido_Tres" />
                 <ScalarProperty Name="Link" ColumnName="Link" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="PA_SELECT_FRONTSXIDMODULO" FunctionName="IPSSER_PORTALModel.Store.PA_SELECT_FRONTSXIDMODULO">
+          <FunctionImportMapping FunctionImportName="PA_SELECT_TBL_PORTAL_SLIDEXID" FunctionName="IPSSER_PORTALModel.Store.PA_SELECT_TBL_PORTAL_SLIDEXID">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="IPSSER_PORTALModel.PA_SELECT_FRONTSXIDMODULO_Result">
-                <ScalarProperty Name="IdModulo" ColumnName="IdModulo" />
+              <ComplexTypeMapping TypeName="IPSSER_PORTALModel.PA_SELECT_TBL_PORTAL_SLIDEXID_Result">
+                <ScalarProperty Name="IdSlide" ColumnName="IdSlide" />
                 <ScalarProperty Name="IdFront" ColumnName="IdFront" />
-                <ScalarProperty Name="Fondo" ColumnName="Fondo" />
+                <ScalarProperty Name="IdImagen" ColumnName="IdImagen" />
                 <ScalarProperty Name="Titulo" ColumnName="Titulo" />
-                <ScalarProperty Name="Contenido1" ColumnName="Contenido1" />
-                <ScalarProperty Name="Contenido2" ColumnName="Contenido2" />
-                <ScalarProperty Name="Contenido3" ColumnName="Contenido3" />
-                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Contenido_Uno" ColumnName="Contenido_Uno" />
+                <ScalarProperty Name="Contenido_Dos" ColumnName="Contenido_Dos" />
+                <ScalarProperty Name="Contenido_Tres" ColumnName="Contenido_Tres" />
                 <ScalarProperty Name="Link" ColumnName="Link" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PA_UPDATE_TBL_PORTAL_BIBLIOTECA_IMAGENES" FunctionName="IPSSER_PORTALModel.Store.PA_UPDATE_TBL_PORTAL_BIBLIOTECA_IMAGENES" />
+          <FunctionImportMapping FunctionImportName="PA_UPDATE_TBL_PORTAL_CONTENIDO_IMAGENES" FunctionName="IPSSER_PORTALModel.Store.PA_UPDATE_TBL_PORTAL_CONTENIDO_IMAGENES" />
+          <FunctionImportMapping FunctionImportName="PA_UPDATE_TBL_PORTAL_CONTENIDOFRONT" FunctionName="IPSSER_PORTALModel.Store.PA_UPDATE_TBL_PORTAL_CONTENIDOFRONT" />
+          <FunctionImportMapping FunctionImportName="PA_UPDATE_TBL_PORTAL_CONTENIDOSLIDE" FunctionName="IPSSER_PORTALModel.Store.PA_UPDATE_TBL_PORTAL_CONTENIDOSLIDE" />
+          <FunctionImportMapping FunctionImportName="PA_UPDATE_TBL_PORTAL_FRONT" FunctionName="IPSSER_PORTALModel.Store.PA_UPDATE_TBL_PORTAL_FRONT" />
+          <FunctionImportMapping FunctionImportName="PA_UPDATE_TBL_PORTAL_FRONT_IMAGENES" FunctionName="IPSSER_PORTALModel.Store.PA_UPDATE_TBL_PORTAL_FRONT_IMAGENES" />
+          <FunctionImportMapping FunctionImportName="PA_UPDATE_TBL_PORTAL_SLIDE" FunctionName="IPSSER_PORTALModel.Store.PA_UPDATE_TBL_PORTAL_SLIDE" />
+          <EntitySetMapping Name="TBL_PORTAL_DIRECTORIO_INTERNO">
+            <EntityTypeMapping TypeName="IPSSER_PORTALModel.TBL_PORTAL_DIRECTORIO_INTERNO">
+              <MappingFragment StoreEntitySet="TBL_PORTAL_DIRECTORIO_INTERNO">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Extension" ColumnName="Extension" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+                <ScalarProperty Name="IdDirectorioInterno" ColumnName="IdDirectorioInterno" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_PORTAL_TRABAJA_CON_NOSOTROS">
+            <EntityTypeMapping TypeName="IPSSER_PORTALModel.TBL_PORTAL_TRABAJA_CON_NOSOTROS">
+              <MappingFragment StoreEntitySet="TBL_PORTAL_TRABAJA_CON_NOSOTROS">
+                <ScalarProperty Name="IdTrabajaConNosotros" ColumnName="IdTrabajaConNosotros" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -1434,7 +965,7 @@
         <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
-        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->

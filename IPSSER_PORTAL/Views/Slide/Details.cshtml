@@ -11,7 +11,7 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Titulo)
+            Título Panel
         </dt>
 
         <dd>
@@ -19,7 +19,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Descripcion)
+            Descripción Panel
         </dt>
 
         <dd>
@@ -27,19 +27,51 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.TBL_PORTAL_BIBLIOTECA_IMAGENES.Titulo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TBL_PORTAL_BIBLIOTECA_IMAGENES.Titulo)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TBL_PORTAL_FRONT.Titulo)
+            Nombre Front
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.TBL_PORTAL_FRONT.Titulo)
+        </dd>
+
+        <dt>
+            Contenido Uno
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Contenido_Uno)
+        </dd>
+
+        <dt>
+            Contenido Dos
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Contenido_Dos)
+        </dd>
+
+        <dt>
+            Contenido Tres
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Contenido_Tres)
+        </dd>
+
+        <dt>
+            Link
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Link)
+        </dd>
+
+        <dt>
+            Imagen
+        </dt>
+
+        <dd>
+            <img style="border-radius:5px" width="30%" src="../@Html.DisplayFor(model => model.TBL_PORTAL_BIBLIOTECA_IMAGENES.Path)" />
         </dd>
 
     </dl>

@@ -12,7 +12,7 @@ namespace IPSSER_PORTAL.Controllers
 {
     public class ContenidoFrontController : Controller
     {
-        private IPSSER_PORTALEntities db = new IPSSER_PORTALEntities();
+        /*private IPSSER_PORTALEntities db = new IPSSER_PORTALEntities();
 
         // GET: ContenidoFront
         public ActionResult Index()
@@ -211,6 +211,6 @@ namespace IPSSER_PORTAL.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
-        }
+        }*/
     }
 }

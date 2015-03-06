@@ -12,17 +12,11 @@ namespace IPSSER.DATOS
     using System;
     using System.Collections.Generic;
     
-    public partial class TBL_PORTAL_MODULO
+    public partial class TBL_PORTAL_DIRECTORIO_INTERNO
     {
-        public TBL_PORTAL_MODULO()
-        {
-            this.TBL_PORTAL_FRONT = new HashSet<TBL_PORTAL_FRONT>();
-        }
-    
-        public int IdModulo { get; set; }
-        public string NombreModulo { get; set; }
-        public string Descripcion { get; set; }
-    
-        public virtual ICollection<TBL_PORTAL_FRONT> TBL_PORTAL_FRONT { get; set; }
+        public decimal IdDirectorioInterno { get; set; }
+        public string Departamento { get; set; }
+        public string Extension { get; set; }
+        public string Email { get; set; }
     }
 }

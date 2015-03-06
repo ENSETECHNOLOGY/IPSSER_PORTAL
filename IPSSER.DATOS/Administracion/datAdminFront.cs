@@ -42,7 +42,7 @@ namespace IPSSER.DATOS.Administracion
             string strResultado = "";
             var Contexto = new IPSSER_PORTALEntities();
 
-            strResultado = Contexto.PA_UPDATE_TBL_PORTAL_FRONT(IdFront, IdModulo, Titulo, Descripcion, IdImagen).ToString();
+            strResultado = Contexto.PA_UPDATE_TBL_PORTAL_FRONT(IdFront, IdModulo, Titulo, Descripcion).ToString();
 
             return strResultado;
             }

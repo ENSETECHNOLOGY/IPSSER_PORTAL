@@ -42,7 +42,7 @@ namespace IPSSER_PORTAL.Controllers
             var Imagenes = db.TBL_PORTAL_BIBLIOTECA_IMAGENES;
             var ListaImagenes = Imagenes.ToList();
             ViewBag.IdImagen = ListaImagenes;
-
+            
             ViewBag.IdFront = new SelectList(db.TBL_PORTAL_FRONT, "IdFront", "Titulo");
             return View();
         }
@@ -52,7 +52,7 @@ namespace IPSSER_PORTAL.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdSlide,IdFront,IdImagen,Titulo,Descripcion")] TBL_PORTAL_SLIDE tBL_PORTAL_SLIDE)
+        public ActionResult Create([Bind(Include = "IdSlide,IdFront,IdImagen,Titulo,Descripcion,Contenido_Uno,Contenido_Dos,Contenido_Tres,Link")] TBL_PORTAL_SLIDE tBL_PORTAL_SLIDE)
         {
             string Respuesta = "";
             IPSSER.DATOS.Administracion.datAdminSlide ObjDatAdministracion = new IPSSER.DATOS.Administracion.datAdminSlide();
@@ -77,7 +77,7 @@ namespace IPSSER_PORTAL.Controllers
 
                 if (ModelState.IsValid)
                 {
-                    Respuesta = ObjDatAdministracion.InsertarSlide(tBL_PORTAL_SLIDE.IdFront, Id_Imagen, tBL_PORTAL_SLIDE.Titulo, tBL_PORTAL_SLIDE.Descripcion);
+                    Respuesta = ObjDatAdministracion.InsertarSlide(tBL_PORTAL_SLIDE.IdFront, Id_Imagen, tBL_PORTAL_SLIDE.Titulo, tBL_PORTAL_SLIDE.Descripcion, tBL_PORTAL_SLIDE.Contenido_Uno, tBL_PORTAL_SLIDE.Contenido_Dos, tBL_PORTAL_SLIDE.Contenido_Tres, tBL_PORTAL_SLIDE.Link);
                     return RedirectToAction("Index");
                 }
 
@@ -129,7 +129,7 @@ namespace IPSSER_PORTAL.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdSlide,IdFront,IdImagen,Titulo,Descripcion")] TBL_PORTAL_SLIDE tBL_PORTAL_SLIDE)
+        public ActionResult Edit([Bind(Include = "IdSlide,IdFront,IdImagen,Titulo,Descripcion,Contenido_Uno,Contenido_Dos,Contenido_Tres,Link")] TBL_PORTAL_SLIDE tBL_PORTAL_SLIDE)
         {
             string Respuesta = "";
             IPSSER.DATOS.Administracion.datAdminSlide ObjDatAdministracion = new IPSSER.DATOS.Administracion.datAdminSlide();
@@ -154,7 +154,7 @@ namespace IPSSER_PORTAL.Controllers
 
                 if (ModelState.IsValid)
                 {
-                    Respuesta = ObjDatAdministracion.ActualizarSlide(tBL_PORTAL_SLIDE.IdSlide, tBL_PORTAL_SLIDE.IdFront, Id_Imagen, tBL_PORTAL_SLIDE.Titulo, tBL_PORTAL_SLIDE.Descripcion);
+                    Respuesta = ObjDatAdministracion.ActualizarSlide(tBL_PORTAL_SLIDE.IdSlide, tBL_PORTAL_SLIDE.IdFront, Id_Imagen, tBL_PORTAL_SLIDE.Titulo, tBL_PORTAL_SLIDE.Descripcion, tBL_PORTAL_SLIDE.Contenido_Uno, tBL_PORTAL_SLIDE.Contenido_Dos, tBL_PORTAL_SLIDE.Contenido_Tres, tBL_PORTAL_SLIDE.Link);
                     return RedirectToAction("Index");
                 }
 

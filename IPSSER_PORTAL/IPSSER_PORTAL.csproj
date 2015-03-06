@@ -197,6 +197,7 @@
     <Compile Include="Controllers\InicioController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SlideController.cs" />
+    <Compile Include="Controllers\TrabajaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -692,6 +693,7 @@
     <Content Include="js\revolutionslider\rs-plugin\images\.DS_Store" />
     <Content Include="js\revolutionslider\rs-plugin\js\.DS_Store" />
     <Content Include="js\style-switcher\Thumbs.db" />
+    <None Include="Properties\PublishProfiles\IPSSER.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -781,6 +783,8 @@
     <Content Include="Views\ImagenesContenido\Index.cshtml" />
     <Content Include="Views\Inicio\Index.cshtml" />
     <Content Include="Views\Administracion\Index.cshtml" />
+    <Content Include="Views\TrabajaConNosotros\Index.cshtml" />
+    <Content Include="Views\Trabaja\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

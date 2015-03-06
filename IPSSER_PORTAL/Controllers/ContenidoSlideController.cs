@@ -12,7 +12,7 @@ namespace IPSSER_PORTAL.Controllers
 {
     public class ContenidoSlideController : Controller
     {
-        private IPSSER_PORTALEntities db = new IPSSER_PORTALEntities();
+        /*private IPSSER_PORTALEntities db = new IPSSER_PORTALEntities();
 
         // GET: ContenidoSlide
         public ActionResult Index()
@@ -218,6 +218,6 @@ namespace IPSSER_PORTAL.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
-        }
+        }*/
     }
 }

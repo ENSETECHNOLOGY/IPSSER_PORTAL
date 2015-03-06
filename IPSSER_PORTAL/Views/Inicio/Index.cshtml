@@ -215,18 +215,143 @@
     <div class="clearfix"></div>
     *@
     <!--end section-->
-    <!-- Section Servicios Principales -->
+
+        <!-- Section Quienes Somos 1 -->
         <div id="section-2">
+            <div class="section_holder12">
+                <div class="container">
+                    @foreach (var FrontOurs1 in ViewBag.ListaServicios1)
+                    {
+                        <h1 class="lt_title_big">Nosotros</h1>
+                        <div class="lt_title_line"></div>
+                    <!-- <p class="lt_title_bottomtext">Sirviendo con PASIÓN transportando con AMOR</p>-->
+                        <div class="clearfix"></div>
+                        <div class="container">
+                            <div class="one_half">
+                                <!-- <h4 class="bold uppercase">Sirviendo con PASIÓN transportando con AMOR</h4> -->
+                                <ul class="list">
+                                    <li><i class="fa fa-check"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
+                                </ul>
+                            </div>
+
+                            <div class="one_half last">
+
+                                <div class="img_holder">
+                                    <img src="@FrontOurs1.Imagen" alt="" class="img_size1" />
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <!-- end section 1-->
+        <!-- Section Quienes Somos 2 -->
+        <div id="section-2.1">
+            <div class="section_holder51">
+                <div class="container">
+                    <!-- <p class="lt_title_bottomtext white">Sirviendo con PASIÓN transportando con AMOR</p>-->
+                    <div class="clearfix"></div>
+                    <section class="slider">
+                        <div class="flexslider style2">
+                            <ul class="slides">
+
+                                <!-- Quemado -->
+                                <div class="one_fourth">
+                                    <div class="icon"><span class="glyph-item mega" aria-hidden="true" data-icon="&#xe037"></span></div>
+                                    <h5 class="white">Quién Somos</h5>
+                                    <p class="white">Somos SERes humanos que conocemos a fondo la necesidad de brindar una atención especializada y personalizada a los discapacitados en cualquier modalidad sea física o siquiátrica ...</p>
+                                </div>
+
+                                <div class="one_fourth">
+                                    <div class="icon"><span class="glyph-item mega" aria-hidden="true" data-icon="&#xe09e;"></span></div>
+                                    <h5 class="white">Misión</h5>
+                                    <p class="white">IPS SER se creó con el firme compromiso de transportar a todo SER HUMANO en Condición de Discapacidad y/o Paciente No Urgente que requieren una mejor calidad de vida ...</p>
+                                </div>
+
+                                <div class="one_fourth">
+                                    <div class="icon"><span class="glyph-item mega" aria-hidden="true" data-icon="&#xe087;"></span></div>
+                                    <h5 class="white">Visión</h5>
+                                    <p class="white">IPS SER en el año 2020 será vista como la compañía Líder a nivel Nacional e Internacional en la prestación del servicio de Asistencia Domiciliaria y Transporte Especializado ...</p>
+                                </div>
+
+                                <div class="one_fourth last">
+                                    <div class="icon"><span class="glyph-item mega" aria-hidden="true" data-icon="&#xe001;"></span></div>
+                                    <h5 class="white">Valores</h5>
+                                    <p class="white">Valores Humanos:<br />Honestidad<br />Respeto<br />Responsabilidad<br />Disciplina ...</p>
+                                </div>
+
+                                <!-- Delimitar cada 4 un nuevo li -->
+                                @{int x2 = 0; int numCount2 = 1;}
+                                @foreach (var FrontOurs2 in ViewBag.ListaNosotros2)
+                                {
+                                    if ((x2 % 4) == 0)
+                                    { @Html.Raw("<li>") }
+                                    if ((numCount2 % 4) == 0)
+                                    {
+                                        <div class="one_fourth last">
+                                            <div class="icon"><span class="glyph-item mega" aria-hidden="true" data-icon="&#xe044;"></span></div>
+                                            <h5 class="white">@FrontOurs2.Titulo</h5>
+                                            <p class="white">@FrontOurs2.Contenido1</p>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="one_fourth">
+                                            <div class="icon"><span class="glyph-item mega" aria-hidden="true" data-icon="&#xe044;"></span></div>
+                                            <h5 class="white">@FrontOurs2.Titulo</h5>
+                                            <p class="white">@FrontOurs2.Contenido1</p>
+                                        </div>
+                                    }
+                                    if ((numCount2 % 4) == 0)
+                                    { @Html.Raw("</li>") }
+                                    x2 = x2 + 1;
+                                    numCount2++;
+                                }
+                                <!--end item-->
+                            </ul>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <!-- end section 5 -->
+
+        <!-- Section Transporte -->
+        <div id="section-3">
+            <div class="section_holder48">
+                <div class="container">
+                    <h1 class="lt_title_big">Transportando con <span>AMOR</span></h1>
+                    <div class="lt_title_line"></div>
+                    <div class="clearfix"></div>
+                    <div class="container">
+                        <div class="one_half">
+                            <ul class="list">
+                                <li><i class="fa fa-check"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <!--end section-->
+
+        <!-- Section Servicios Principales -->
+        <div id="section-4">
             <div class="section_holder48">
                 <div class="container">
                     <h1 class="lt_title_big">Sirviendo con <span>PASIÓN</span> transportando con <span>AMOR</span></h1>
                     <div class="lt_title_line"></div>
-                    @foreach (var FrontServices1 in ViewBag.ListaServicios1)
+
+                    @foreach (var FrontServices1 in ViewBag.ListaNosotros1)
                     {
                         <div class="box">
                             <div class="arrow_up"></div>
                             <h1 class="white padd_top1 bold">@FrontServices1.Titulo</h1>
-                            <h3 class="white uppercase">@FrontServices1.Contenido1</h3>
+                            <h3 class="white uppercase">@FrontServices1.Descripcion</h3>
                             <p class="white">@FrontServices1.Link</p>
                             <div class="arrow_down"></div>
                         </div>
@@ -237,43 +362,44 @@
         </div>
         <div class="clearfix"></div>
         <!--end section-->
-        
         <!-- Section Servicios Secundarios -->
-        <div id="section-3">      
+        <div id="section-4.1">
             <div class="section_holder12">
                 <div class="container">
-                    <h1 class="lt_title_big">Otros Servicios</h1>
+                    <!-- <h1 class="lt_title_big">Otros Servicios</h1>-->
                     <div class="lt_title_line two"></div>
                     <div class="clearfix"></div>
                     <section class="slider">
                         <div class="flexslider style2">
                             <ul class="slides">
                                 <!-- Delimitar cada 4 un nuevo li -->
-                                    @{int x = 0; int numCount = 1;}
-                                    @foreach (var FrontServices2 in ViewBag.ListaServicios2)
+                                @{int x = 0; int numCount = 1;}
+                                @foreach (var FrontServices2 in ViewBag.ListaServicios2)
+                                {
+                                    if ((x % 4) == 0)
+                                    { @Html.Raw("<li>") }
+                                    if ((numCount % 4) == 0)
                                     {
-                                            if ((x % 4) == 0) { @Html.Raw("<li>") }
-                                            if ((numCount % 4) == 0)
-                                            {
-                                                <div class="one_fourth last">
-                                                    <div class="icon"><span class="glyph-item mega" aria-hidden="true" data-icon="&#xe044;"></span></div>
-                                                    <h5>@FrontServices2.Titulo</h5>
-                                                    <p>@FrontServices2.Contenido1</p>
-                                                </div>
-                                            }
-                                            else
-                                            {
-                                                <div class="one_fourth">
-                                                    <div class="icon"><span class="glyph-item mega" aria-hidden="true" data-icon="&#xe044;"></span></div>
-                                                    <h5>@FrontServices2.Titulo</h5>
-                                                    <p>@FrontServices2.Contenido1</p>
-                                                </div>
-                                            }
-                                            if ((numCount % 4) == 0) { @Html.Raw("</li>") }
-                                        x = x + 1;
-                                        numCount++;
+                                        <div class="one_fourth last">
+                                            <div class="icon"><span class="glyph-item mega" aria-hidden="true" data-icon="&#xe044;"></span></div>
+                                            <h5>@FrontServices2.Titulo</h5>
+                                            <p>@FrontServices2.Contenido1</p>
+                                        </div>
                                     }
-                                    <!--end item-->
+                                    else
+                                    {
+                                        <div class="one_fourth">
+                                            <div class="icon"><span class="glyph-item mega" aria-hidden="true" data-icon="&#xe044;"></span></div>
+                                            <h5>@FrontServices2.Titulo</h5>
+                                            <p>@FrontServices2.Contenido1</p>
+                                        </div>
+                                    }
+                                    if ((numCount % 4) == 0)
+                                    { @Html.Raw("</li>") }
+                                    x = x + 1;
+                                    numCount++;
+                                }
+                                <!--end item-->
                             </ul>
                         </div>
                     </section>
@@ -281,88 +407,27 @@
             </div>
         </div>
         <div class="clearfix"></div>
-            <!--end section-->
+        <!--end section-->
 
-        <!-- Section Quienes Somos 1 -->
-        <div id="section-4">
-            <div class="section_holder12">
+        <!-- Section Documentaciòn -->
+        <div id="section-5">
+            <div class="section_holder48">
                 <div class="container">
-                    @foreach (var FrontOurs1 in ViewBag.ListaNosotros1)
-                    {
-                    <h1 class="lt_title_big">@FrontOurs1.Titulo</h1>
+                    <h1 class="lt_title_big">IPS SER <span>DOCUMENTACIÒN</span></h1>
                     <div class="lt_title_line"></div>
-                    <!-- <p class="lt_title_bottomtext">Sirviendo con PASIÓN transportando con AMOR</p>-->
                     <div class="clearfix"></div>
                     <div class="container">
                         <div class="one_half">
-                            <h1 class="bold uppercase">Sirviendo con PASIÓN transportando con AMOR</h1>
                             <ul class="list">
-                                <li><i class="fa fa-check"></i> @FrontOurs1.Contenido1</li>
+                                <li><i class="fa fa-check"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
                             </ul>
                         </div>
-
-                        <div class="one_half last">
-
-                            <div class="img_holder">
-                                <img src="@FrontOurs1.Imagen" alt="" class="img_size1" />
-                            </div>
-                        </div>
                     </div>
-                    }
                 </div>
             </div>
         </div>
         <div class="clearfix"></div>
-        <!-- end section 1-->
-
-            <!-- Section Quienes Somos 2 -->
-            <div id="section-5">
-                <div class="section_holder51">
-                    <div class="container">
-                        <h1 class="lt_title_big white"><span>Nosotros</span></h1>
-                        <div class="lt_title_line two"></div>
-                        <!-- <p class="lt_title_bottomtext white">Sirviendo con PASIÓN transportando con AMOR</p>-->
-                        <div class="clearfix"></div>
-                        <section class="slider">
-                            <div class="flexslider style2">
-                                <ul class="slides">
-                                    
-                                    <!-- Delimitar cada 4 un nuevo li -->
-                                    @{int x2 = 0; int numCount2 = 1;}
-                                    @foreach (var FrontOurs2 in ViewBag.ListaNosotros2)
-                                    {
-                                        if ((x2 % 4) == 0)
-                                        { @Html.Raw("<li>") }
-                                        if ((numCount2 % 4) == 0)
-                                        {
-                                            <div class="one_fourth last">
-                                                <div class="icon"><span class="glyph-item mega" aria-hidden="true" data-icon="&#xe044;"></span></div>
-                                                <h5 class="white">@FrontOurs2.Titulo</h5>
-                                                <p class="white">@FrontOurs2.Contenido1</p>
-                                            </div>
-                                        }
-                                        else
-                                        {
-                                            <div class="one_fourth">
-                                                <div class="icon"><span class="glyph-item mega" aria-hidden="true" data-icon="&#xe044;"></span></div>
-                                                <h5 class="white">@FrontOurs2.Titulo</h5>
-                                                <p class="white">@FrontOurs2.Contenido1</p>
-                                            </div>
-                                        }
-                                        if ((numCount2 % 4) == 0)
-                                        { @Html.Raw("</li>") }
-                                        x2 = x2 + 1;
-                                        numCount2++;
-                                    }
-                                    <!--end item-->
-                                </ul>
-                            </div>
-                        </section>
-                    </div>
-                </div>
-            </div>
-            <div class="clearfix"></div>
-            <!-- end section 5 -->
+        <!--end section-->
 
             <div id="section-6">
                 <div class="section_holder30">
@@ -406,7 +471,7 @@
                                 <div class="text">
                                     <h4 class="lessmar">TRABAJA CON NOSOTROS</h4>
                                     <ul class="list">
-                                        <li><a href="#">Detalle del servicio</a></li>
+                                        <li><a href="/Trabaja/">Ir a Formulario</a></li>
                                     </ul>
                                 </div>
                             </div>

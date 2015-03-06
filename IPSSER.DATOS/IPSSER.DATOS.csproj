@@ -103,9 +103,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MD_PORTAL.edmx</DependentUpon>
     </Compile>
-    <Compile Include="PA_SELECT_FRONTSXIDMODULO_Result.cs">
-      <DependentUpon>MD_PORTAL.tt</DependentUpon>
-    </Compile>
     <Compile Include="PA_SELECT_FRONTS_CON_SLIDESXIDMODULO_Result.cs">
       <DependentUpon>MD_PORTAL.tt</DependentUpon>
     </Compile>
@@ -121,31 +118,7 @@
     <Compile Include="PA_SELECT_TBL_PORTAL_BIBLIOTECA_IMAGENES_Result.cs">
       <DependentUpon>MD_PORTAL.tt</DependentUpon>
     </Compile>
-    <Compile Include="PA_SELECT_TBL_PORTAL_CONTENIDOFRONTXID_Result.cs">
-      <DependentUpon>MD_PORTAL.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PA_SELECT_TBL_PORTAL_CONTENIDOFRONT_Result.cs">
-      <DependentUpon>MD_PORTAL.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PA_SELECT_TBL_PORTAL_CONTENIDOSLIDEXID_Result.cs">
-      <DependentUpon>MD_PORTAL.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PA_SELECT_TBL_PORTAL_CONTENIDOSLIDE_Result.cs">
-      <DependentUpon>MD_PORTAL.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PA_SELECT_TBL_PORTAL_CONTENIDO_IMAGENESXID_Result.cs">
-      <DependentUpon>MD_PORTAL.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PA_SELECT_TBL_PORTAL_CONTENIDO_IMAGENES_Result.cs">
-      <DependentUpon>MD_PORTAL.tt</DependentUpon>
-    </Compile>
     <Compile Include="PA_SELECT_TBL_PORTAL_FRONTXID_Result.cs">
-      <DependentUpon>MD_PORTAL.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PA_SELECT_TBL_PORTAL_FRONT_IMAGENESXID_Result.cs">
-      <DependentUpon>MD_PORTAL.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PA_SELECT_TBL_PORTAL_FRONT_IMAGENES_Result.cs">
       <DependentUpon>MD_PORTAL.tt</DependentUpon>
     </Compile>
     <Compile Include="PA_SELECT_TBL_PORTAL_FRONT_Result.cs">
@@ -161,25 +134,13 @@
       <DependentUpon>MD_PORTAL.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>MD_PORTAL.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sp_helpdiagrams_Result.cs">
-      <DependentUpon>MD_PORTAL.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sysdiagrams.cs">
-      <DependentUpon>MD_PORTAL.tt</DependentUpon>
-    </Compile>
     <Compile Include="TBL_PORTAL_BIBLIOTECA_IMAGENES.cs">
       <DependentUpon>MD_PORTAL.tt</DependentUpon>
     </Compile>
-    <Compile Include="TBL_PORTAL_CONTENIDOFRONT.cs">
+    <Compile Include="TBL_PORTAL_CATEGORIA_BIBLIOTECA_IMAGENES.cs">
       <DependentUpon>MD_PORTAL.tt</DependentUpon>
     </Compile>
-    <Compile Include="TBL_PORTAL_CONTENIDOSLIDE.cs">
-      <DependentUpon>MD_PORTAL.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TBL_PORTAL_CONTENIDO_IMAGENES.cs">
+    <Compile Include="TBL_PORTAL_DIRECTORIO_INTERNO.cs">
       <DependentUpon>MD_PORTAL.tt</DependentUpon>
     </Compile>
     <Compile Include="TBL_PORTAL_FRONT.cs">
@@ -189,6 +150,9 @@
       <DependentUpon>MD_PORTAL.tt</DependentUpon>
     </Compile>
     <Compile Include="TBL_PORTAL_SLIDE.cs">
+      <DependentUpon>MD_PORTAL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TBL_PORTAL_TRABAJA_CON_NOSOTROS.cs">
       <DependentUpon>MD_PORTAL.tt</DependentUpon>
     </Compile>
   </ItemGroup>

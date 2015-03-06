@@ -12,12 +12,12 @@ namespace IPSSER_PORTAL.Controllers
 {
     public class ImagenesContenidoController : Controller
     {
-        private IPSSER_PORTALEntities db = new IPSSER_PORTALEntities();
+        /*private IPSSER_PORTALEntities db = new IPSSER_PORTALEntities();
 
         // GET: ImagenesContenido
         public ActionResult Index()
         {
-            var tBL_PORTAL_CONTENIDO_IMAGENES = db.TBL_PORTAL_CONTENIDO_IMAGENES.Include(t => t.TBL_PORTAL_BIBLIOTECA_IMAGENES).Include(t => t.TBL_PORTAL_CONTENIDOFRONT);
+            //var tBL_PORTAL_CONTENIDO_IMAGENES = db.TBL_PORTAL_CONTENIDO_IMAGENES.Include(t => t.TBL_PORTAL_BIBLIOTECA_IMAGENES).Include(t => t.TBL_PORTAL_CONTENIDOFRONT);
             return View(tBL_PORTAL_CONTENIDO_IMAGENES.ToList());
         }
 
@@ -28,7 +28,7 @@ namespace IPSSER_PORTAL.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TBL_PORTAL_CONTENIDO_IMAGENES tBL_PORTAL_CONTENIDO_IMAGENES = db.TBL_PORTAL_CONTENIDO_IMAGENES.Find(id);
+            //TBL_PORTAL_CONTENIDO_IMAGENES tBL_PORTAL_CONTENIDO_IMAGENES = db.TBL_PORTAL_CONTENIDO_IMAGENES.Find(id);
             if (tBL_PORTAL_CONTENIDO_IMAGENES == null)
             {
                 return HttpNotFound();
@@ -40,14 +40,14 @@ namespace IPSSER_PORTAL.Controllers
         public ActionResult Create()
         {
             ViewBag.IdImagen = new SelectList(db.TBL_PORTAL_BIBLIOTECA_IMAGENES, "IdImagen", "Titulo");
-            ViewBag.IdContenido = new SelectList(db.TBL_PORTAL_CONTENIDOFRONT, "IdContenidoFront", "Titulo");
+            //ViewBag.IdContenido = new SelectList(db.TBL_PORTAL_CONTENIDOFRONT, "IdContenidoFront", "Titulo");
             return View();
         }
 
         // POST: ImagenesContenido/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        /*[HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "IdContenidoImagen,IdContenido,IdImagen")] TBL_PORTAL_CONTENIDO_IMAGENES tBL_PORTAL_CONTENIDO_IMAGENES)
         {
@@ -63,10 +63,10 @@ namespace IPSSER_PORTAL.Controllers
             ViewBag.IdImagen = new SelectList(db.TBL_PORTAL_BIBLIOTECA_IMAGENES, "IdImagen", "Titulo", tBL_PORTAL_CONTENIDO_IMAGENES.IdImagen);
             ViewBag.IdContenido = new SelectList(db.TBL_PORTAL_CONTENIDOFRONT, "IdContenidoFront", "Titulo", tBL_PORTAL_CONTENIDO_IMAGENES.IdContenido);
             return View(tBL_PORTAL_CONTENIDO_IMAGENES);
-        }
+        }*/
 
         // GET: ImagenesContenido/Edit/5
-        public ActionResult Edit(int? id)
+        /*public ActionResult Edit(int? id)
         {
             if (id == null)
             {
@@ -80,12 +80,12 @@ namespace IPSSER_PORTAL.Controllers
             ViewBag.IdImagen = new SelectList(db.TBL_PORTAL_BIBLIOTECA_IMAGENES, "IdImagen", "Titulo", tBL_PORTAL_CONTENIDO_IMAGENES.IdImagen);
             ViewBag.IdContenido = new SelectList(db.TBL_PORTAL_CONTENIDOFRONT, "IdContenidoFront", "Titulo", tBL_PORTAL_CONTENIDO_IMAGENES.IdContenido);
             return View(tBL_PORTAL_CONTENIDO_IMAGENES);
-        }
+        }*/
 
         // POST: ImagenesContenido/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        /*[HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "IdContenidoImagen,IdContenido,IdImagen")] TBL_PORTAL_CONTENIDO_IMAGENES tBL_PORTAL_CONTENIDO_IMAGENES)
         {
@@ -100,10 +100,10 @@ namespace IPSSER_PORTAL.Controllers
             ViewBag.IdImagen = new SelectList(db.TBL_PORTAL_BIBLIOTECA_IMAGENES, "IdImagen", "Titulo", tBL_PORTAL_CONTENIDO_IMAGENES.IdImagen);
             ViewBag.IdContenido = new SelectList(db.TBL_PORTAL_CONTENIDOFRONT, "IdContenidoFront", "Titulo", tBL_PORTAL_CONTENIDO_IMAGENES.IdContenido);
             return View(tBL_PORTAL_CONTENIDO_IMAGENES);
-        }
+        }*/
 
         // GET: ImagenesContenido/Delete/5
-        public ActionResult Delete(int? id)
+        /*public ActionResult Delete(int? id)
         {
             if (id == null)
             {
@@ -115,10 +115,10 @@ namespace IPSSER_PORTAL.Controllers
                 return HttpNotFound();
             }
             return View(tBL_PORTAL_CONTENIDO_IMAGENES);
-        }
+        }*/
 
         // POST: ImagenesContenido/Delete/5
-        [HttpPost, ActionName("Delete")]
+        /*[HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
@@ -137,6 +137,6 @@ namespace IPSSER_PORTAL.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
-        }
+        }*/
     }
 }

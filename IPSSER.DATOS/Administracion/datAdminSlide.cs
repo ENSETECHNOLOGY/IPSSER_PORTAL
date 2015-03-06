@@ -19,24 +19,24 @@ namespace IPSSER.DATOS.Administracion
         #endregion
 
         #region <<-- Metodos de Insercion -->>
-        public string InsertarSlide(int IdFront, int IdImagen,string Titulo, string Descripcion)
+        public string InsertarSlide(int IdFront, int IdImagen,string Titulo, string Descripcion, string Contenido_Uno, string Contenido_Dos, string Contenido_Tres, string Link)
         {
             string strResultado = "";
             var Contexto = new IPSSER_PORTALEntities();
 
-            strResultado = Contexto.PA_INSERT_TBL_PORTAL_SLIDE(IdFront, IdImagen, Titulo, Descripcion).ToString();
+            strResultado = Contexto.PA_INSERT_TBL_PORTAL_SLIDE(IdFront, IdImagen, Titulo, Descripcion, Contenido_Uno, Contenido_Dos, Contenido_Tres, Link).ToString();
 
             return strResultado;
         }
         #endregion
 
         #region <<-- Metodos de Actualizacion -->>
-        public string ActualizarSlide(int IdSlide, int IdFront, int IdImagen, string Titulo, string Descripcion)
+        public string ActualizarSlide(int IdSlide, int IdFront, int IdImagen, string Titulo, string Descripcion, string Contenido_Uno, string Contenido_Dos, string Contenido_Tres, string Link)
         {
             string strResultado = "";
             var Contexto = new IPSSER_PORTALEntities();
 
-            strResultado = Contexto.PA_UPDATE_TBL_PORTAL_SLIDE(IdSlide, IdFront, IdImagen, Titulo, Descripcion).ToString();
+            strResultado = Contexto.PA_UPDATE_TBL_PORTAL_SLIDE(IdSlide, IdFront, IdImagen, Titulo, Descripcion, Contenido_Uno, Contenido_Dos, Contenido_Tres, Link).ToString();
 
             return strResultado;
         }
