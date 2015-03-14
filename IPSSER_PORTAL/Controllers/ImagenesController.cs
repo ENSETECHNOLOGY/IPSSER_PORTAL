@@ -18,12 +18,20 @@ namespace IPSSER_PORTAL.Controllers
         // GET: Imagenes
         public ActionResult Index()
         {
+            if (Session["LOGUEADO"] == null)
+            {
+                return RedirectToAction("../Administracion/Login");
+            }
             return View(db.TBL_PORTAL_BIBLIOTECA_IMAGENES);
         }
 
         // GET: Imagenes/Details/5
         public ActionResult Details(int? id)
         {
+            if (Session["LOGUEADO"] == null)
+            {
+                return RedirectToAction("../Administracion/Login");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -39,6 +47,10 @@ namespace IPSSER_PORTAL.Controllers
         // GET: Imagenes/Create
         public ActionResult Create()
         {
+            if (Session["LOGUEADO"] == null)
+            {
+                return RedirectToAction("../Administracion/Login");
+            }
             return View();
         }
 
@@ -49,6 +61,10 @@ namespace IPSSER_PORTAL.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "IdImagen,Titulo,Descripcion,Path")] TBL_PORTAL_BIBLIOTECA_IMAGENES tBL_PORTAL_BIBLIOTECA_IMAGENES)
         {
+            if (Session["LOGUEADO"] == null)
+            {
+                return RedirectToAction("../Administracion/Login");
+            }
             string Respuesta = "";
             IPSSER.DATOS.Administracion.datAdminImagen ObjDatAdministracion = new IPSSER.DATOS.Administracion.datAdminImagen();
             
@@ -67,7 +83,7 @@ namespace IPSSER_PORTAL.Controllers
                 archivo.SaveAs(path);
                 
                 Respuesta = ObjDatAdministracion.InsertarImagen(tBL_PORTAL_BIBLIOTECA_IMAGENES.Titulo, tBL_PORTAL_BIBLIOTECA_IMAGENES.Descripcion, "../Imagenes/"+nombreArchivo);
-                return RedirectToAction("Index");
+                return RedirectToAction("/Index");
             }
 
             return View(tBL_PORTAL_BIBLIOTECA_IMAGENES);
@@ -76,7 +92,10 @@ namespace IPSSER_PORTAL.Controllers
         // GET: Imagenes/Edit/5
         public ActionResult Edit(int? id)
         {
-
+            if (Session["LOGUEADO"] == null)
+            {
+                return RedirectToAction("../Administracion/Login");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -96,13 +115,17 @@ namespace IPSSER_PORTAL.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "IdImagen,Titulo,Descripcion,Path")] TBL_PORTAL_BIBLIOTECA_IMAGENES tBL_PORTAL_BIBLIOTECA_IMAGENES)
         {
+            if (Session["LOGUEADO"] == null)
+            {
+                return RedirectToAction("../Administracion/Login");
+            }
             string Respuesta = "";
             IPSSER.DATOS.Administracion.datAdminImagen ObjDatAdministracion = new IPSSER.DATOS.Administracion.datAdminImagen();
 
             if (ModelState.IsValid)
             {
                 Respuesta = ObjDatAdministracion.ActualizarImagen(tBL_PORTAL_BIBLIOTECA_IMAGENES.IdImagen, tBL_PORTAL_BIBLIOTECA_IMAGENES.Titulo, tBL_PORTAL_BIBLIOTECA_IMAGENES.Descripcion, tBL_PORTAL_BIBLIOTECA_IMAGENES.Path);
-                return RedirectToAction("Index");
+                return RedirectToAction("/Index");
             }
             return View(tBL_PORTAL_BIBLIOTECA_IMAGENES);
         }
@@ -110,6 +133,10 @@ namespace IPSSER_PORTAL.Controllers
         // GET: Imagenes/Delete/5
         public ActionResult Delete(int? id)
         {
+            if (Session["LOGUEADO"] == null)
+            {
+                return RedirectToAction("../Administracion/Login");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -127,13 +154,17 @@ namespace IPSSER_PORTAL.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            if (Session["LOGUEADO"] == null)
+            {
+                return RedirectToAction("../Administracion/Login");
+            }
             string Respuesta = "";
             IPSSER.DATOS.Administracion.datAdminImagen ObjDatAdministracion = new IPSSER.DATOS.Administracion.datAdminImagen();
 
             TBL_PORTAL_BIBLIOTECA_IMAGENES tBL_PORTAL_BIBLIOTECA_IMAGENES = db.TBL_PORTAL_BIBLIOTECA_IMAGENES.Find(id);
 
             Respuesta = ObjDatAdministracion.EliminarImagen(tBL_PORTAL_BIBLIOTECA_IMAGENES.IdImagen);
-            return RedirectToAction("Index");
+            return RedirectToAction("/Index");
         }
 
         protected override void Dispose(bool disposing)

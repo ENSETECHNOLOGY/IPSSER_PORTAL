@@ -16,6 +16,11 @@
         <AssociationConnector Association="IPSSER_PORTALModel.FK_TBL_PORTAL_SLIDE_TBL_PORTAL_FRONT" ManuallyRouted="false" />
         <EntityTypeShape EntityType="IPSSER_PORTALModel.TBL_PORTAL_DIRECTORIO_INTERNO" Width="1.5" PointX="5.375" PointY="5.75" />
         <EntityTypeShape EntityType="IPSSER_PORTALModel.TBL_PORTAL_TRABAJA_CON_NOSOTROS" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="IPSSER_PORTALModel.TBL_PORTAL_CONTENIDO" Width="1.5" PointX="7.75" PointY="3.75" />
+        <EntityTypeShape EntityType="IPSSER_PORTALModel.TBL_PORTAL_ROL" Width="1.5" PointX="7.75" PointY="6.75" />
+        <EntityTypeShape EntityType="IPSSER_PORTALModel.TBL_PORTAL_USUARIO" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="IPSSER_PORTALModel.TBL_PORTAL_USUARIO_ROL" Width="1.5" PointX="2.75" PointY="8.75" />
+        <EntityTypeShape EntityType="IPSSER_PORTALModel.TBL_PORTAL_DOCUMENTO" Width="1.5" PointX="9.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

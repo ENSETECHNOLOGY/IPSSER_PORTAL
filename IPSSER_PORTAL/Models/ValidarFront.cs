@@ -12,6 +12,40 @@ using System.Web.Mvc;
 
 namespace IPSSER_PORTAL.Models
 {
+
+    [MetadataType(typeof(TBL_PORTAL_USUARIOMetaData))]
+    public partial class TBL_PORTAL_USUARIO
+    {
+        [Bind()]
+        public class TBL_PORTAL_USUARIOMetaData
+        {
+
+            [Required(ErrorMessage = "Falta el Login")]
+            public string Login { get; set; }
+
+            [Required(ErrorMessage = "Falta la Clave")]
+            public string Clave { get; set; }
+
+        }
+
+    }
+
+    [MetadataType(typeof(TBL_PORTAL_DOCUMENTOMetaData))]
+    public partial class TBL_PORTAL_DOCUMENTO
+    {
+        [Bind()]
+        public class TBL_PORTAL_DOCUMENTOMetaData
+        {
+
+            [Required(ErrorMessage = "Falta el Título")]
+            public string Titulo { get; set; }
+
+            public string Archivo { get; set; }
+
+        }
+
+    }
+
     [MetadataType(typeof(TBL_PORTAL_FRONTMetaData))]
     public partial class TBL_PORTAL_FRONT
     {
@@ -34,6 +68,46 @@ namespace IPSSER_PORTAL.Models
             public int IdImagen { get; set; }
         }
         
+    }
+
+    [MetadataType(typeof(TBL_PORTAL_TRABAJA_CON_NOSOTROSMetaData))]
+    public partial class TBL_PORTAL_TRABAJA_CON_NOSOTROS
+    {
+        [Bind()]
+        public class TBL_PORTAL_TRABAJA_CON_NOSOTROSMetaData
+        {
+            [Required(ErrorMessage = "Debes escribir tus Nombres")]
+            public string Nombres { get; set; }
+
+            [Required(ErrorMessage = "Debes escribir tus Apellidos")]
+            public string Apellidos { get; set; }
+
+            [Required(ErrorMessage = "Debes escribir tu Teléfono Fijo")]
+            public string TelefonoFijo { get; set; }
+
+            [Required(ErrorMessage = "Debes escribir tu Celular")]
+            public string Celular { get; set; }
+
+            [Required(ErrorMessage = "Debes adjuntar tu Hoja de Vida")]
+            public string ArchivoHojaDeVida { get; set; }
+        }
+    }
+
+    [MetadataType(typeof(TBL_PORTAL_DIRECTORIO_INTERNOMetaData))]
+    public partial class TBL_PORTAL_DIRECTORIO_INTERNO
+    {
+        [Bind()]
+        public class TBL_PORTAL_DIRECTORIO_INTERNOMetaData
+        {
+            [Required(ErrorMessage = "Debe escribir el Departamento")]
+            public string Departamento { get; set; }
+
+            [Required(ErrorMessage = "Debe escribir la Extensión")]
+            public string Extension { get; set; }
+
+            [Required(ErrorMessage = "Debe escribir el Email")]
+            public string Email { get; set; }
+        }
     }
 
     [MetadataType(typeof(TBL_PORTAL_SLIDEMetaData))]

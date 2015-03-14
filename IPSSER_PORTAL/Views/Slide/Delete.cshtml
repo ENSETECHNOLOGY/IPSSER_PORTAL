@@ -45,7 +45,8 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm("Delete", "Slide", FormMethod.Post, new { onsubmit = "if (!confirm('¿Confirma eliminar este registro?')){ return false; }" }))
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">

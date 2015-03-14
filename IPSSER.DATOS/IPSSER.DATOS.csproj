@@ -87,6 +87,7 @@
     <Compile Include="Administracion\datAdminImagenesContenido.cs" />
     <Compile Include="Administracion\datAdminImagenesFront.cs" />
     <Compile Include="Administracion\datAdminSlide.cs" />
+    <Compile Include="Administracion\datAdminTrabaja.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="MD_PORTAL.Context.cs">
       <AutoGen>True</AutoGen>
@@ -102,6 +103,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MD_PORTAL.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="PA_INICIAR_SESION_Result.cs">
+      <DependentUpon>MD_PORTAL.tt</DependentUpon>
     </Compile>
     <Compile Include="PA_SELECT_FRONTS_CON_SLIDESXIDMODULO_Result.cs">
       <DependentUpon>MD_PORTAL.tt</DependentUpon>
@@ -140,7 +144,13 @@
     <Compile Include="TBL_PORTAL_CATEGORIA_BIBLIOTECA_IMAGENES.cs">
       <DependentUpon>MD_PORTAL.tt</DependentUpon>
     </Compile>
+    <Compile Include="TBL_PORTAL_CONTENIDO.cs">
+      <DependentUpon>MD_PORTAL.tt</DependentUpon>
+    </Compile>
     <Compile Include="TBL_PORTAL_DIRECTORIO_INTERNO.cs">
+      <DependentUpon>MD_PORTAL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TBL_PORTAL_DOCUMENTO.cs">
       <DependentUpon>MD_PORTAL.tt</DependentUpon>
     </Compile>
     <Compile Include="TBL_PORTAL_FRONT.cs">
@@ -149,10 +159,19 @@
     <Compile Include="TBL_PORTAL_MODULO.cs">
       <DependentUpon>MD_PORTAL.tt</DependentUpon>
     </Compile>
+    <Compile Include="TBL_PORTAL_ROL.cs">
+      <DependentUpon>MD_PORTAL.tt</DependentUpon>
+    </Compile>
     <Compile Include="TBL_PORTAL_SLIDE.cs">
       <DependentUpon>MD_PORTAL.tt</DependentUpon>
     </Compile>
     <Compile Include="TBL_PORTAL_TRABAJA_CON_NOSOTROS.cs">
+      <DependentUpon>MD_PORTAL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TBL_PORTAL_USUARIO.cs">
+      <DependentUpon>MD_PORTAL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TBL_PORTAL_USUARIO_ROL.cs">
       <DependentUpon>MD_PORTAL.tt</DependentUpon>
     </Compile>
   </ItemGroup>

@@ -1,0 +1,56 @@
+﻿@model IPSSER.DATOS.TBL_PORTAL_TRABAJA_CON_NOSOTROS
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TBL_PORTAL_TRABAJA_CON_NOSOTROS</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Nombres
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombres)
+        </dd>
+
+        <dt>
+            Apellidos
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Apellidos)
+        </dd>
+
+        <dt>
+            Teléfono Fijo
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TelefonoFijo)
+        </dd>
+
+        <dt>
+            Teléfono Celular
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Celular)
+        </dd>
+
+        <dt>
+            Hoja de Vida
+        </dt>
+        <dd>
+            @Html.ActionLink("Descargar Hoja de Vida", "Download", new { id = Model.IdTrabajaConNosotros }, new { @class = "btn btn-primary btn-xs" })
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

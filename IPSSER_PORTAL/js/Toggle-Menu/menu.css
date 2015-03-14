@@ -15,12 +15,14 @@ body{ -webkit-animation: bugfix infinite 1s; }
 .mainMenu {
 	display:block;
 	position:relative;
-	width:75%;
+	width:90%;
 	margin:0;
 	padding:15px 0 10px 0;
 	text-align: center;
 	line-height:1.4;
 	float:left;
+    padding-top:0;
+    padding-bottom:0;
 	}
 	
 #toggleMenu, .toggleMenu { 
@@ -71,7 +73,7 @@ body{ -webkit-animation: bugfix infinite 1s; }
 	text-decoration:none;
 	display:block;
 	width:94%;
-	padding:5px 3%;
+	padding:3px 3%;
 	}
 
 .menu li a:hover {
@@ -115,7 +117,7 @@ label.menuTitle {
 		border:0;
 		overflow:visible;
 		max-height:100px!important;
-		padding:10px 0 18px 0;
+		padding:10px 0 15px 0;
 		}	
 
 	.menu li {
@@ -135,7 +137,8 @@ label.menuTitle {
 	.menu a, .menu a:visited {
 		display:inline; 
 		width:auto;
-		padding: 25px 20px 28px 20px;
+		padding: 25px 20px 20px 20px;
+        border-radius:10px;
 		}
 	}
 	

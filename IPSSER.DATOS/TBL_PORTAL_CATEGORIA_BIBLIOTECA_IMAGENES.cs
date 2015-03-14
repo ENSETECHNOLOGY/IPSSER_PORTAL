@@ -16,5 +16,7 @@ namespace IPSSER.DATOS
     {
         public decimal IdCategoriaBibliotecaImagenes { get; set; }
         public string Titulo { get; set; }
+        public int Ancho { get; set; }
+        public int Alto { get; set; }
     }
 }

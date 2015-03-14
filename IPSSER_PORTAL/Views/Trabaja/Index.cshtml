@@ -1,82 +1,48 @@
-﻿@{
-    Layout = null;
-    ViewBag.Title = "Sitio IPS SER -- Trabaja con Nosotros";
+﻿@model IEnumerable<IPSSER.DATOS.TBL_PORTAL_TRABAJA_CON_NOSOTROS>
+
+@{
+    ViewBag.Title = "Index";
 }
 
-<!DOCTYPE html>
+<br />
+<center>
+    <h2>Trabaja con Nosotros</h2>
+</center>
+<br />
+<br />
 
-<html lang="en-gb">
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Sitio IPS SER -- Trabaja con Nosotros</title>
+<p>
+    <!-- @Html.ActionLink("CREAR NUEVO FRONT", "Create", null, new { @class = "btn btn-primary btn-xs" }) -->
+</p>
 
-    <meta charset="utf-8">
-    <!-- Meta -->
-    <meta name="keywords" content="" />
-    <meta name="author" content="">
-    <meta name="robots" content="" />
-    <meta name="description" content="" />
+<div class="table-responsive">
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombres)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellidos)
+            </th>
+            <th>Opciones</th>
+        </tr>
 
-    <!-- this styles only adds some repairs on idevices  -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombres)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Apellidos)
+                </td>
+                <td>
+                    @Html.ActionLink("Ver Detalle", "Details", new { id = item.IdTrabajaConNosotros }, new { @class = "btn btn-primary btn-xs" }) |
+                    @Html.ActionLink("Descargar Hoja de Vida", "Download", new { id = item.IdTrabajaConNosotros }, new { @class = "btn btn-primary btn-xs" }) |
+                    @Html.ActionLink("Borrar", "Delete", new { id = item.IdTrabajaConNosotros }, new { @class = "btn btn-primary btn-xs" })
+                </td>
+            </tr>
+        }
 
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="~/images/favicon.ico">
-
-    <!-- Google fonts - witch you want to use - (rest you can just remove) -->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
-
-    <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
-    <!-- ######### CSS STYLES ######### -->
-
-    <link rel="stylesheet" href="~/Css/reset.css" type="text/css" />
-    <link rel="stylesheet" href="~/Css/style.css" type="text/css" />
-    <link rel="stylesheet" href="~/Css/font-awesome/css/font-awesome.min.css">
-
-    <!-- responsive devices styles -->
-    <link rel="stylesheet" media="screen" href="~/Css/responsive-leyouts.css" type="text/css" />
-
-    <!-- mega menu -->
-    <link href="~/js/mainmenu/sticky.css" rel="stylesheet">
-    <link href="~/js/mainmenu/bootstrap.min.css" rel="stylesheet">
-    <link href="~/js/mainmenu/demo.css" rel="stylesheet">
-    <link href="~/js/mainmenu/menu.css" rel="stylesheet">
-
-    <!-- revolution slider -->
-    <!-- CSS STYLE-->
-    <link rel="stylesheet" type="text/css" href="~/js/revolutionslider/css/style.css" media="screen" />
-
-
-
-    <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
-    <link rel="stylesheet" type="text/css" href="~/js/revolutionslider/rs-plugin/css/settings.css" media="screen" />
-
-    <!-- simple line icons -->
-    <link rel="stylesheet" type="text/css" href="~/css/Simple-Line-Icons-Webfont/simple-line-icons.css" media="screen" />
-
-    <!-- flexslider -->
-    <link rel="stylesheet" href="~/js/flexslider/flexslider.css" type="text/css" media="screen" />
-
-    <!-- Accordions -->
-    <link rel="stylesheet" href="~/js/accordion/accordion.css" type="text/css" media="all">
-
-    <!-- tabs -->
-    <link rel="stylesheet" type="text/css" href="~/js/tabs/assets/css/responsive-tabs.css">
-    <link rel="stylesheet" type="text/css" href="~/js/tabs/assets/css/responsive-tabs2.css">
-    <link rel="stylesheet" type="text/css" href="~/js/tabs/assets/css/responsive-tabs11.css">
-    <link rel="stylesheet" type="text/css" href="~/js/tabs/assets/css/responsive-tabs12.css">
-
-    <!-- toogle menu -->
-    <link rel="stylesheet" href="~/js/Toggle-Menu/menu.css" type="text/css" />
-
-    <!-- forms -->
-    <link rel="stylesheet" href="~/js/form/sky-forms.css" type="text/css" media="all">
-</head>
-<body>
-    <div>
-    </div>
-</body>
-</html>
+    </table>
+</div>

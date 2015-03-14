@@ -188,8 +188,11 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdministracionController.cs" />
+    <Compile Include="Controllers\ContactoController.cs" />
     <Compile Include="Controllers\ContenidoFrontController.cs" />
     <Compile Include="Controllers\ContenidoSlideController.cs" />
+    <Compile Include="Controllers\DirectorioController.cs" />
+    <Compile Include="Controllers\DocumentosController.cs" />
     <Compile Include="Controllers\FrontController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImagenesContenidoController.cs" />
@@ -198,6 +201,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SlideController.cs" />
     <Compile Include="Controllers\TrabajaController.cs" />
+    <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -783,11 +787,41 @@
     <Content Include="Views\ImagenesContenido\Index.cshtml" />
     <Content Include="Views\Inicio\Index.cshtml" />
     <Content Include="Views\Administracion\Index.cshtml" />
-    <Content Include="Views\TrabajaConNosotros\Index.cshtml" />
+    <Content Include="Views\Trabaja\Create.cshtml" />
     <Content Include="Views\Trabaja\Index.cshtml" />
+    <Content Include="Views\Trabaja\Details.cshtml" />
+    <Content Include="Views\Trabaja\Delete.cshtml" />
+    <Content Include="Views\Directorio\Index.cshtml" />
+    <Content Include="Views\Administracion\Login.cshtml" />
+    <Content Include="Views\Contacto\Index.cshtml" />
+    <Content Include="Views\Directorio\Admin.cshtml" />
+    <Content Include="Views\Directorio\Create.cshtml" />
+    <Content Include="Views\Inicio\Nosotros.cshtml" />
+    <Content Include="Views\Inicio\QuienSomos.cshtml" />
+    <Content Include="Views\Inicio\Mision.cshtml" />
+    <Content Include="Views\Inicio\Vision.cshtml" />
+    <Content Include="Views\Inicio\PorQueSER.cshtml" />
+    <Content Include="Views\Inicio\Transporte.cshtml" />
+    <Content Include="Views\Contacto\Peticiones.cshtml" />
+    <Content Include="Views\Contacto\Quejas.cshtml" />
+    <Content Include="Views\Contacto\Reclamos.cshtml" />
+    <Content Include="Views\Contacto\Solicitudes.cshtml" />
+    <Content Include="Views\Contacto\Felicitaciones.cshtml" />
+    <Content Include="Views\Inicio\Servicio.cshtml" />
+    <Content Include="Views\Documentos\Index.cshtml" />
+    <Content Include="Views\Documentos\Create.cshtml" />
+    <Content Include="Views\Documentos\Delete.cshtml" />
+    <Content Include="Views\Documentos\Details.cshtml" />
+    <Content Include="Views\Documentos\Edit.cshtml" />
+    <Content Include="Views\Usuario\Index.cshtml" />
+    <Content Include="Views\Usuario\Create.cshtml" />
+    <Content Include="Views\Usuario\Delete.cshtml" />
+    <Content Include="Views\Usuario\Edit.cshtml" />
+    <Content Include="Views\Directorio\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="HojasVida\" />
     <Folder Include="Imagenes\" />
   </ItemGroup>
   <ItemGroup>

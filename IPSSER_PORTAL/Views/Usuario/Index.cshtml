@@ -1,0 +1,41 @@
+﻿@model IEnumerable<IPSSER.DATOS.TBL_PORTAL_USUARIO>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<br />
+<center>
+    <h2>Usuarios</h2>
+</center>
+<br />
+<br />
+
+<p>
+    @Html.ActionLink("CREAR NUEVO USUARIO", "Create", null, new { @class = "btn btn-primary btn-xs" })
+</p>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Login)
+            </th>
+            <th>Opciones</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Login)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.IdUsuario }, new { @class = "btn btn-primary btn-xs" }) |
+                    @Html.ActionLink("Borrar", "Delete", new { id = item.IdUsuario }, new { @class = "btn btn-primary btn-xs" })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

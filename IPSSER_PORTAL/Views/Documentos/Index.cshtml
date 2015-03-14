@@ -1,0 +1,42 @@
+﻿@model IEnumerable<IPSSER.DATOS.TBL_PORTAL_DOCUMENTO>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<br />
+<center>
+    <h2>Documentos</h2>
+</center>
+<br />
+<br />
+
+<p>
+    @Html.ActionLink("CREAR NUEVO DOCUMENTO", "Create", null, new { @class = "btn btn-primary btn-xs" })
+</p>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Titulo)
+            </th>
+            <th>Opciones</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Titulo)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.IdDocumento }, new { @class = "btn btn-primary btn-xs" }) |
+                    @Html.ActionLink("Ver Detalle", "Details", new { id = item.IdDocumento }, new { @class = "btn btn-primary btn-xs" }) |
+                    @Html.ActionLink("Borrar", "Delete", new { id = item.IdDocumento }, new { @class = "btn btn-primary btn-xs" })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

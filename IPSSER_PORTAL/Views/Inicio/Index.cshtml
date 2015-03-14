@@ -80,7 +80,7 @@
 </head>
 <body>
     <div class="site_wrapper">
-        <header id="header">
+        <div id="header">
             <div id="trueHeader">
                 <div class="wrapper">
                     <div class="container">
@@ -102,21 +102,18 @@
                                     }
 
                                 }
-                            </ul>
-                        </div>
-                        <div class="pull-right">
-                            <ul>
-                                <li><a href="" class="btn  btn-success">Servicio en Linea</a></li>
-                                <li><a href="tel:+17425877" class="btn  btn-primary">PBX: 7425877</a></li>
+                                <li><a href="#" class="btn-primary btn-menu"><i class="fa fa-desktop"></i> Solicitud en Línea</a></li>
+                                <li><a href="#" class="btn-success btn-menu"><i class="fa fa-phone"></i> PBX: 742 58 77 </a></li>
                             </ul>
                         </div>
                         <!-- end menu -->
                     </div>
                 </div>
             </div>
-        </header>
+        </div>
         <div class="clearfix"></div>
 
+        <!-- Sección Inicio -->
         <div id="section-1">
             <div class="tp-banner-container">
                 <div class="tp-banner2">
@@ -191,62 +188,62 @@
                                     }
                                 </li>
                         }
-                </ul>
-                <div class="tp-bannertimer"></div>
-                
-            </div>
-        </div>
-    </div>
-    <div class="clearfix"></div>
-    <!--end slider-->
-    <!-- Secttion Noticias -->
-    @*
-    <div class="section_holder20">
-        <div class="container">
-            <div class="one_half"><img src="http://placehold.it/575x315" alt="" class="img_size1" /></div>
-            <div class="one_half last">
-                <h6>Lorem ipsum dolor sit amet consectetuer adipiscing elit Suspendisse et justo. Praesent mattis comm</h6>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Suspendisse et justo. Praesent mattis commyolk augue. Aliquam ornare hendrerit augue. Cras tellus. In pulvinar lectus a est.  Lorem ipsum dolor sit amet.</p>
-                <br />
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Suspendisse et justo. Praesent mattis commyolk augue. Aliquam ornare hendrerit augue. Cras tellus. In pulvinar lectus a est. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Suspendisse et justo. Praesent mattis commyolk augue. Aliquam ornare hendrerit augue. Cras tellus. In pulvinar lectus a est. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Suspendisse et justo. Praesent mattis commyolk augue. Aliquam ornare hendrerit augue. Cras tellus.</p>
-            </div>
-        </div>
-    </div>    
-    <div class="clearfix"></div>
-    *@
-    <!--end section-->
+                    </ul>
+                    <div class="tp-bannertimer"></div>
 
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <!-- End Inicio -->
+
+        <!-- Secttion Noticias -->
+        @*
+            <div class="section_holder20">
+                <div class="container">
+                    <div class="one_half"><img src="http://placehold.it/575x315" alt="" class="img_size1" /></div>
+                    <div class="one_half last">
+                        <h6>Lorem ipsum dolor sit amet consectetuer adipiscing elit Suspendisse et justo. Praesent mattis comm</h6>
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Suspendisse et justo. Praesent mattis commyolk augue. Aliquam ornare hendrerit augue. Cras tellus. In pulvinar lectus a est.  Lorem ipsum dolor sit amet.</p>
+                        <br />
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Suspendisse et justo. Praesent mattis commyolk augue. Aliquam ornare hendrerit augue. Cras tellus. In pulvinar lectus a est. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Suspendisse et justo. Praesent mattis commyolk augue. Aliquam ornare hendrerit augue. Cras tellus. In pulvinar lectus a est. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Suspendisse et justo. Praesent mattis commyolk augue. Aliquam ornare hendrerit augue. Cras tellus.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        *@
+        <!--end section-->
         <!-- Section Quienes Somos 1 -->
         <div id="section-2">
             <div class="section_holder12">
                 <div class="container">
-                    @foreach (var FrontOurs1 in ViewBag.ListaServicios1)
-                    {
-                        <h1 class="lt_title_big">Nosotros</h1>
-                        <div class="lt_title_line"></div>
+
+                    <h1 class="lt_title_big">Nosotros</h1>
+                    <div class="lt_title_line"></div>
                     <!-- <p class="lt_title_bottomtext">Sirviendo con PASIÓN transportando con AMOR</p>-->
-                        <div class="clearfix"></div>
-                        <div class="container">
-                            <div class="one_half">
-                                <!-- <h4 class="bold uppercase">Sirviendo con PASIÓN transportando con AMOR</h4> -->
-                                <ul class="list">
-                                    <li><i class="fa fa-check"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
-                                </ul>
-                            </div>
+                    <div class="clearfix"></div>
+                    <div class="container">
+                        <div class="one_half">
+                            <!-- <h4 class="bold uppercase">Sirviendo con PASIÓN transportando con AMOR</h4> -->
+                            <ul class="list">
+                                <li>@ViewBag.Nosotros<br />@Html.ActionLink("Ver más", "Nosotros", null, new { @class = "btn btn-primary btn-xs" })</li>
+                            </ul>
+                        </div>
 
-                            <div class="one_half last">
+                        <div class="one_half last">
 
-                                <div class="img_holder">
-                                    <img src="@FrontOurs1.Imagen" alt="" class="img_size1" />
-                                </div>
+                            <div class="img_holder">
+                                <img src="@ViewBag.NosotrosImagen" alt="" class="img_size1" />
                             </div>
                         </div>
-                    }
+                    </div>
+
                 </div>
             </div>
         </div>
         <div class="clearfix"></div>
         <!-- end section 1-->
+
         <!-- Section Quienes Somos 2 -->
         <div id="section-2.1">
             <div class="section_holder51">
@@ -257,29 +254,28 @@
                         <div class="flexslider style2">
                             <ul class="slides">
 
-                                <!-- Quemado -->
                                 <div class="one_fourth">
                                     <div class="icon"><span class="glyph-item mega" aria-hidden="true" data-icon="&#xe037"></span></div>
-                                    <h5 class="white">Quién Somos</h5>
-                                    <p class="white">Somos SERes humanos que conocemos a fondo la necesidad de brindar una atención especializada y personalizada a los discapacitados en cualquier modalidad sea física o siquiátrica ...</p>
+                                    <h5 class="white" style="text-align:center">Quién Somos</h5>
+                                    <p class="white">@ViewBag.QuienSomos.Substring(0,200) ...<br />@Html.ActionLink("Ver más", "QuienSomos", null, new { @class = "btn btn-primary btn-xs" })</p>
                                 </div>
 
                                 <div class="one_fourth">
                                     <div class="icon"><span class="glyph-item mega" aria-hidden="true" data-icon="&#xe09e;"></span></div>
-                                    <h5 class="white">Misión</h5>
-                                    <p class="white">IPS SER se creó con el firme compromiso de transportar a todo SER HUMANO en Condición de Discapacidad y/o Paciente No Urgente que requieren una mejor calidad de vida ...</p>
+                                    <h5 class="white" style="text-align:center">Misión</h5>
+                                    <p class="white">@ViewBag.Mision.Substring(0, 200) ...<br />@Html.ActionLink("Ver más", "Mision", null, new { @class = "btn btn-primary btn-xs" })</p>
                                 </div>
 
                                 <div class="one_fourth">
                                     <div class="icon"><span class="glyph-item mega" aria-hidden="true" data-icon="&#xe087;"></span></div>
-                                    <h5 class="white">Visión</h5>
-                                    <p class="white">IPS SER en el año 2020 será vista como la compañía Líder a nivel Nacional e Internacional en la prestación del servicio de Asistencia Domiciliaria y Transporte Especializado ...</p>
+                                    <h5 class="white" style="text-align:center">Visión</h5>
+                                    <p class="white">@ViewBag.Vision.Substring(0, 200) ...<br />@Html.ActionLink("Ver más", "Vision", null, new { @class = "btn btn-primary btn-xs" })</p>
                                 </div>
 
                                 <div class="one_fourth last">
                                     <div class="icon"><span class="glyph-item mega" aria-hidden="true" data-icon="&#xe001;"></span></div>
-                                    <h5 class="white">Valores</h5>
-                                    <p class="white">Valores Humanos:<br />Honestidad<br />Respeto<br />Responsabilidad<br />Disciplina ...</p>
+                                    <h5 class="white" style="text-align:center">¿Por qué SER?</h5>
+                                    <p class="white">@ViewBag.PorQueSER.Substring(0, 200) ...<br />@Html.ActionLink("Ver más", "PorQueSER", null, new { @class = "btn btn-primary btn-xs" })</p>
                                 </div>
 
                                 <!-- Delimitar cada 4 un nuevo li -->
@@ -318,27 +314,36 @@
         </div>
         <div class="clearfix"></div>
         <!-- end section 5 -->
-
         <!-- Section Transporte -->
         <div id="section-3">
-            <div class="section_holder48">
+            <div class="section_holder12">
                 <div class="container">
-                    <h1 class="lt_title_big">Transportando con <span>AMOR</span></h1>
+
+                    <h1 class="lt_title_big">Transporte</h1>
                     <div class="lt_title_line"></div>
+                    <!-- <p class="lt_title_bottomtext">Sirviendo con PASIÓN transportando con AMOR</p>-->
                     <div class="clearfix"></div>
                     <div class="container">
                         <div class="one_half">
+                            <!-- <h4 class="bold uppercase">Sirviendo con PASIÓN transportando con AMOR</h4> -->
                             <ul class="list">
-                                <li><i class="fa fa-check"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
+                                <li>@ViewBag.Transporte<br />@Html.ActionLink("Ver más", "Transporte", null, new { @class = "btn btn-primary btn-xs" })</li>
                             </ul>
                         </div>
+
+                        <div class="one_half last">
+
+                            <div class="img_holder">
+                                <img src="@ViewBag.TransporteImagen" alt="" class="img_size1" />
+                            </div>
+                        </div>
                     </div>
+
                 </div>
             </div>
         </div>
         <div class="clearfix"></div>
         <!--end section-->
-
         <!-- Section Servicios Principales -->
         <div id="section-4">
             <div class="section_holder48">
@@ -350,9 +355,9 @@
                     {
                         <div class="box">
                             <div class="arrow_up"></div>
-                            <h1 class="white padd_top1 bold">@FrontServices1.Titulo</h1>
-                            <h3 class="white uppercase">@FrontServices1.Descripcion</h3>
-                            <p class="white">@FrontServices1.Link</p>
+                            <h1 class="white padd_top1 bold" style="text-align:center !important">@FrontServices1.Titulo</h1>
+                            <div style="width:100%; height:200px; background:URL(@FrontServices1.Imagen) center no-repeat"></div>
+                            <p class="white" style="text-align:center">@Html.ActionLink("Ver más", "Servicio", new { id = FrontServices1.IdSlide }, new { @class = "btn btn-primary btn-xs" })</p>
                             <div class="arrow_down"></div>
                         </div>
                     <!--end item-->
@@ -363,52 +368,51 @@
         <div class="clearfix"></div>
         <!--end section-->
         <!-- Section Servicios Secundarios -->
-        <div id="section-4.1">
-            <div class="section_holder12">
-                <div class="container">
-                    <!-- <h1 class="lt_title_big">Otros Servicios</h1>-->
-                    <div class="lt_title_line two"></div>
-                    <div class="clearfix"></div>
-                    <section class="slider">
-                        <div class="flexslider style2">
-                            <ul class="slides">
-                                <!-- Delimitar cada 4 un nuevo li -->
-                                @{int x = 0; int numCount = 1;}
-                                @foreach (var FrontServices2 in ViewBag.ListaServicios2)
+        @*<div id="section-4.1">
+        <div class="section_holder12">
+            <div class="container">
+                <!-- <h1 class="lt_title_big">Otros Servicios</h1>-->
+                <div class="lt_title_line two"></div>
+                <div class="clearfix"></div>
+                <section class="slider">
+                    <div class="flexslider style2">
+                        <ul class="slides">
+                            <!-- Delimitar cada 4 un nuevo li -->
+                            @{int x = 0; int numCount = 1;}
+                            @foreach (var FrontServices2 in ViewBag.ListaServicios2)
+                            {
+                                if ((x % 4) == 0)
+                                { @Html.Raw("<li>") }
+                                if ((numCount % 4) == 0)
                                 {
-                                    if ((x % 4) == 0)
-                                    { @Html.Raw("<li>") }
-                                    if ((numCount % 4) == 0)
-                                    {
-                                        <div class="one_fourth last">
-                                            <div class="icon"><span class="glyph-item mega" aria-hidden="true" data-icon="&#xe044;"></span></div>
-                                            <h5>@FrontServices2.Titulo</h5>
-                                            <p>@FrontServices2.Contenido1</p>
-                                        </div>
-                                    }
-                                    else
-                                    {
-                                        <div class="one_fourth">
-                                            <div class="icon"><span class="glyph-item mega" aria-hidden="true" data-icon="&#xe044;"></span></div>
-                                            <h5>@FrontServices2.Titulo</h5>
-                                            <p>@FrontServices2.Contenido1</p>
-                                        </div>
-                                    }
-                                    if ((numCount % 4) == 0)
-                                    { @Html.Raw("</li>") }
-                                    x = x + 1;
-                                    numCount++;
+                                    <div class="one_fourth last">
+                                        <div class="icon"><span class="glyph-item mega" aria-hidden="true" data-icon="&#xe044;"></span></div>
+                                        <h5>@FrontServices2.Titulo</h5>
+                                        <p>@FrontServices2.Contenido1</p>
+                                    </div>
                                 }
-                                <!--end item-->
-                            </ul>
-                        </div>
-                    </section>
-                </div>
+                                else
+                                {
+                                    <div class="one_fourth">
+                                        <div class="icon"><span class="glyph-item mega" aria-hidden="true" data-icon="&#xe044;"></span></div>
+                                        <h5>@FrontServices2.Titulo</h5>
+                                        <p>@FrontServices2.Contenido1</p>
+                                    </div>
+                                }
+                                if ((numCount % 4) == 0)
+                                { @Html.Raw("</li>") }
+                                x = x + 1;
+                                numCount++;
+                            }
+                            <!--end item-->
+                        </ul>
+                    </div>
+                </section>
             </div>
         </div>
-        <div class="clearfix"></div>
+    </div>
+    <div class="clearfix"></div>*@
         <!--end section-->
-
         <!-- Section Documentaciòn -->
         <div id="section-5">
             <div class="section_holder48">
@@ -417,11 +421,29 @@
                     <div class="lt_title_line"></div>
                     <div class="clearfix"></div>
                     <div class="container">
-                        <div class="one_half">
-                            <ul class="list">
-                                <li><i class="fa fa-check"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
-                            </ul>
-                        </div>
+                        <table class="table table-bordered table-hover">
+                            <tr>
+                                <th style="text-align:center">
+                                    Documento
+                                </th>
+                                <th style="text-align:center">
+                                    Descarga
+                                </th>
+                            </tr>
+
+                            @foreach (var Documento in ViewBag.Documentos)
+                            {
+                                <tr>
+                                    <td>
+                                        @Documento.Titulo
+                                    </td>
+                                    <td style="text-align:center">
+                                        @Html.ActionLink("Descargar", "Download", new { id = Documento.IdDocumento }, new { @class = "btn btn-primary btn-xs" }) <br />
+                                    </td>
+                                </tr>
+                            }
+
+                        </table>
                     </div>
                 </div>
             </div>
@@ -429,177 +451,186 @@
         <div class="clearfix"></div>
         <!--end section-->
 
-            <div id="section-6">
-                <div class="section_holder30">
-                    <div class="container">
+        <div id="section-6">
+            <div class="section_holder30">
+                <div class="container">
 
-                        <h2 class="uppercase">Contáctenos</h2>
-                        <br />
-                        <div class="one_third">
-                            <div class="topic_holder">
-                                <div class="icon"><span class="glyph-item mega" aria-hidden="true" data-icon="&#xe086;"></span></div>
-                                <div class="text">
-                                    <h4 class="lessmar">CONTÁCTENOS</h4>
-                                    <ul class="list">
-                                        <li><a href="#">Detalle del servicio</a></li>
-                                    </ul>
-                                </div>
+                    <h2 class="uppercase">Contáctenos</h2>
+                    <br />
+                    <div class="one_third">
+                        <div class="topic_holder">
+                            <div class="icon"><span class="glyph-item mega" aria-hidden="true" data-icon="&#xe086;"></span></div>
+                            <div class="text">
+                                <h4 class="lessmar">CONTÁCTENOS</h4>
+                                <ul class="list">
+                                    <li><a href="/Contacto/">Ir a Formulario</a></li>
+                                </ul>
                             </div>
                         </div>
-                        <!--end item-->
-
-                        <div class="one_third">
-                            <div class="topic_holder">
-                                <div class="icon"><span class="glyph-item mega" aria-hidden="true" data-icon="&#xe04a;"></span></div>
-                                <div class="text">
-                                    <h4 class="lessmar">PQRSF</h4>
-                                    <ul class="list">
-                                        <li><a href="#">Petición</a></li>
-                                        <li><a href="#">Queja</a></li>
-                                        <li><a href="#">Reclamo</a></li>
-                                        <li><a href="#">Solicitud</a></li>
-                                        <li><a href="#">Felicitación</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!--end item-->
-
-                        <div class="one_third last">
-                            <div class="topic_holder">
-                                <div class="icon"><span class="glyph-item mega" aria-hidden="true" data-icon="&#xe005;"></span></div>
-                                <div class="text">
-                                    <h4 class="lessmar">TRABAJA CON NOSOTROS</h4>
-                                    <ul class="list">
-                                        <li><a href="/Trabaja/">Ir a Formulario</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!--end item-->
-                        <div class="clearfix"></div>
-                        <div class="one_third">
-                            <div class="topic_holder">
-                                <div class="icon"><span class="glyph-item mega" aria-hidden="true" data-icon="&#xe034;"></span></div>
-                                <div class="text">
-                                    <h4 class="lessmar">DIRECTORIO TELEFÓNICO</h4>
-                                    <ul class="list">
-                                        <li><a href="#">Detalle del servicio</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!--end item-->
                     </div>
+                    <!--end item-->
+
+                    <div class="one_third">
+                        <div class="topic_holder">
+                            <div class="icon"><span class="glyph-item mega" aria-hidden="true" data-icon="&#xe04a;"></span></div>
+                            <div class="text">
+                                <h4 class="lessmar">PQRSF</h4>
+                                <ul class="list">
+                                    <li><a href="/Contacto/Peticiones">Petición</a></li>
+                                    <li><a href="/Contacto/Quejas">Queja</a></li>
+                                    <li><a href="/Contacto/Reclamos">Reclamo</a></li>
+                                    <li><a href="/Contacto/Solicitudes">Solicitud</a></li>
+                                    <li><a href="/Contacto/Felicitaciones">Felicitación</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end item-->
+
+                    <div class="one_third last">
+                        <div class="topic_holder">
+                            <div class="icon"><span class="glyph-item mega" aria-hidden="true" data-icon="&#xe005;"></span></div>
+                            <div class="text">
+                                <h4 class="lessmar">TRABAJA CON NOSOTROS</h4>
+                                <ul class="list">
+                                    <li><a href="/Trabaja/Create">Ir a Formulario</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end item-->
+                    <div class="clearfix"></div>
+                    <div class="one_third">
+                        <div class="topic_holder">
+                            <div class="icon"><span class="glyph-item mega" aria-hidden="true" data-icon="&#xe034;"></span></div>
+                            <div class="text">
+                                <h4 class="lessmar">DIRECTORIO TELEFÓNICO</h4>
+                                <ul class="list">
+                                    <li><a href="/Directorio/">Ver Directorio Telefónico</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end item-->
                 </div>
             </div>
-            <div class="clearfix"></div>
-            <!--end section 6-->
+        </div>
+        <div class="clearfix"></div>
+        <!--end section 6-->
+        <!-- Section Contacto -->
+    @*
+        <div id="section-7">
+            <div class="section_holder20">
+                <div class="container">
+                    <h1 class="lt_title_big"><span>Póngase en contacto con Nosotros</span></h1>
+                    <div class="lt_title_line two"></div>
+                    <!-- Formulario -->
+                    <div class="one_half">
+                        <div class="form_holder">
+                            <div class="cforms">
+                                <form action="demo-contacts.php" method="post" id="sky-form" class="sky-form">
+                                    <fieldset class="two">
+                                        <section>
+                                            <label class="label doc">Nombre</label>
+                                            <label class="input">
+                                                <input class="onepage" type="text" name="name" id="name">
+                                            </label>
+                                        </section>
+                                        <section>
+                                            <label class="label doc">Correo</label>
+                                            <label class="input">
+                                                <input class="onepage" type="email" name="email" id="email">
+                                            </label>
+                                        </section>
+                                        <section>
+                                            <label class="label doc">FIjo</label>
+                                            <label class="input">
+                                                <input class="onepage" type="tel" name="email" id="email">
+                                            </label>
+                                        </section>
+                                        <section>
+                                            <label class="label doc">Celular</label>
+                                            <label class="input">
+                                                <input class="onepage" type="tel" name="email" id="email">
+                                            </label>
+                                        </section>
+                                        <section>
+                                            <label class="label doc">Asunto</label>
+                                            <label class="input">
+                                                <input class="onepage" type="text" name="asunto" id="asunto">
+                                            </label>
+                                        </section>
+                                        <section>
+                                            <label class="label doc">Proposito</label>
+                                            <label class="input">
+                                                <input class="onepage" type="text" name="proposito" id="proposito">
+                                            </label>
+                                        </section>
 
-            <!-- Section Contacto -->
-           @* <div id="section-7">
-        <div class="section_holder20">
-            <div class="container">
-                <h1 class="lt_title_big"><span>Póngase en contacto con Nosotros</span></h1>
-                <div class="lt_title_line two"></div>
-                <!-- Formulario -->
-                <div class="one_half">
-                    <div class="form_holder">
-                        <div class="cforms">
-                            <form action="demo-contacts.php" method="post" id="sky-form" class="sky-form">
-                                <fieldset class="two">
-                                    <section>
-                                        <label class="label doc">Nombre</label>
-                                        <label class="input">
-                                            <input class="onepage" type="text" name="name" id="name">
-                                        </label>
-                                    </section>
-                                    <section>
-                                        <label class="label doc">Correo</label>
-                                        <label class="input">
-                                            <input class="onepage" type="email" name="email" id="email">
-                                        </label>
-                                    </section>
-                                    <section>
-                                        <label class="label doc">FIjo</label>
-                                        <label class="input">
-                                            <input class="onepage" type="tel" name="email" id="email">
-                                        </label>
-                                    </section>
-                                    <section>
-                                        <label class="label doc">Celular</label>
-                                        <label class="input">
-                                            <input class="onepage" type="tel" name="email" id="email">
-                                        </label>
-                                    </section>
-                                    <section>
-                                        <label class="label doc">Asunto</label>
-                                        <label class="input">
-                                            <input class="onepage" type="text" name="asunto" id="asunto">
-                                        </label>
-                                    </section>
-                                    <section>
-                                        <label class="label doc">Proposito</label>
-                                        <label class="input">
-                                            <input class="onepage" type="text" name="proposito" id="proposito">
-                                        </label>
-                                    </section>
+                                        <section>
+                                            <label class="label doc">Mensaje</label>
+                                            <label class="textarea">
+                                                <textarea class="onepage" rows="4" name="message" id="message"></textarea>
+                                            </label>
+                                        </section>
 
-                                    <section>
-                                        <label class="label doc">Mensaje</label>
-                                        <label class="textarea">
-                                            <textarea class="onepage" rows="4" name="message" id="message"></textarea>
-                                        </label>
-                                    </section>
+                                        <section>
+                                            <label class="label doc">Espacio para CAPTCHA</label>
+                                            <label class="textarea">
+                                                <textarea class="onepage" rows="4" name="captcha" id="captcha"></textarea>
+                                            </label>
+                                        </section>
 
-                                    <section>
-                                        <label class="label doc">Espacio para CAPTCHA</label>
-                                        <label class="textarea">
-                                            <textarea class="onepage" rows="4" name="captcha" id="captcha"></textarea>
-                                        </label>
-                                    </section>
-
-                                </fieldset>
-                                <footer class="doc">
-                                    <button type="submit" class="button five">Enviar mensaje</button>
-                                </footer>
-                                <div class="message">
-                                    <i class="icon-ok"></i>
-                                    <p>Su mensaje se envio correctamente!</p>
-                                </div>
-                            </form>
+                                    </fieldset>
+                                    <footer class="doc">
+                                        <button type="submit" class="button five">Enviar mensaje</button>
+                                    </footer>
+                                    <div class="message">
+                                        <i class="icon-ok"></i>
+                                        <p>Su mensaje se envio correctamente!</p>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="one_half last">
-                    <div class="address_info3">
-                        <iframe src="https://www.google.com/maps/d/u/0/embed?mid=z0bxB6WA8aHE.k-pcHuxgOyoA" width="100%" height="350"></iframe>
-                        <h3>Direccíon</h3>
-                        <ul>
-                            <h6><strong>IPS SER</strong></h6>
-                            No.28 - 63739 Bogotá, Colombia
-                            <br />
-                            Telefono: +1 1234-567-89000
-                            <br />
-                            FAX: +1 0123-4567-8900
-                            <br />
-                            <br />
-                            E-mail:
-                            <a href="mailto:mail@companyname.com">info@jhwebpasto.com</a>
-                            <br />
-                            Web:
-                            <a href="index.html">www.jhwebpasto.com</a> </li>
-                        </ul>
+                    <div class="one_half last">
+                        <div class="address_info3">
+                            <iframe src="https://www.google.com/maps/d/u/0/embed?mid=z0bxB6WA8aHE.k-pcHuxgOyoA" width="100%" height="350"></iframe>
+                            <h3>Direccíon</h3>
+                            <ul>
+                                <h6><strong>IPS SER</strong></h6>
+                                No.28 - 63739 Bogotá, Colombia
+                                <br />
+                                Telefono: +1 1234-567-89000
+                                <br />
+                                FAX: +1 0123-4567-8900
+                                <br />
+                                <br />
+                                E-mail:
+                                <a href="mailto:mail@companyname.com">info@jhwebpasto.com</a>
+                                <br />
+                                Web:
+                                <a href="index.html">www.jhwebpasto.com</a> </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!--end section 7-->
+        <!--end section 7-->
         *@
-            
 
-            </div><!--end sitewraper-->
+
+
+    </div><!--end sitewraper-->
+
+    <script>
+        document.onload = function () {
+            if (window.location.hash) {
+                $(window.location.hash).animatescroll();
+            }
+        }
+    </script>
             <!-- ######### JS FILES ######### -->
             <!-- get jQuery from the google apis -->
             <script type="text/javascript" src="~/js/universal/jquery.js"></script>

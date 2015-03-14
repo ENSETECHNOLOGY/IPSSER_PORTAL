@@ -34,6 +34,11 @@ namespace IPSSER.DATOS
         public virtual DbSet<TBL_PORTAL_SLIDE> TBL_PORTAL_SLIDE { get; set; }
         public virtual DbSet<TBL_PORTAL_DIRECTORIO_INTERNO> TBL_PORTAL_DIRECTORIO_INTERNO { get; set; }
         public virtual DbSet<TBL_PORTAL_TRABAJA_CON_NOSOTROS> TBL_PORTAL_TRABAJA_CON_NOSOTROS { get; set; }
+        public virtual DbSet<TBL_PORTAL_CONTENIDO> TBL_PORTAL_CONTENIDO { get; set; }
+        public virtual DbSet<TBL_PORTAL_ROL> TBL_PORTAL_ROL { get; set; }
+        public virtual DbSet<TBL_PORTAL_USUARIO> TBL_PORTAL_USUARIO { get; set; }
+        public virtual DbSet<TBL_PORTAL_USUARIO_ROL> TBL_PORTAL_USUARIO_ROL { get; set; }
+        public virtual DbSet<TBL_PORTAL_DOCUMENTO> TBL_PORTAL_DOCUMENTO { get; set; }
     
         public virtual int PA_DELETE_TBL_PORTAL_BIBLIOTECA_IMAGENES(Nullable<int> idImagen)
         {
@@ -601,6 +606,174 @@ namespace IPSSER.DATOS
                 new ObjectParameter("Link", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_UPDATE_TBL_PORTAL_SLIDE", idSlideParameter, idFrontParameter, idImagenParameter, tituloParameter, descripcionParameter, contenido_UnoParameter, contenido_DosParameter, contenido_TresParameter, linkParameter);
+        }
+    
+        public virtual int PA_INSERT_TBL_PORTAL_TRABAJA_CON_NOSOTROS(string nombres, string apellidos, string telefonoFijo, string celular, string archivoHojaDeVida)
+        {
+            var nombresParameter = nombres != null ?
+                new ObjectParameter("Nombres", nombres) :
+                new ObjectParameter("Nombres", typeof(string));
+    
+            var apellidosParameter = apellidos != null ?
+                new ObjectParameter("Apellidos", apellidos) :
+                new ObjectParameter("Apellidos", typeof(string));
+    
+            var telefonoFijoParameter = telefonoFijo != null ?
+                new ObjectParameter("TelefonoFijo", telefonoFijo) :
+                new ObjectParameter("TelefonoFijo", typeof(string));
+    
+            var celularParameter = celular != null ?
+                new ObjectParameter("Celular", celular) :
+                new ObjectParameter("Celular", typeof(string));
+    
+            var archivoHojaDeVidaParameter = archivoHojaDeVida != null ?
+                new ObjectParameter("ArchivoHojaDeVida", archivoHojaDeVida) :
+                new ObjectParameter("ArchivoHojaDeVida", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_INSERT_TBL_PORTAL_TRABAJA_CON_NOSOTROS", nombresParameter, apellidosParameter, telefonoFijoParameter, celularParameter, archivoHojaDeVidaParameter);
+        }
+    
+        public virtual int PA_DELETE_TBL_PORTAL_TRABAJA_CON_NOSOTROS(Nullable<decimal> idTrabajaConNosotros)
+        {
+            var idTrabajaConNosotrosParameter = idTrabajaConNosotros.HasValue ?
+                new ObjectParameter("IdTrabajaConNosotros", idTrabajaConNosotros) :
+                new ObjectParameter("IdTrabajaConNosotros", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_DELETE_TBL_PORTAL_TRABAJA_CON_NOSOTROS", idTrabajaConNosotrosParameter);
+        }
+    
+        public virtual ObjectResult<PA_INICIAR_SESION_Result> PA_INICIAR_SESION(string login, string clave)
+        {
+            var loginParameter = login != null ?
+                new ObjectParameter("Login", login) :
+                new ObjectParameter("Login", typeof(string));
+    
+            var claveParameter = clave != null ?
+                new ObjectParameter("Clave", clave) :
+                new ObjectParameter("Clave", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PA_INICIAR_SESION_Result>("PA_INICIAR_SESION", loginParameter, claveParameter);
+        }
+    
+        public virtual int PA_INSERT_TBL_PORTAL_DOCUMENTO(string titulo, string archivo)
+        {
+            var tituloParameter = titulo != null ?
+                new ObjectParameter("Titulo", titulo) :
+                new ObjectParameter("Titulo", typeof(string));
+    
+            var archivoParameter = archivo != null ?
+                new ObjectParameter("Archivo", archivo) :
+                new ObjectParameter("Archivo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_INSERT_TBL_PORTAL_DOCUMENTO", tituloParameter, archivoParameter);
+        }
+    
+        public virtual int PA_DELETE_TBL_PORTAL_DOCUMENTO(Nullable<int> idDocumento)
+        {
+            var idDocumentoParameter = idDocumento.HasValue ?
+                new ObjectParameter("IdDocumento", idDocumento) :
+                new ObjectParameter("IdDocumento", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_DELETE_TBL_PORTAL_DOCUMENTO", idDocumentoParameter);
+        }
+    
+        public virtual int PA_UPDATE_TBL_PORTAL_DOCUMENTO(Nullable<int> idDocumento, string titulo)
+        {
+            var idDocumentoParameter = idDocumento.HasValue ?
+                new ObjectParameter("IdDocumento", idDocumento) :
+                new ObjectParameter("IdDocumento", typeof(int));
+    
+            var tituloParameter = titulo != null ?
+                new ObjectParameter("Titulo", titulo) :
+                new ObjectParameter("Titulo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_UPDATE_TBL_PORTAL_DOCUMENTO", idDocumentoParameter, tituloParameter);
+        }
+    
+        public virtual int PA_INSERT_TBL_PORTAL_USUARIO(string login, string clave)
+        {
+            var loginParameter = login != null ?
+                new ObjectParameter("Login", login) :
+                new ObjectParameter("Login", typeof(string));
+    
+            var claveParameter = clave != null ?
+                new ObjectParameter("Clave", clave) :
+                new ObjectParameter("Clave", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_INSERT_TBL_PORTAL_USUARIO", loginParameter, claveParameter);
+        }
+    
+        public virtual int PA_DELETE_TBL_PORTAL_USUARIO(Nullable<int> idUsuario)
+        {
+            var idUsuarioParameter = idUsuario.HasValue ?
+                new ObjectParameter("IdUsuario", idUsuario) :
+                new ObjectParameter("IdUsuario", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_DELETE_TBL_PORTAL_USUARIO", idUsuarioParameter);
+        }
+    
+        public virtual int PA_DELETE_TBL_DIRECTORIO_INTERNO(Nullable<int> idDirectorioInterno)
+        {
+            var idDirectorioInternoParameter = idDirectorioInterno.HasValue ?
+                new ObjectParameter("IdDirectorioInterno", idDirectorioInterno) :
+                new ObjectParameter("IdDirectorioInterno", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_DELETE_TBL_DIRECTORIO_INTERNO", idDirectorioInternoParameter);
+        }
+    
+        public virtual int PA_INSERT_TBL_PORTAL_DIRECTORIO_INTERNO(string departamento, string extension, string email)
+        {
+            var departamentoParameter = departamento != null ?
+                new ObjectParameter("Departamento", departamento) :
+                new ObjectParameter("Departamento", typeof(string));
+    
+            var extensionParameter = extension != null ?
+                new ObjectParameter("Extension", extension) :
+                new ObjectParameter("Extension", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_INSERT_TBL_PORTAL_DIRECTORIO_INTERNO", departamentoParameter, extensionParameter, emailParameter);
+        }
+    
+        public virtual int PA_UPDATE_TBL_PORTAL_DIRECTORIO_INTERNO(Nullable<int> idDirectorioInterno, string departamento, string extension, string email)
+        {
+            var idDirectorioInternoParameter = idDirectorioInterno.HasValue ?
+                new ObjectParameter("IdDirectorioInterno", idDirectorioInterno) :
+                new ObjectParameter("IdDirectorioInterno", typeof(int));
+    
+            var departamentoParameter = departamento != null ?
+                new ObjectParameter("Departamento", departamento) :
+                new ObjectParameter("Departamento", typeof(string));
+    
+            var extensionParameter = extension != null ?
+                new ObjectParameter("Extension", extension) :
+                new ObjectParameter("Extension", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_UPDATE_TBL_PORTAL_DIRECTORIO_INTERNO", idDirectorioInternoParameter, departamentoParameter, extensionParameter, emailParameter);
+        }
+    
+        public virtual int PA_UPDATE_TBL_PORTAL_USUARIO(Nullable<int> idUsuario, string login, string clave)
+        {
+            var idUsuarioParameter = idUsuario.HasValue ?
+                new ObjectParameter("IdUsuario", idUsuario) :
+                new ObjectParameter("IdUsuario", typeof(int));
+    
+            var loginParameter = login != null ?
+                new ObjectParameter("Login", login) :
+                new ObjectParameter("Login", typeof(string));
+    
+            var claveParameter = clave != null ?
+                new ObjectParameter("Clave", clave) :
+                new ObjectParameter("Clave", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_UPDATE_TBL_PORTAL_USUARIO", idUsuarioParameter, loginParameter, claveParameter);
         }
     }
 }

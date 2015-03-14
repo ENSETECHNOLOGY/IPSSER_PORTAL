@@ -1,0 +1,132 @@
+﻿<!doctype html>
+@{
+    Layout = null;
+    ViewBag.Title = "Sitio IPS SER -- Servicio";
+}
+
+<!DOCTYPE html>
+
+<html lang="en-gb">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Sitio IPS SER -- Servicio</title>
+
+    <meta charset="utf-8">
+    <!-- Meta -->
+    <meta name="keywords" content="" />
+    <meta name="author" content="">
+    <meta name="robots" content="" />
+    <meta name="description" content="" />
+
+    <!-- this styles only adds some repairs on idevices  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="~/images/favicon.ico">
+
+    <!-- Google fonts - witch you want to use - (rest you can just remove) -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    <!-- ######### CSS STYLES ######### -->
+
+    <link rel="stylesheet" href="~/Css/reset.css" type="text/css" />
+    <link rel="stylesheet" href="~/Css/style.css" type="text/css" />
+    <link rel="stylesheet" href="~/Css/font-awesome/css/font-awesome.min.css">
+
+    <!-- responsive devices styles -->
+    <link rel="stylesheet" media="screen" href="~/Css/responsive-leyouts.css" type="text/css" />
+
+    <!-- mega menu -->
+    <link href="~/js/mainmenu/sticky.css" rel="stylesheet">
+    <link href="~/js/mainmenu/bootstrap.min.css" rel="stylesheet">
+    <link href="~/js/mainmenu/demo.css" rel="stylesheet">
+    <link href="~/js/mainmenu/menu.css" rel="stylesheet">
+
+    <!-- revolution slider -->
+    <!-- CSS STYLE-->
+    <link rel="stylesheet" type="text/css" href="~/js/revolutionslider/css/style.css" media="screen" />
+
+
+
+    <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+    <link rel="stylesheet" type="text/css" href="~/js/revolutionslider/rs-plugin/css/settings.css" media="screen" />
+
+    <!-- simple line icons -->
+    <link rel="stylesheet" type="text/css" href="~/css/Simple-Line-Icons-Webfont/simple-line-icons.css" media="screen" />
+
+    <!-- flexslider -->
+    <link rel="stylesheet" href="~/js/flexslider/flexslider.css" type="text/css" media="screen" />
+
+    <!-- Accordions -->
+    <link rel="stylesheet" href="~/js/accordion/accordion.css" type="text/css" media="all">
+
+    <!-- tabs -->
+    <link rel="stylesheet" type="text/css" href="~/js/tabs/assets/css/responsive-tabs.css">
+    <link rel="stylesheet" type="text/css" href="~/js/tabs/assets/css/responsive-tabs2.css">
+    <link rel="stylesheet" type="text/css" href="~/js/tabs/assets/css/responsive-tabs11.css">
+    <link rel="stylesheet" type="text/css" href="~/js/tabs/assets/css/responsive-tabs12.css">
+
+    <!-- toogle menu -->
+    <link rel="stylesheet" href="~/js/Toggle-Menu/menu.css" type="text/css" />
+
+    <!-- forms -->
+    <link rel="stylesheet" href="~/js/form/sky-forms.css" type="text/css" media="all">
+
+
+
+</head>
+<body>
+    <div class="site_wrapper">
+        <div id="header">
+            <div id="trueHeader">
+                <div class="wrapper">
+                    <div class="container">
+                        <!-- Menu -->
+                        <div class="mainMenu">
+                            <label for="toggleMenu" class="menuTitle">MENU</label>
+                            <input type="checkbox" id="toggleMenu" />
+                            <ul class="menu">
+
+                                @foreach (var modulo in ViewBag.ListaModulos)
+                                {
+                                    if (modulo.IdModulo == 4)
+                                    {
+                                        <li><a href="../../Inicio/#section-@modulo.IdModulo" class="current">@modulo.NombreModulo</a></li>
+                                    }
+                                    else
+                                    {
+                                        <li><a href="../../Inicio/#section-@modulo.IdModulo">@modulo.NombreModulo</a></li>
+                                    }
+
+                                }
+                                <li><a href="#" class="btn-primary btn-menu"><i class="fa fa-desktop"></i> Solicitud en Línea</a></li>
+                                <li><a href="#" class="btn-success btn-menu"><i class="fa fa-phone"></i> PBX: 742 58 77 </a></li>
+                            </ul>
+                        </div>
+                        <!-- end menu -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+
+        <div class="section_holder12">
+            <div class="container">
+                <a href="../../Inicio/#section-4" class="pull-left"><i class="fa fa-reply-all"></i> Volver</a>
+                <h1 class="lt_title_big"><span>@ViewBag.TituloServicio</span></h1>
+                <div class="lt_title_line"></div>
+                <div style="width:100%; height:200px; background:URL(../@ViewBag.Imagen) center no-repeat"></div>
+                <div class="clearfix"></div>
+
+                <div class="container" style="text-align:justify !important; width:80% !important; margin:0 auto !important">
+                    @ViewBag.DescripcionServicio
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

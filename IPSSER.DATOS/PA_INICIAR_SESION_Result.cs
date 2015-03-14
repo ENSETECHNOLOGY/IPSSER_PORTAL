@@ -10,15 +10,11 @@
 namespace IPSSER.DATOS
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class TBL_PORTAL_TRABAJA_CON_NOSOTROS
+    public partial class PA_INICIAR_SESION_Result
     {
-        public decimal IdTrabajaConNosotros { get; set; }
-        public string Nombres { get; set; }
-        public string Apellidos { get; set; }
-        public string TelefonoFijo { get; set; }
-        public string Celular { get; set; }
-        public string ArchivoHojaDeVida { get; set; }
+        public decimal IdUsuario { get; set; }
+        public string Login { get; set; }
+        public string Clave { get; set; }
     }
 }

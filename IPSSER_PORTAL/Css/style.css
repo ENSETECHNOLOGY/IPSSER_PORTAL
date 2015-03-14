@@ -8738,3 +8738,8 @@ ul.icon_boxes_st3 {
     text-align:center !important;
     padding-top:2px;
 }
+
+.btn-menu {
+    color: #fff !important;
+    font-weight:bold;
+}

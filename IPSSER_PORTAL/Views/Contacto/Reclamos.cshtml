@@ -1,0 +1,263 @@
+﻿@{
+    Layout = null;
+    ViewBag.Title = "Sitio IPS SER -- Reclamos";
+}
+
+<!DOCTYPE html>
+
+<html lang="en-gb">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Sitio IPS SER -- Reclamos</title>
+
+    <meta charset="utf-8">
+    <!-- Meta -->
+    <meta name="keywords" content="" />
+    <meta name="author" content="">
+    <meta name="robots" content="" />
+    <meta name="description" content="" />
+
+    <!-- this styles only adds some repairs on idevices  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="~/images/favicon.ico">
+
+    <!-- Google fonts - witch you want to use - (rest you can just remove) -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    <!-- ######### CSS STYLES ######### -->
+
+    <link rel="stylesheet" href="~/Css/reset.css" type="text/css" />
+    <link rel="stylesheet" href="~/Css/style.css" type="text/css" />
+    <link rel="stylesheet" href="~/Css/font-awesome/css/font-awesome.min.css">
+
+    <!-- responsive devices styles -->
+    <link rel="stylesheet" media="screen" href="~/Css/responsive-leyouts.css" type="text/css" />
+
+    <!-- mega menu -->
+    <link href="~/js/mainmenu/sticky.css" rel="stylesheet">
+    <link href="~/js/mainmenu/bootstrap.min.css" rel="stylesheet">
+    <link href="~/js/mainmenu/demo.css" rel="stylesheet">
+    <link href="~/js/mainmenu/menu.css" rel="stylesheet">
+
+    <!-- revolution slider -->
+    <!-- CSS STYLE-->
+    <link rel="stylesheet" type="text/css" href="~/js/revolutionslider/css/style.css" media="screen" />
+
+
+
+    <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+    <link rel="stylesheet" type="text/css" href="~/js/revolutionslider/rs-plugin/css/settings.css" media="screen" />
+
+    <!-- simple line icons -->
+    <link rel="stylesheet" type="text/css" href="~/css/Simple-Line-Icons-Webfont/simple-line-icons.css" media="screen" />
+
+    <!-- flexslider -->
+    <link rel="stylesheet" href="~/js/flexslider/flexslider.css" type="text/css" media="screen" />
+
+    <!-- Accordions -->
+    <link rel="stylesheet" href="~/js/accordion/accordion.css" type="text/css" media="all">
+
+    <!-- tabs -->
+    <link rel="stylesheet" type="text/css" href="~/js/tabs/assets/css/responsive-tabs.css">
+    <link rel="stylesheet" type="text/css" href="~/js/tabs/assets/css/responsive-tabs2.css">
+    <link rel="stylesheet" type="text/css" href="~/js/tabs/assets/css/responsive-tabs11.css">
+    <link rel="stylesheet" type="text/css" href="~/js/tabs/assets/css/responsive-tabs12.css">
+
+    <!-- toogle menu -->
+    <link rel="stylesheet" href="~/js/Toggle-Menu/menu.css" type="text/css" />
+
+    <!-- forms -->
+    <link rel="stylesheet" href="~/js/form/sky-forms.css" type="text/css" media="all">
+
+
+
+</head>
+<body>
+    <div class="site_wrapper">
+        <div id="header">
+            <div id="trueHeader">
+                <div class="wrapper">
+                    <div class="container">
+                        <!-- Menu -->
+                        <div class="mainMenu">
+                            <label for="toggleMenu" class="menuTitle">MENU</label>
+                            <input type="checkbox" id="toggleMenu" />
+                            <ul class="menu">
+
+                                @foreach (var modulo in ViewBag.ListaModulos)
+                                {
+                                    <li><a href="~/Inicio/#section-@modulo.IdModulo">@modulo.NombreModulo</a></li>
+                                }
+                                <li><a href="#" class="btn-primary btn-menu"><i class="fa fa-desktop"></i> Solicitud en Línea</a></li>
+                                <li><a href="#" class="btn-success btn-menu"><i class="fa fa-phone"></i> PBX: 742 58 77 </a></li>
+                            </ul>
+                        </div>
+                        <!-- end menu -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+
+        <div id="section-7">
+            <div class="section_holder20">
+                <div class="container">
+                    <a href="../Inicio/#section-6" class="pull-left"><i class="fa fa-reply-all"></i> Volver</a>
+                    <h1 class="lt_title_big"><span>Enviar Reclamos</span></h1>
+                    <div class="lt_title_line"></div>
+                    <div class="clearfix"></div>
+                    <!-- Formulario -->
+                    <div class="one_half">
+                        <div class="form_holder">
+                            <div class="cforms">
+                                <form action="#" method="post" id="sky-form" class="sky-form">
+                                    <fieldset class="two">
+                                        <section>
+                                            <label class="label doc">Nombre</label>
+                                            <label class="input">
+                                                <input class="onepage" type="text" name="name" id="name">
+                                            </label>
+                                        </section>
+                                        <section>
+                                            <label class="label doc">Correo</label>
+                                            <label class="input">
+                                                <input class="onepage" type="email" name="email" id="email">
+                                            </label>
+                                        </section>
+                                        <section>
+                                            <label class="label doc">FIjo</label>
+                                            <label class="input">
+                                                <input class="onepage" type="tel" name="email" id="email">
+                                            </label>
+                                        </section>
+                                        <section>
+                                            <label class="label doc">Celular</label>
+                                            <label class="input">
+                                                <input class="onepage" type="tel" name="email" id="email">
+                                            </label>
+                                        </section>
+                                        <section>
+                                            <label class="label doc">Asunto</label>
+                                            <label class="input">
+                                                <input class="onepage" type="text" name="asunto" id="asunto">
+                                            </label>
+                                        </section>
+                                        <!--<section>
+                                            <label class="label doc">Proposito</label>
+                                            <label class="input">
+                                                <input class="onepage" type="text" name="proposito" id="proposito">
+                                            </label>
+                                        </section>-->
+
+                                        <section>
+                                            <label class="label doc">Mensaje</label>
+                                            <label class="textarea">
+                                                <textarea class="onepage" rows="4" name="message" id="message"></textarea>
+                                            </label>
+                                        </section>
+
+                                        <!--<section>
+                                            <label class="label doc">Espacio para CAPTCHA</label>
+                                            <label class="textarea">
+                                                <textarea class="onepage" rows="4" name="captcha" id="captcha"></textarea>
+                                            </label>
+                                        </section>-->
+
+                                    </fieldset>
+                                    <footer class="doc">
+                                        <button type="submit" class="button five">Enviar Reclamo</button>
+                                    </footer>
+                                    <div class="message">
+                                        <i class="icon-ok"></i>
+                                        <p>Su mensaje se envio correctamente!</p>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="one_half last">
+                        <div class="address_info3">
+                            <div style="width:100%; height:350px; background:url(../../Images/contacto.jpg) right top no-repeat"></div>
+                            <br />
+                            <h3>Contacto</h3>
+                            <ul>
+                                <i class="fa fa-phone"></i> Teléfono: +1 1234-567-89000
+                                <br />
+                                <i class="fa fa-fax"></i> Fax: +1 0123-4567-8900
+                                <br />
+                                <i class="fa fa-envelope"></i> E-mail:
+                                <a style="color:#00F" href="mailto:mail@companyname.com">info@ipsser.co</a>
+                                <br />
+                                <i class="fa fa-globe"></i> Web:
+                                <a style="color:#00F" href="index.html">www.ipsser.com</a>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ######### JS FILES ######### -->
+    <!-- get jQuery from the google apis -->
+    <script type="text/javascript" src="~/js/universal/jquery.js"></script>
+
+    <!-- style switcher -->
+    <script src="~/js/style-switcher/jquery-1.js"></script>
+    <script src="~/js/style-switcher/styleselector.js"></script>
+
+    <!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
+    <script type="text/javascript" src="~/js/revolutionslider/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+    <script type="text/javascript" src="~/js/revolutionslider/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+    <script type="text/javascript" src="~/js/revolutionslider/custom1.js"></script>
+
+    <!-- mega menu -->
+    <script src="~/js/mainmenu/bootstrap.min.js"></script>
+    <script src="~/js/mainmenu/customeUI.js"></script>
+
+    <!-- sticky menu -->
+    <script type="text/javascript" src="~/js/mainmenu/sticky.js"></script>
+    <script type="text/javascript" src="~/js/mainmenu/modernizr.custom.75180.js"></script>
+
+    <script>
+        $(function () {
+            // Add click-event listener
+            $(".menu li a").click(function () {
+                // Remove the current class from all a tags
+                $(".menu li a").removeClass("current");
+                // Add the current class to the clicked a
+                $(this).addClass("current");
+            });
+        });
+    </script>
+
+    <!-- tabs -->
+    <script src="~/js/tabs/assets/js/responsive-tabs.min.js" type="text/javascript"></script>
+
+    <!-- scroll up -->
+    <script src="~/js/scrolltotop/totop.js" type="text/javascript"></script>
+
+    <!-- accordion -->
+    <script type="text/javascript" src="~/js/accordion/custom.js"></script>
+
+    <!-- scrollto -->
+    <script src="~/js/pagescroll/animatescroll.js"></script>
+
+    <!--toogle menu-->
+    <script type="text/javascript" src="~/js/Toggle-Menu/menu.js"></script>
+
+
+    <!--forms-->
+    <script src="~/js/form/jquery.form.min.js"></script>
+    <script src="~/js/form/jquery.validate.min.js"></script>
+    <!-- Flexslider -->
+    <script src="~/js/flexslider/jquery.flexslider.js"></script>
+    <script src="~/js/flexslider/custom.js"></script>
+</body>
+</html>

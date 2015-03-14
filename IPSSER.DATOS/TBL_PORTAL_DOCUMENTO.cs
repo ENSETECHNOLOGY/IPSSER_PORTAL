@@ -12,13 +12,10 @@ namespace IPSSER.DATOS
     using System;
     using System.Collections.Generic;
     
-    public partial class TBL_PORTAL_TRABAJA_CON_NOSOTROS
+    public partial class TBL_PORTAL_DOCUMENTO
     {
-        public decimal IdTrabajaConNosotros { get; set; }
-        public string Nombres { get; set; }
-        public string Apellidos { get; set; }
-        public string TelefonoFijo { get; set; }
-        public string Celular { get; set; }
-        public string ArchivoHojaDeVida { get; set; }
+        public int IdDocumento { get; set; }
+        public string Titulo { get; set; }
+        public string Archivo { get; set; }
     }
 }

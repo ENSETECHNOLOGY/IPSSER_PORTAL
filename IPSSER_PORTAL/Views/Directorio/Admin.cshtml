@@ -1,0 +1,53 @@
+﻿@model IEnumerable<IPSSER.DATOS.TBL_PORTAL_DIRECTORIO_INTERNO>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<br />
+<center>
+    <h2>Administrar Directorio Interno</h2>
+</center>
+<br />
+<br />
+
+<p>
+    @Html.ActionLink("CREAR NUEVO REGISTRO", "Create", null, new { @class = "btn btn-primary btn-xs" })
+</p>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Departamento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Extension)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>Opciones</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Departamento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Extension)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.IdDirectorioInterno }, new { @class = "btn btn-primary btn-xs" }) |
+                    @Html.ActionLink("Borrar", "Delete", new { id = item.IdDirectorioInterno }, new { @class = "btn btn-primary btn-xs" })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

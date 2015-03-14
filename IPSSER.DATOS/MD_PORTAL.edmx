@@ -21,15 +21,36 @@
           </Key>
           <Property Name="IdCategoriaBibliotecaImagenes" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Titulo" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Ancho" Type="int" Nullable="false" />
+          <Property Name="Alto" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_PORTAL_CONTENIDO">
+          <Key>
+            <PropertyRef Name="IdContenido" />
+          </Key>
+          <Property Name="IdContenido" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Titulo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="IdImagen" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="IdFront" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Tipo" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="TBL_PORTAL_DIRECTORIO_INTERNO">
           <Key>
             <PropertyRef Name="IdDirectorioInterno" />
           </Key>
-          <Property Name="IdDirectorioInterno" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="IdDirectorioInterno" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Departamento" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Extension" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="Email" Type="varchar" MaxLength="320" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_PORTAL_DOCUMENTO">
+          <Key>
+            <PropertyRef Name="IdDocumento" />
+          </Key>
+          <Property Name="IdDocumento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Titulo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Archivo" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="TBL_PORTAL_FRONT">
           <Key>
@@ -49,6 +70,14 @@
           <Property Name="NombreModulo" Type="varchar" MaxLength="200" />
           <Property Name="Descripcion" Type="varchar" MaxLength="250" />
         </EntityType>
+        <EntityType Name="TBL_PORTAL_ROL">
+          <Key>
+            <PropertyRef Name="IdRol" />
+          </Key>
+          <Property Name="IdRol" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
         <EntityType Name="TBL_PORTAL_SLIDE">
           <Key>
             <PropertyRef Name="IdSlide" />
@@ -57,7 +86,7 @@
           <Property Name="IdFront" Type="int" Nullable="false" />
           <Property Name="IdImagen" Type="int" Nullable="false" />
           <Property Name="Titulo" Type="varchar" MaxLength="200" Nullable="false" />
-          <Property Name="Descripcion" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar(max)" Nullable="false" />
           <Property Name="Contenido_Uno" Type="varchar" MaxLength="500" />
           <Property Name="Contenido_Dos" Type="varchar" MaxLength="500" />
           <Property Name="Contenido_Tres" Type="varchar" MaxLength="500" />
@@ -68,6 +97,27 @@
             <PropertyRef Name="IdTrabajaConNosotros" />
           </Key>
           <Property Name="IdTrabajaConNosotros" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombres" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Apellidos" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="TelefonoFijo" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Celular" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="ArchivoHojaDeVida" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_PORTAL_USUARIO">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Clave" Type="varchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_PORTAL_USUARIO_ROL">
+          <Key>
+            <PropertyRef Name="IdUsuarioRol" />
+          </Key>
+          <Property Name="IdUsuarioRol" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUsuario" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="IdRol" Type="numeric" Precision="18" Scale="0" Nullable="false" />
         </EntityType>
         <Association Name="FK_TBL_PORTAL_FRONT_TBL_PORTAL_BIBLIOTECA_IMAGENES">
           <End Role="TBL_PORTAL_BIBLIOTECA_IMAGENES" Type="Self.TBL_PORTAL_BIBLIOTECA_IMAGENES" Multiplicity="1" />
@@ -117,6 +167,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="PA_DELETE_TBL_DIRECTORIO_INTERNO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdDirectorioInterno" Type="int" Mode="In" />
+        </Function>
         <Function Name="PA_DELETE_TBL_PORTAL_BIBLIOTECA_IMAGENES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IdImagen" Type="int" Mode="In" />
         </Function>
@@ -129,6 +182,9 @@
         <Function Name="PA_DELETE_TBL_PORTAL_CONTENIDOSLIDE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IdContenidoSlide" Type="int" Mode="In" />
         </Function>
+        <Function Name="PA_DELETE_TBL_PORTAL_DOCUMENTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdDocumento" Type="int" Mode="In" />
+        </Function>
         <Function Name="PA_DELETE_TBL_PORTAL_FRONT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IdFront" Type="int" Mode="In" />
         </Function>
@@ -137,6 +193,16 @@
         </Function>
         <Function Name="PA_DELETE_TBL_PORTAL_SLIDE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IdSlide" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PA_DELETE_TBL_PORTAL_TRABAJA_CON_NOSOTROS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdTrabajaConNosotros" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="PA_DELETE_TBL_PORTAL_USUARIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdUsuario" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PA_INICIAR_SESION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Login" Type="varchar" Mode="In" />
+          <Parameter Name="Clave" Type="varchar" Mode="In" />
         </Function>
         <Function Name="PA_INSERT_TBL_PORTAL_BIBLIOTECA_IMAGENES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Titulo" Type="varchar" Mode="In" />
@@ -167,6 +233,15 @@
           <Parameter Name="IdImagen" Type="int" Mode="In" />
           <Parameter Name="Link" Type="varchar(max)" Mode="In" />
         </Function>
+        <Function Name="PA_INSERT_TBL_PORTAL_DIRECTORIO_INTERNO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Departamento" Type="varchar" Mode="In" />
+          <Parameter Name="Extension" Type="varchar" Mode="In" />
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PA_INSERT_TBL_PORTAL_DOCUMENTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Titulo" Type="varchar" Mode="In" />
+          <Parameter Name="Archivo" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="PA_INSERT_TBL_PORTAL_FRONT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IdModulo" Type="int" Mode="In" />
           <Parameter Name="Titulo" Type="varchar" Mode="In" />
@@ -181,11 +256,22 @@
           <Parameter Name="IdFront" Type="int" Mode="In" />
           <Parameter Name="IdImagen" Type="int" Mode="In" />
           <Parameter Name="Titulo" Type="varchar" Mode="In" />
-          <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+          <Parameter Name="Descripcion" Type="varchar(max)" Mode="In" />
           <Parameter Name="Contenido_Uno" Type="varchar" Mode="In" />
           <Parameter Name="Contenido_Dos" Type="varchar" Mode="In" />
           <Parameter Name="Contenido_Tres" Type="varchar" Mode="In" />
           <Parameter Name="Link" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="PA_INSERT_TBL_PORTAL_TRABAJA_CON_NOSOTROS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nombres" Type="varchar" Mode="In" />
+          <Parameter Name="Apellidos" Type="varchar" Mode="In" />
+          <Parameter Name="TelefonoFijo" Type="varchar" Mode="In" />
+          <Parameter Name="Celular" Type="varchar" Mode="In" />
+          <Parameter Name="ArchivoHojaDeVida" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PA_INSERT_TBL_PORTAL_USUARIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Login" Type="varchar" Mode="In" />
+          <Parameter Name="Clave" Type="varchar" Mode="In" />
         </Function>
         <Function Name="PA_SELECT_FRONTS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="PA_SELECT_FRONTS_CON_SLIDES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -257,6 +343,16 @@
           <Parameter Name="IdImagen" Type="int" Mode="In" />
           <Parameter Name="Link" Type="varchar(max)" Mode="In" />
         </Function>
+        <Function Name="PA_UPDATE_TBL_PORTAL_DIRECTORIO_INTERNO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdDirectorioInterno" Type="int" Mode="In" />
+          <Parameter Name="Departamento" Type="varchar" Mode="In" />
+          <Parameter Name="Extension" Type="varchar" Mode="In" />
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PA_UPDATE_TBL_PORTAL_DOCUMENTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdDocumento" Type="int" Mode="In" />
+          <Parameter Name="Titulo" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="PA_UPDATE_TBL_PORTAL_FRONT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IdFront" Type="int" Mode="In" />
           <Parameter Name="IdModulo" Type="int" Mode="In" />
@@ -273,20 +369,30 @@
           <Parameter Name="IdFront" Type="int" Mode="In" />
           <Parameter Name="IdImagen" Type="int" Mode="In" />
           <Parameter Name="Titulo" Type="varchar" Mode="In" />
-          <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+          <Parameter Name="Descripcion" Type="varchar(max)" Mode="In" />
           <Parameter Name="Contenido_Uno" Type="varchar" Mode="In" />
           <Parameter Name="Contenido_Dos" Type="varchar" Mode="In" />
           <Parameter Name="Contenido_Tres" Type="varchar" Mode="In" />
           <Parameter Name="Link" Type="varchar(max)" Mode="In" />
         </Function>
+        <Function Name="PA_UPDATE_TBL_PORTAL_USUARIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdUsuario" Type="int" Mode="In" />
+          <Parameter Name="Login" Type="varchar" Mode="In" />
+          <Parameter Name="Clave" Type="varchar" Mode="In" />
+        </Function>
         <EntityContainer Name="IPSSER_PORTALModelStoreContainer">
           <EntitySet Name="TBL_PORTAL_BIBLIOTECA_IMAGENES" EntityType="Self.TBL_PORTAL_BIBLIOTECA_IMAGENES" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBL_PORTAL_CATEGORIA_BIBLIOTECA_IMAGENES" EntityType="Self.TBL_PORTAL_CATEGORIA_BIBLIOTECA_IMAGENES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_PORTAL_CONTENIDO" EntityType="Self.TBL_PORTAL_CONTENIDO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBL_PORTAL_DIRECTORIO_INTERNO" EntityType="Self.TBL_PORTAL_DIRECTORIO_INTERNO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_PORTAL_DOCUMENTO" EntityType="Self.TBL_PORTAL_DOCUMENTO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBL_PORTAL_FRONT" EntityType="Self.TBL_PORTAL_FRONT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBL_PORTAL_MODULO" EntityType="Self.TBL_PORTAL_MODULO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_PORTAL_ROL" EntityType="Self.TBL_PORTAL_ROL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBL_PORTAL_SLIDE" EntityType="Self.TBL_PORTAL_SLIDE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBL_PORTAL_TRABAJA_CON_NOSOTROS" EntityType="Self.TBL_PORTAL_TRABAJA_CON_NOSOTROS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_PORTAL_USUARIO" EntityType="Self.TBL_PORTAL_USUARIO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_PORTAL_USUARIO_ROL" EntityType="Self.TBL_PORTAL_USUARIO_ROL" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_TBL_PORTAL_FRONT_TBL_PORTAL_BIBLIOTECA_IMAGENES" Association="Self.FK_TBL_PORTAL_FRONT_TBL_PORTAL_BIBLIOTECA_IMAGENES">
             <End Role="TBL_PORTAL_BIBLIOTECA_IMAGENES" EntitySet="TBL_PORTAL_BIBLIOTECA_IMAGENES" />
             <End Role="TBL_PORTAL_FRONT" EntitySet="TBL_PORTAL_FRONT" />
@@ -326,6 +432,8 @@
           </Key>
           <Property Name="IdCategoriaBibliotecaImagenes" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Titulo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ancho" Type="Int32" Nullable="false" />
+          <Property Name="Alto" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="TBL_PORTAL_FRONT">
           <Key>
@@ -357,7 +465,7 @@
           <Property Name="IdFront" Type="Int32" Nullable="false" />
           <Property Name="IdImagen" Type="Int32" Nullable="false" />
           <Property Name="Titulo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Contenido_Uno" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="Contenido_Dos" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="Contenido_Tres" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
@@ -599,6 +707,62 @@
           </FunctionImport>
           <EntitySet Name="TBL_PORTAL_DIRECTORIO_INTERNO" EntityType="IPSSER_PORTALModel.TBL_PORTAL_DIRECTORIO_INTERNO" />
           <EntitySet Name="TBL_PORTAL_TRABAJA_CON_NOSOTROS" EntityType="IPSSER_PORTALModel.TBL_PORTAL_TRABAJA_CON_NOSOTROS" />
+          <FunctionImport Name="PA_INSERT_TBL_PORTAL_TRABAJA_CON_NOSOTROS">
+            <Parameter Name="Nombres" Mode="In" Type="String" />
+            <Parameter Name="Apellidos" Mode="In" Type="String" />
+            <Parameter Name="TelefonoFijo" Mode="In" Type="String" />
+            <Parameter Name="Celular" Mode="In" Type="String" />
+            <Parameter Name="ArchivoHojaDeVida" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_DELETE_TBL_PORTAL_TRABAJA_CON_NOSOTROS">
+          <Parameter Name="IdTrabajaConNosotros" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <EntitySet Name="TBL_PORTAL_CONTENIDO" EntityType="IPSSER_PORTALModel.TBL_PORTAL_CONTENIDO" />
+          <EntitySet Name="TBL_PORTAL_ROL" EntityType="IPSSER_PORTALModel.TBL_PORTAL_ROL" />
+          <EntitySet Name="TBL_PORTAL_USUARIO" EntityType="IPSSER_PORTALModel.TBL_PORTAL_USUARIO" />
+          <EntitySet Name="TBL_PORTAL_USUARIO_ROL" EntityType="IPSSER_PORTALModel.TBL_PORTAL_USUARIO_ROL" />
+          <FunctionImport Name="PA_INICIAR_SESION" ReturnType="Collection(IPSSER_PORTALModel.PA_INICIAR_SESION_Result)">
+            <Parameter Name="Login" Mode="In" Type="String" />
+            <Parameter Name="Clave" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_INSERT_TBL_PORTAL_DOCUMENTO">
+            <Parameter Name="Titulo" Mode="In" Type="String" />
+            <Parameter Name="Archivo" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="TBL_PORTAL_DOCUMENTO" EntityType="IPSSER_PORTALModel.TBL_PORTAL_DOCUMENTO" />
+          <FunctionImport Name="PA_DELETE_TBL_PORTAL_DOCUMENTO">
+          <Parameter Name="IdDocumento" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PA_UPDATE_TBL_PORTAL_DOCUMENTO">
+            <Parameter Name="IdDocumento" Mode="In" Type="Int32" />
+            <Parameter Name="Titulo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_INSERT_TBL_PORTAL_USUARIO">
+            <Parameter Name="Login" Mode="In" Type="String" />
+            <Parameter Name="Clave" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_DELETE_TBL_PORTAL_USUARIO">
+          <Parameter Name="IdUsuario" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PA_DELETE_TBL_DIRECTORIO_INTERNO">
+            <Parameter Name="IdDirectorioInterno" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PA_INSERT_TBL_PORTAL_DIRECTORIO_INTERNO">
+            <Parameter Name="Departamento" Mode="In" Type="String" />
+            <Parameter Name="Extension" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_UPDATE_TBL_PORTAL_DIRECTORIO_INTERNO">
+            <Parameter Name="IdDirectorioInterno" Mode="In" Type="Int32" />
+            <Parameter Name="Departamento" Mode="In" Type="String" />
+            <Parameter Name="Extension" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_UPDATE_TBL_PORTAL_USUARIO">
+            <Parameter Name="IdUsuario" Mode="In" Type="Int32" />
+            <Parameter Name="Login" Mode="In" Type="String" />
+            <Parameter Name="Clave" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="PA_SELECT_FRONTS_Result">
           <Property Type="Int32" Name="IdModulo" Nullable="false" />
@@ -707,6 +871,59 @@
             <PropertyRef Name="IdTrabajaConNosotros" />
           </Key>
           <Property Name="IdTrabajaConNosotros" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombres" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Apellidos" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="TelefonoFijo" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Celular" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ArchivoHojaDeVida" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TBL_PORTAL_CONTENIDO">
+          <Key>
+            <PropertyRef Name="IdContenido" />
+          </Key>
+          <Property Name="IdContenido" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titulo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="IdImagen" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="IdFront" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Tipo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TBL_PORTAL_ROL">
+          <Key>
+            <PropertyRef Name="IdRol" />
+          </Key>
+          <Property Name="IdRol" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TBL_PORTAL_USUARIO">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Clave" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TBL_PORTAL_USUARIO_ROL">
+          <Key>
+            <PropertyRef Name="IdUsuarioRol" />
+          </Key>
+          <Property Name="IdUsuarioRol" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUsuario" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="IdRol" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+        </EntityType>
+        <ComplexType Name="PA_INICIAR_SESION_Result">
+          <Property Type="Decimal" Name="IdUsuario" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="Login" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Clave" Nullable="false" MaxLength="32" />
+        </ComplexType>
+        <EntityType Name="TBL_PORTAL_DOCUMENTO">
+          <Key>
+            <PropertyRef Name="IdDocumento" />
+          </Key>
+          <Property Name="IdDocumento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titulo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Archivo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -728,6 +945,8 @@
           <EntitySetMapping Name="TBL_PORTAL_CATEGORIA_BIBLIOTECA_IMAGENES">
             <EntityTypeMapping TypeName="IPSSER_PORTALModel.TBL_PORTAL_CATEGORIA_BIBLIOTECA_IMAGENES">
               <MappingFragment StoreEntitySet="TBL_PORTAL_CATEGORIA_BIBLIOTECA_IMAGENES">
+                <ScalarProperty Name="Alto" ColumnName="Alto" />
+                <ScalarProperty Name="Ancho" ColumnName="Ancho" />
                 <ScalarProperty Name="IdCategoriaBibliotecaImagenes" ColumnName="IdCategoriaBibliotecaImagenes" />
                 <ScalarProperty Name="Titulo" ColumnName="Titulo" />
               </MappingFragment>
@@ -944,10 +1163,83 @@
           <EntitySetMapping Name="TBL_PORTAL_TRABAJA_CON_NOSOTROS">
             <EntityTypeMapping TypeName="IPSSER_PORTALModel.TBL_PORTAL_TRABAJA_CON_NOSOTROS">
               <MappingFragment StoreEntitySet="TBL_PORTAL_TRABAJA_CON_NOSOTROS">
+                <ScalarProperty Name="ArchivoHojaDeVida" ColumnName="ArchivoHojaDeVida" />
+                <ScalarProperty Name="Celular" ColumnName="Celular" />
+                <ScalarProperty Name="TelefonoFijo" ColumnName="TelefonoFijo" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
                 <ScalarProperty Name="IdTrabajaConNosotros" ColumnName="IdTrabajaConNosotros" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="PA_INSERT_TBL_PORTAL_TRABAJA_CON_NOSOTROS" FunctionName="IPSSER_PORTALModel.Store.PA_INSERT_TBL_PORTAL_TRABAJA_CON_NOSOTROS" />
+          <FunctionImportMapping FunctionImportName="PA_DELETE_TBL_PORTAL_TRABAJA_CON_NOSOTROS" FunctionName="IPSSER_PORTALModel.Store.PA_DELETE_TBL_PORTAL_TRABAJA_CON_NOSOTROS" />
+          <EntitySetMapping Name="TBL_PORTAL_CONTENIDO">
+            <EntityTypeMapping TypeName="IPSSER_PORTALModel.TBL_PORTAL_CONTENIDO">
+              <MappingFragment StoreEntitySet="TBL_PORTAL_CONTENIDO">
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="IdFront" ColumnName="IdFront" />
+                <ScalarProperty Name="IdImagen" ColumnName="IdImagen" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="IdContenido" ColumnName="IdContenido" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_PORTAL_ROL">
+            <EntityTypeMapping TypeName="IPSSER_PORTALModel.TBL_PORTAL_ROL">
+              <MappingFragment StoreEntitySet="TBL_PORTAL_ROL">
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_PORTAL_USUARIO">
+            <EntityTypeMapping TypeName="IPSSER_PORTALModel.TBL_PORTAL_USUARIO">
+              <MappingFragment StoreEntitySet="TBL_PORTAL_USUARIO">
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_PORTAL_USUARIO_ROL">
+            <EntityTypeMapping TypeName="IPSSER_PORTALModel.TBL_PORTAL_USUARIO_ROL">
+              <MappingFragment StoreEntitySet="TBL_PORTAL_USUARIO_ROL">
+                <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="IdUsuarioRol" ColumnName="IdUsuarioRol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="PA_INICIAR_SESION" FunctionName="IPSSER_PORTALModel.Store.PA_INICIAR_SESION">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IPSSER_PORTALModel.PA_INICIAR_SESION_Result">
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PA_INSERT_TBL_PORTAL_DOCUMENTO" FunctionName="IPSSER_PORTALModel.Store.PA_INSERT_TBL_PORTAL_DOCUMENTO" />
+          <EntitySetMapping Name="TBL_PORTAL_DOCUMENTO">
+            <EntityTypeMapping TypeName="IPSSER_PORTALModel.TBL_PORTAL_DOCUMENTO">
+              <MappingFragment StoreEntitySet="TBL_PORTAL_DOCUMENTO">
+                <ScalarProperty Name="Archivo" ColumnName="Archivo" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="IdDocumento" ColumnName="IdDocumento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="PA_DELETE_TBL_PORTAL_DOCUMENTO" FunctionName="IPSSER_PORTALModel.Store.PA_DELETE_TBL_PORTAL_DOCUMENTO" />
+          <FunctionImportMapping FunctionImportName="PA_UPDATE_TBL_PORTAL_DOCUMENTO" FunctionName="IPSSER_PORTALModel.Store.PA_UPDATE_TBL_PORTAL_DOCUMENTO" />
+          <FunctionImportMapping FunctionImportName="PA_INSERT_TBL_PORTAL_USUARIO" FunctionName="IPSSER_PORTALModel.Store.PA_INSERT_TBL_PORTAL_USUARIO" />
+          <FunctionImportMapping FunctionImportName="PA_DELETE_TBL_PORTAL_USUARIO" FunctionName="IPSSER_PORTALModel.Store.PA_DELETE_TBL_PORTAL_USUARIO" />
+          <FunctionImportMapping FunctionImportName="PA_DELETE_TBL_DIRECTORIO_INTERNO" FunctionName="IPSSER_PORTALModel.Store.PA_DELETE_TBL_DIRECTORIO_INTERNO" />
+          <FunctionImportMapping FunctionImportName="PA_INSERT_TBL_PORTAL_DIRECTORIO_INTERNO" FunctionName="IPSSER_PORTALModel.Store.PA_INSERT_TBL_PORTAL_DIRECTORIO_INTERNO" />
+          <FunctionImportMapping FunctionImportName="PA_UPDATE_TBL_PORTAL_DIRECTORIO_INTERNO" FunctionName="IPSSER_PORTALModel.Store.PA_UPDATE_TBL_PORTAL_DIRECTORIO_INTERNO" />
+          <FunctionImportMapping FunctionImportName="PA_UPDATE_TBL_PORTAL_USUARIO" FunctionName="IPSSER_PORTALModel.Store.PA_UPDATE_TBL_PORTAL_USUARIO" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

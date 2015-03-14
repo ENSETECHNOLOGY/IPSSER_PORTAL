@@ -17,6 +17,11 @@ namespace IPSSER_PORTAL.Controllers
         // GET: Front
         public ActionResult Index()
         {
+            if (Session["LOGUEADO"] == null)
+            {
+                return RedirectToAction("../Administracion/Login");
+            }
+
             var tBL_PORTAL_FRONT = db.TBL_PORTAL_FRONT.Include(t => t.TBL_PORTAL_MODULO);
              return View(tBL_PORTAL_FRONT.ToList());
 
@@ -25,6 +30,11 @@ namespace IPSSER_PORTAL.Controllers
         // GET: Front/Details/5
         public ActionResult Details(int? id)
         {
+            if (Session["LOGUEADO"] == null)
+            {
+                return RedirectToAction("../Administracion/Login");
+            }
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -40,6 +50,11 @@ namespace IPSSER_PORTAL.Controllers
         // GET: Front/Create
         public ActionResult Create()
         {
+            if (Session["LOGUEADO"] == null)
+            {
+                return RedirectToAction("../Administracion/Login");
+            }
+
             ViewBag.IdModulo = new SelectList(db.TBL_PORTAL_MODULO, "IdModulo", "NombreModulo");
 
             var Imagenes = db.TBL_PORTAL_BIBLIOTECA_IMAGENES;
@@ -56,6 +71,11 @@ namespace IPSSER_PORTAL.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "IdFront,IdModulo,Titulo,Descripcion")] IPSSER_PORTAL.Models.TBL_PORTAL_FRONT tBL_PORTAL_FRONT)
         {
+            if (Session["LOGUEADO"] == null)
+            {
+                return RedirectToAction("../Administracion/Login");
+            }
+
             string Respuesta="";
             IPSSER.DATOS.Administracion.datAdminFront ObjDatAdministracion = new IPSSER.DATOS.Administracion.datAdminFront();
             
@@ -106,6 +126,11 @@ namespace IPSSER_PORTAL.Controllers
         // GET: Front/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (Session["LOGUEADO"] == null)
+            {
+                return RedirectToAction("../Administracion/Login");
+            }
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -131,6 +156,11 @@ namespace IPSSER_PORTAL.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "IdFront,IdModulo,Titulo,Descripcion")] TBL_PORTAL_FRONT tBL_PORTAL_FRONT)
         {
+            if (Session["LOGUEADO"] == null)
+            {
+                return RedirectToAction("../Administracion/Login");
+            }
+
             string Respuesta = "";
             IPSSER.DATOS.Administracion.datAdminFront ObjDatAdministracion = new IPSSER.DATOS.Administracion.datAdminFront();
 
@@ -181,6 +211,11 @@ namespace IPSSER_PORTAL.Controllers
         // GET: Front/Delete/5
         public ActionResult Delete(int? id)
         {
+            if (Session["LOGUEADO"] == null)
+            {
+                return RedirectToAction("../Administracion/Login");
+            }
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -198,6 +233,11 @@ namespace IPSSER_PORTAL.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            if (Session["LOGUEADO"] == null)
+            {
+                return RedirectToAction("../Administracion/Login");
+            }
+
             string Respuesta = "";
             IPSSER.DATOS.Administracion.datAdminFront ObjDatAdministracion = new IPSSER.DATOS.Administracion.datAdminFront();
 
