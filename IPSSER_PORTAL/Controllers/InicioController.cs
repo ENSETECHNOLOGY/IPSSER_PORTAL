@@ -38,6 +38,10 @@ namespace IPSSER_PORTAL.Controllers
             var ListaModulos = Modulos.ToList();
             ViewBag.ListaModulos = ListaModulos;
 
+            var Inicio = db.PA_SELECT_FRONTS_CON_SLIDESXIDMODULO(1);
+            var ListaInicio = Inicio.ToList();
+            ViewBag.ListaInicio = ListaInicio;
+
             // ITEMS
 
             foreach (var registro in db.TBL_PORTAL_SLIDE)
@@ -335,6 +339,14 @@ namespace IPSSER_PORTAL.Controllers
            var ListaInicio = Inicio.ToList();
            ViewBag.ListaInicio = ListaInicio;
 
+            //Servicios
+           ViewBag.SlidesServicios = db.PA_SELECT_FRONTS_CON_SLIDESXIDMODULO(4).ToList();
+
+            //Transporte
+           ViewBag.SlidesTransporte = db.PA_SELECT_FRONTS_CON_SLIDESXIDMODULO(3).ToList();
+
+            //Nosotros
+           ViewBag.SlidesNosotros = db.PA_SELECT_FRONTS_CON_SLIDESXIDMODULO(2).ToList();
 
            //Modulo Servicios 1
            var Servicios1 = db.PA_SELECT_FRONTS_CON_SLIDESXIDMODULO(2);

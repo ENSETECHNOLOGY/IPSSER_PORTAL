@@ -194,6 +194,7 @@
     <Compile Include="Controllers\DirectorioController.cs" />
     <Compile Include="Controllers\DocumentosController.cs" />
     <Compile Include="Controllers\FrontController.cs" />
+    <Compile Include="Controllers\GaleriaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImagenesContenidoController.cs" />
     <Compile Include="Controllers\ImagenesController.cs" />
@@ -720,6 +721,46 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Views\css\camera.css" />
+    <Content Include="Views\css\_notes\dwsync.xml" />
+    <Content Include="Views\images\blank.gif" />
+    <Content Include="Views\images\camera-loader.gif" />
+    <Content Include="Views\images\camera_skins.png" />
+    <Content Include="Views\images\patterns\overlay1.png" />
+    <Content Include="Views\images\patterns\overlay10.png" />
+    <Content Include="Views\images\patterns\overlay2.png" />
+    <Content Include="Views\images\patterns\overlay3.png" />
+    <Content Include="Views\images\patterns\overlay4.png" />
+    <Content Include="Views\images\patterns\overlay5.png" />
+    <Content Include="Views\images\patterns\overlay6.png" />
+    <Content Include="Views\images\patterns\overlay7.png" />
+    <Content Include="Views\images\patterns\overlay8.png" />
+    <Content Include="Views\images\patterns\overlay9.png" />
+    <Content Include="Views\images\patterns\_notes\dwsync.xml" />
+    <Content Include="Views\images\slides\big_bunny_fake.jpg" />
+    <Content Include="Views\images\slides\bridge.jpg" />
+    <Content Include="Views\images\slides\leaf.jpg" />
+    <Content Include="Views\images\slides\road.jpg" />
+    <Content Include="Views\images\slides\sea.jpg" />
+    <Content Include="Views\images\slides\shelter.jpg" />
+    <Content Include="Views\images\slides\thumbs\big_bunny_fake.jpg" />
+    <Content Include="Views\images\slides\thumbs\bridge.jpg" />
+    <Content Include="Views\images\slides\thumbs\header_bg.png" />
+    <Content Include="Views\images\slides\thumbs\leaf.jpg" />
+    <Content Include="Views\images\slides\thumbs\road.jpg" />
+    <Content Include="Views\images\slides\thumbs\sea.jpg" />
+    <Content Include="Views\images\slides\thumbs\shelter.jpg" />
+    <Content Include="Views\images\slides\thumbs\tree.jpg" />
+    <Content Include="Views\images\slides\thumbs\_notes\dwsync.xml" />
+    <Content Include="Views\images\slides\tree.jpg" />
+    <Content Include="Views\images\slides\_notes\dwsync.xml" />
+    <Content Include="Views\images\_notes\dwsync.xml" />
+    <Content Include="Views\scripts\camera.js" />
+    <Content Include="Views\scripts\camera.min.js" />
+    <Content Include="Views\scripts\jquery.easing.1.3.js" />
+    <Content Include="Views\scripts\jquery.min.js" />
+    <Content Include="Views\scripts\jquery.mobile.customized.min.js" />
+    <Content Include="Views\scripts\_notes\dwsync.xml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -818,9 +859,13 @@
     <Content Include="Views\Usuario\Delete.cshtml" />
     <Content Include="Views\Usuario\Edit.cshtml" />
     <Content Include="Views\Directorio\Delete.cshtml" />
+    <Content Include="Views\Galeria\Admin.cshtml" />
+    <Content Include="Views\Galeria\Index.cshtml" />
+    <Content Include="Views\Galeria\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Galeria\" />
     <Folder Include="HojasVida\" />
     <Folder Include="Imagenes\" />
   </ItemGroup>
@@ -851,16 +896,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>4801</DevelopmentServerPort>
-          <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:12907/</IISUrl>
-          <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
-          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
     </VisualStudio>

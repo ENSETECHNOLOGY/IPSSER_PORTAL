@@ -1,0 +1,47 @@
+﻿@model IEnumerable<IPSSER.DATOS.TBL_PORTAL_GALERIA>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<br />
+<center>
+    <h2>Galería</h2>
+</center>
+<br />
+<br />
+
+<p>
+    @Html.ActionLink("CREAR NUEVA FOTO", "Create", null, new { @class = "btn btn-primary btn-xs" })
+</p>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Ruta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th>Opciones</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ruta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descripcion)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.IdGaleria }, new { @class = "btn btn-primary btn-xs" }) |
+                    @Html.ActionLink("Borrar", "Delete", new { id = item.IdGaleria }, new { @class = "btn btn-primary btn-xs" })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

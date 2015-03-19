@@ -39,6 +39,7 @@ namespace IPSSER.DATOS
         public virtual DbSet<TBL_PORTAL_USUARIO> TBL_PORTAL_USUARIO { get; set; }
         public virtual DbSet<TBL_PORTAL_USUARIO_ROL> TBL_PORTAL_USUARIO_ROL { get; set; }
         public virtual DbSet<TBL_PORTAL_DOCUMENTO> TBL_PORTAL_DOCUMENTO { get; set; }
+        public virtual DbSet<TBL_PORTAL_GALERIA> TBL_PORTAL_GALERIA { get; set; }
     
         public virtual int PA_DELETE_TBL_PORTAL_BIBLIOTECA_IMAGENES(Nullable<int> idImagen)
         {

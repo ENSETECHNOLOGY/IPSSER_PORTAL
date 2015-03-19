@@ -92,7 +92,11 @@
 
                                 @foreach (var modulo in ViewBag.ListaModulos)
                                 {
-                                    if (modulo.IdModulo == 1)
+                                    if (modulo.IdModulo == 7)
+                                    {
+                                        <li><a href="~/../Galeria/Index" onclick="$('#section-@modulo.IdModulo').animatescroll();">@modulo.NombreModulo</a></li>
+                                    }
+                                    else if (modulo.IdModulo == 1)
                                     {
                                         <li><a href="#" class="current" onclick="$('#section-@modulo.IdModulo').animatescroll();">@modulo.NombreModulo</a></li>
                                     }
@@ -169,17 +173,19 @@
                                              data-endeasing="Power1.easeIn"
                                              data-captionhidden="off"
                                              style="z-index: 6">
-                                            <i class="fa fa-check"></i>
-                                            @if (i == 1)
+                                            @if (i == 1 && @FrontSlide.Contenido1 != null)
                                             {
+                                                <i class="fa fa-check"></i>
                                                 @FrontSlide.Contenido1;
                                             }
-                                            @if (i == 2)
+                                            @if (i == 2 && @FrontSlide.Contenido2 != null)
                                             {
+                                                <i class="fa fa-check"></i>
                                                 @FrontSlide.Contenido2;
                                             }
-                                            @if (i == 3)
+                                            @if (i == 3 && @FrontSlide.Contenido3 != null)
                                             {
+                                                <i class="fa fa-check"></i>
                                                 @FrontSlide.Contenido3;
                                             }
                                             @{start = start + 300; }
@@ -222,7 +228,7 @@
                     <div class="lt_title_line"></div>
                     <!-- <p class="lt_title_bottomtext">Sirviendo con PASIÓN transportando con AMOR</p>-->
                     <div class="clearfix"></div>
-                    <div class="container">
+                    @*<div class="container">
                         <div class="one_half">
                             <!-- <h4 class="bold uppercase">Sirviendo con PASIÓN transportando con AMOR</h4> -->
                             <ul class="list">
@@ -235,7 +241,104 @@
                             <div class="img_holder">
                                 <img src="@ViewBag.NosotrosImagen" alt="" class="img_size1" />
                             </div>
+                        </div>*@
+
+                    <div class="tp-banner-container">
+                        @*<div class="one_half">
+                <!-- <h4 class="bold uppercase">Sirviendo con PASIÓN transportando con AMOR</h4> -->
+                <ul class="list">
+                    <li>@ViewBag.Transporte@*<br />@Html.ActionLink("Ver más", "Transporte", null, new { @class = "btn btn-primary btn-xs" })</li>
+                </ul>
+            </div>
+            <div class="one_half last">
+
+                <div class="img_holder">
+                    <img src="@ViewBag.TransporteImagen" alt="" class="img_size1" />
+                </div>
+            </div>*@
+
+
+                        <div class="tp-banner2">
+                            <ul>
+                                @foreach (var FrontSlide in ViewBag.SlidesNosotros)
+                                {
+                            <!-- SLIDE  -->
+                                    <li data-transition="fade" data-slotamount="1" data-masterspeed="1500" data-thumb="images/sliders/slider1_thumb.jpg" data-delay="13000" data-saveperformance="off" data-title="Our Workplace">
+
+                                        <!-- MAIN IMAGE -->
+
+                                        <img src="@FrontSlide.Fondo" alt="@FrontSlide.Fondo" data-bgposition="left center" data-kenburns="on" data-duration="14000" data-ease="Linear.easeNone" data-bgfit="100" data-bgfitend="130" data-bgpositionend="right center">
+                                        <!-- LAYERS -->
+
+                                        <div class="tp-caption offerbadge sfb"
+                                             data-x="928"
+                                             data-hoffset="0"
+                                             data-voffset="-10"
+                                             data-y="200"
+                                             data-speed="800"
+                                             data-start="1600"
+                                             data-easing="Power4.easeOut"
+                                             data-endspeed="300"
+                                             data-endeasing="Power1.easeIn"
+                                             data-captionhidden="off"
+                                             style="z-index: 6">
+                                            <img src="../images/logo.png" class="logo-slider">
+                                        </div>
+                                        <div class="tp-caption text15 white sfb"
+                                             data-x="0"
+                                             data-hoffset="0"
+                                             data-voffset="-10"
+                                             data-y="168"
+                                             data-speed="800"
+                                             data-start="2200"
+                                             data-easing="Power4.easeOut"
+                                             data-endspeed="300"
+                                             data-endeasing="Power1.easeIn"
+                                             data-captionhidden="off"
+                                             style="z-index: 6">@FrontSlide.Titulo</div>
+                                            @{int start = 2500, y = 220;}
+                                            @for (var i = 1; i <= 3; i++)
+                                            {
+                                                <div class="tp-caption slide_list3 sfb"
+                                                     data-x="0"
+                                                     data-hoffset="0"
+                                                     data-voffset="-10"
+                                                     data-y="@y"
+                                                     data-speed="800"
+                                                     data-start="@start"
+                                                     data-easing="Power4.easeOut"
+                                                     data-endspeed="300"
+                                                     data-endeasing="Power1.easeIn"
+                                                     data-captionhidden="off"
+                                                     style="z-index: 6">
+                                                    @if (i == 1 && @FrontSlide.Contenido1 != null)
+                                                    {
+                                                        <i class="fa fa-check"></i>
+                                                        @FrontSlide.Contenido1;
+                                                    }
+                                                    @if (i == 2 && @FrontSlide.Contenido2 != null)
+                                                    {
+                                                        <i class="fa fa-check"></i>
+                                                        @FrontSlide.Contenido2;
+                                                    }
+                                                    @if (i == 3 && @FrontSlide.Contenido3 != null)
+                                                    {
+                                                        <i class="fa fa-check"></i>
+                                                        @FrontSlide.Contenido3;
+                                                    }
+                                                    @{start = start + 300; }
+                                                    @{ y = y + 30;}
+                                                </div>
+                                            }
+                                        </li>
+                                }
+                            </ul>
+                            <div class="tp-bannertimer"></div>
                         </div>
+                    </div>
+
+
+
                     </div>
 
                 </div>
@@ -323,22 +426,99 @@
                     <div class="lt_title_line"></div>
                     <!-- <p class="lt_title_bottomtext">Sirviendo con PASIÓN transportando con AMOR</p>-->
                     <div class="clearfix"></div>
-                    <div class="container">
-                        <div class="one_half">
-                            <!-- <h4 class="bold uppercase">Sirviendo con PASIÓN transportando con AMOR</h4> -->
-                            <ul class="list">
-                                <li>@ViewBag.Transporte<br />@Html.ActionLink("Ver más", "Transporte", null, new { @class = "btn btn-primary btn-xs" })</li>
-                            </ul>
-                        </div>
+                    <div class="tp-banner-container">
+                        @*<div class="one_half">
+                <!-- <h4 class="bold uppercase">Sirviendo con PASIÓN transportando con AMOR</h4> -->
+                <ul class="list">
+                    <li>@ViewBag.Transporte@*<br />@Html.ActionLink("Ver más", "Transporte", null, new { @class = "btn btn-primary btn-xs" })</li>
+                </ul>
+            </div>
+            <div class="one_half last">
 
-                        <div class="one_half last">
+                <div class="img_holder">
+                    <img src="@ViewBag.TransporteImagen" alt="" class="img_size1" />
+                </div>
+            </div>*@
 
-                            <div class="img_holder">
-                                <img src="@ViewBag.TransporteImagen" alt="" class="img_size1" />
+                        
+                            <div class="tp-banner2">
+                                <ul>
+                                    @foreach (var FrontSlide in ViewBag.SlidesTransporte)
+                                    {
+                            <!-- SLIDE  -->
+                                        <li data-transition="fade" data-slotamount="1" data-masterspeed="1500" data-thumb="images/sliders/slider1_thumb.jpg" data-delay="13000" data-saveperformance="off" data-title="Our Workplace">
+
+                                            <!-- MAIN IMAGE -->
+
+                                            <img src="@FrontSlide.Fondo" alt="@FrontSlide.Fondo" data-bgposition="left center" data-kenburns="on" data-duration="14000" data-ease="Linear.easeNone" data-bgfit="100" data-bgfitend="130" data-bgpositionend="right center">
+                                            <!-- LAYERS -->
+
+                                            <div class="tp-caption offerbadge sfb"
+                                                 data-x="928"
+                                                 data-hoffset="0"
+                                                 data-voffset="-10"
+                                                 data-y="200"
+                                                 data-speed="800"
+                                                 data-start="1600"
+                                                 data-easing="Power4.easeOut"
+                                                 data-endspeed="300"
+                                                 data-endeasing="Power1.easeIn"
+                                                 data-captionhidden="off"
+                                                 style="z-index: 6">
+                                                <img src="../images/logo.png" class="logo-slider">
+                                            </div>
+                                            <div class="tp-caption text15 white sfb"
+                                                 data-x="0"
+                                                 data-hoffset="0"
+                                                 data-voffset="-10"
+                                                 data-y="168"
+                                                 data-speed="800"
+                                                 data-start="2200"
+                                                 data-easing="Power4.easeOut"
+                                                 data-endspeed="300"
+                                                 data-endeasing="Power1.easeIn"
+                                                 data-captionhidden="off"
+                                                 style="z-index: 6">@FrontSlide.Titulo</div>
+                                                @{int start = 2500, y = 220;}
+                                                @for (var i = 1; i <= 3; i++)
+                                                {
+                                                    <div class="tp-caption slide_list3 sfb"
+                                                         data-x="0"
+                                                         data-hoffset="0"
+                                                         data-voffset="-10"
+                                                         data-y="@y"
+                                                         data-speed="800"
+                                                         data-start="@start"
+                                                         data-easing="Power4.easeOut"
+                                                         data-endspeed="300"
+                                                         data-endeasing="Power1.easeIn"
+                                                         data-captionhidden="off"
+                                                         style="z-index: 6">
+                                                        @if (i == 1 && @FrontSlide.Contenido1 != null)
+                                                        {
+                                                            <i class="fa fa-check"></i>
+                                                            @FrontSlide.Contenido1;
+                                                        }
+                                                        @if (i == 2 && @FrontSlide.Contenido2 != null)
+                                                        {
+                                                            <i class="fa fa-check"></i>
+                                                            @FrontSlide.Contenido2;
+                                                        }
+                                                        @if (i == 3 && @FrontSlide.Contenido3 != null)
+                                                        {
+                                                            <i class="fa fa-check"></i>
+                                                            @FrontSlide.Contenido3;
+                                                        }
+                                                        @{start = start + 300; }
+                                                        @{ y = y + 30;}
+                                                    </div>
+                                                }
+                                            </li>
+                                    }
+                                </ul>
+                                <div class="tp-bannertimer"></div>
                             </div>
-                        </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -351,7 +531,7 @@
                     <h1 class="lt_title_big">Sirviendo con <span>PASIÓN</span> transportando con <span>AMOR</span></h1>
                     <div class="lt_title_line"></div>
 
-                    @foreach (var FrontServices1 in ViewBag.ListaNosotros1)
+                    @*@foreach (var FrontServices1 in ViewBag.ListaNosotros1)
                     {
                         <div class="box">
                             <div class="arrow_up"></div>
@@ -361,7 +541,107 @@
                             <div class="arrow_down"></div>
                         </div>
                     <!--end item-->
-                    }
+                    }*@
+
+
+                    <div class="tp-banner-container">
+                        @*<div class="one_half">
+                <!-- <h4 class="bold uppercase">Sirviendo con PASIÓN transportando con AMOR</h4> -->
+                <ul class="list">
+                    <li>@ViewBag.Transporte@*<br />@Html.ActionLink("Ver más", "Transporte", null, new { @class = "btn btn-primary btn-xs" })</li>
+                </ul>
+            </div>
+            <div class="one_half last">
+
+                <div class="img_holder">
+                    <img src="@ViewBag.TransporteImagen" alt="" class="img_size1" />
+                </div>
+            </div>*@
+
+
+                        <div class="tp-banner2">
+                            <ul>
+                                @foreach (var FrontSlide in ViewBag.SlidesServicios)
+                                {
+                            <!-- SLIDE  -->
+                                    <li data-transition="fade" data-slotamount="1" data-masterspeed="1500" data-thumb="images/sliders/slider1_thumb.jpg" data-delay="13000" data-saveperformance="off" data-title="Our Workplace">
+
+                                        <!-- MAIN IMAGE -->
+
+                                        <img src="@FrontSlide.Fondo" alt="@FrontSlide.Fondo" data-bgposition="left center" data-kenburns="on" data-duration="14000" data-ease="Linear.easeNone" data-bgfit="100" data-bgfitend="130" data-bgpositionend="right center">
+                                        <!-- LAYERS -->
+
+                                        <div class="tp-caption offerbadge sfb"
+                                             data-x="928"
+                                             data-hoffset="0"
+                                             data-voffset="-10"
+                                             data-y="200"
+                                             data-speed="800"
+                                             data-start="1600"
+                                             data-easing="Power4.easeOut"
+                                             data-endspeed="300"
+                                             data-endeasing="Power1.easeIn"
+                                             data-captionhidden="off"
+                                             style="z-index: 6">
+                                            <img src="../images/logo.png" class="logo-slider">
+                                        </div>
+                                        <div class="tp-caption text15 white sfb"
+                                             data-x="0"
+                                             data-hoffset="0"
+                                             data-voffset="-10"
+                                             data-y="168"
+                                             data-speed="800"
+                                             data-start="2200"
+                                             data-easing="Power4.easeOut"
+                                             data-endspeed="300"
+                                             data-endeasing="Power1.easeIn"
+                                             data-captionhidden="off"
+                                             style="z-index: 6">@FrontSlide.Titulo</div>
+                                            @{int start = 2500, y = 220;}
+                                            @for (var i = 1; i <= 3; i++)
+                                            {
+                                                <div class="tp-caption slide_list3 sfb"
+                                                     data-x="0"
+                                                     data-hoffset="0"
+                                                     data-voffset="-10"
+                                                     data-y="@y"
+                                                     data-speed="800"
+                                                     data-start="@start"
+                                                     data-easing="Power4.easeOut"
+                                                     data-endspeed="300"
+                                                     data-endeasing="Power1.easeIn"
+                                                     data-captionhidden="off"
+                                                     style="z-index: 6">
+                                                    @if (i == 1 && @FrontSlide.Contenido1 != null)
+                                                    {
+                                                        <i class="fa fa-check"></i>
+                                                        @FrontSlide.Contenido1;
+                                                    }
+                                                    @if (i == 2 && @FrontSlide.Contenido2 != null)
+                                                    {
+                                                        <i class="fa fa-check"></i>
+                                                        @FrontSlide.Contenido2;
+                                                    }
+                                                    @if (i == 3 && @FrontSlide.Contenido3 != null)
+                                                    {
+                                                        <i class="fa fa-check"></i>
+                                                        @FrontSlide.Contenido3;
+                                                    }
+                                                    @{start = start + 300; }
+                                                    @{ y = y + 30;}
+                                                </div>
+                                            }
+                                        </li>
+                                }
+                            </ul>
+                            <div class="tp-bannertimer"></div>
+                        </div>
+                    </div>
+
+
+
+
+
                 </div>
             </div>
         </div>

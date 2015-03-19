@@ -156,6 +156,9 @@
     <Compile Include="TBL_PORTAL_FRONT.cs">
       <DependentUpon>MD_PORTAL.tt</DependentUpon>
     </Compile>
+    <Compile Include="TBL_PORTAL_GALERIA.cs">
+      <DependentUpon>MD_PORTAL.tt</DependentUpon>
+    </Compile>
     <Compile Include="TBL_PORTAL_MODULO.cs">
       <DependentUpon>MD_PORTAL.tt</DependentUpon>
     </Compile>

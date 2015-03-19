@@ -1,0 +1,209 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<!-- Camera is a Pixedelic free jQuery slideshow | Manuel Masia (designer and developer) -->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>IPSSER - GALERÍA</title>
+    <meta name="description" content="Camera a free jQuery slideshow with many effects, transitions, adaptive layout, easy to customize, using canvas and mobile ready">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--///////////////////////////////////////////////////////////////////////////////////////////////////
+    //
+    //		Styles
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////////////////-->
+    <link rel='stylesheet' id='camera-css' href='../css/camera.css' type='text/css' media='all'>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            color: #09f;
+        }
+
+            a:hover {
+                text-decoration: none;
+            }
+
+        #back_to_camera {
+            background: rgba(255,255,255,.9);
+            clear: both;
+            display: block;
+            height: 40px;
+            line-height: 40px;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .fluid_container {
+            bottom: 0;
+            height: 100%;
+            left: 0;
+            position: fixed;
+            right: 0;
+            top: 0;
+            z-index: 0;
+        }
+
+        #camera_wrap_4 {
+            bottom: 0;
+            height: 100%;
+            left: 0;
+            margin-bottom: 0 !important;
+            position: fixed;
+            right: 0;
+            top: 0;
+        }
+
+        .camera_bar {
+            z-index: 2;
+        }
+
+        .camera_thumbs {
+            margin-top: -100px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .camera_thumbs_cont {
+            border-radius: 0;
+            -moz-border-radius: 0;
+            -webkit-border-radius: 0;
+        }
+
+        .camera_overlayer {
+            opacity: .1;
+        }
+    </style>
+
+    <!--///////////////////////////////////////////////////////////////////////////////////////////////////
+    //
+    //		Scripts
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////////////////-->
+
+    <script type='text/javascript' src='../scripts/jquery.min.js'></script>
+    <script type='text/javascript' src='../scripts/jquery.mobile.customized.min.js'></script>
+    <script type='text/javascript' src='../scripts/jquery.easing.1.3.js'></script>
+    <script type='text/javascript' src='../scripts/camera.min.js'></script>
+
+    <script>
+		jQuery(function(){
+
+			jQuery('#camera_wrap_4').camera({
+				height: '600',
+				loader: 'bar',
+				pagination: false,
+				thumbnails: true,
+				hover: false,
+				opacityOnGrid: false,
+				imagePath: '../Galeria/'
+			});
+
+		});
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    <!-- ######### CSS STYLES ######### -->
+
+    <link rel="stylesheet" href="~/Css/reset.css" type="text/css" />
+    <link rel="stylesheet" href="~/Css/style.css" type="text/css" />
+    <link rel="stylesheet" href="~/Css/font-awesome/css/font-awesome.min.css">
+
+    <!-- responsive devices styles -->
+    <link rel="stylesheet" media="screen" href="~/Css/responsive-leyouts.css" type="text/css" />
+
+    <!-- mega menu -->
+    <link href="~/js/mainmenu/sticky.css" rel="stylesheet">
+    <link href="~/js/mainmenu/bootstrap.min.css" rel="stylesheet">
+    <link href="~/js/mainmenu/demo.css" rel="stylesheet">
+    <link href="~/js/mainmenu/menu.css" rel="stylesheet">
+
+    <!-- revolution slider -->
+    <!-- CSS STYLE-->
+    <link rel="stylesheet" type="text/css" href="~/js/revolutionslider/css/style.css" media="screen" />
+
+
+
+    <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+    <link rel="stylesheet" type="text/css" href="~/js/revolutionslider/rs-plugin/css/settings.css" media="screen" />
+
+    <!-- simple line icons -->
+    <link rel="stylesheet" type="text/css" href="~/css/Simple-Line-Icons-Webfont/simple-line-icons.css" media="screen" />
+
+    <!-- flexslider -->
+    <link rel="stylesheet" href="~/js/flexslider/flexslider.css" type="text/css" media="screen" />
+
+    <!-- Accordions -->
+    <link rel="stylesheet" href="~/js/accordion/accordion.css" type="text/css" media="all">
+
+    <!-- tabs -->
+    <link rel="stylesheet" type="text/css" href="~/js/tabs/assets/css/responsive-tabs.css">
+    <link rel="stylesheet" type="text/css" href="~/js/tabs/assets/css/responsive-tabs2.css">
+    <link rel="stylesheet" type="text/css" href="~/js/tabs/assets/css/responsive-tabs11.css">
+    <link rel="stylesheet" type="text/css" href="~/js/tabs/assets/css/responsive-tabs12.css">
+
+    <!-- toogle menu -->
+    <link rel="stylesheet" href="~/js/Toggle-Menu/menu.css" type="text/css" />
+
+    <!-- forms -->
+    <link rel="stylesheet" href="~/js/form/sky-forms.css" type="text/css" media="all">
+
+
+
+
+</head>
+<body>
+
+    <div id="header">
+        <div id="trueHeader">
+            <div class="wrapper">
+                <div class="container">
+                    <!-- Menu -->
+                    <div class="mainMenu">
+                        <label for="toggleMenu" class="menuTitle">MENU</label>
+                        <input type="checkbox" id="toggleMenu" />
+                        <ul class="menu">
+
+                            @foreach (var modulo in ViewBag.ListaModulos)
+                            {
+                                if (modulo.IdModulo == 7)
+                                {
+                                    <li><a href="#" class="current">@modulo.NombreModulo</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="#" onclick="$('#section-@modulo.IdModulo').animatescroll();">@modulo.NombreModulo</a></li>
+                                }
+
+                            }
+                            <li><a href="#" class="btn-primary btn-menu"><i class="fa fa-desktop"></i> Solicitud en Línea</a></li>
+                            <li><a href="#" class="btn-success btn-menu"><i class="fa fa-phone"></i> PBX: 742 58 77 </a></li>
+                        </ul>
+                    </div>
+                    <!-- end menu -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+
+    <div class="fluid_container" style="margin-top:80px !important">
+        <div class="camera_wrap camera_emboss pattern_1" id="camera_wrap_4">
+            <div data-thumb="../Galeria/thumbs/1.jpg" data-src="../Galeria/1.jpg"></div>
+            <div data-thumb="../Galeria/thumbs/2.jpg" data-src="../Galeria/2.jpg"></div>
+        </div><!-- #camera_wrap_3 -->
+
+    </div><!-- .fluid_container -->
+
+</body>
+</html>

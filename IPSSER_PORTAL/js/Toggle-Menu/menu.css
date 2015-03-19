@@ -137,8 +137,8 @@ label.menuTitle {
 	.menu a, .menu a:visited {
 		display:inline; 
 		width:auto;
-		padding: 25px 20px 20px 20px;
-        border-radius:10px;
+		padding: 15px;
+        height:44px;
 		}
 	}
 	
